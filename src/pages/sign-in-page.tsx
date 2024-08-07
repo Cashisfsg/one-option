@@ -1,9 +1,12 @@
+import { useId } from "react";
 import { UserAuthenticationForm } from "@/features/user/authenticate";
 
 import Logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 
 export const SignInPage = () => {
+    const authenticationFormId = `form-${useId}`;
+
     return (
         <section className="min-h-[100dvh] bg-[url('@/assets/bg.webp')]">
             <div className="mx-auto max-w-3xl space-y-6-8-xs-md px-4 py-8 text-center @container md:px-8">
@@ -19,10 +22,13 @@ export const SignInPage = () => {
                     <p className="text-xl-4xl-xs-md">в партнерскую программу</p>
                 </header>
 
-                <UserAuthenticationForm />
+                <UserAuthenticationForm id={authenticationFormId} />
 
                 <div className="flex flex-col justify-center gap-2-4-xs-md text-base-xl-xs-md sm:flex-row">
-                    <button className="rounded-lg border-2 border-white-primary bg-white-primary py-3 text-black transition-colors duration-300 sm:px-16 mh:hover:bg-transparent mh:hover:text-white-primary">
+                    <button
+                        form={authenticationFormId}
+                        className="rounded-lg border-2 border-white-primary bg-white-primary py-3 text-black transition-colors duration-300 sm:px-16 mh:hover:bg-transparent mh:hover:text-white-primary"
+                    >
                         {/* <button className="clip-path w-72"> */}
                         Войти
                     </button>

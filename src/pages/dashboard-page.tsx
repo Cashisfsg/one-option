@@ -4,13 +4,22 @@ import { Table } from "@/shared/ui/table";
 import { LineChart } from "@/shared/ui/line-chart";
 import { Title } from "@/shared/ui/title";
 
-const data = Array(6).fill({
-    id: "#709247",
-    url: "broker-qx.pro/sign-up/?lid=709247",
-    type: "Ссылка на регистрацию",
-    program: "Доля дохода",
-    date: "26.03.2024"
-});
+const data = [
+    {
+        id: "#709247",
+        url: "broker-qx.pro/sign-up/?lid=709247",
+        type: "Ссылка на регистрацию",
+        program: "Доля дохода",
+        date: "26.03.2024"
+    },
+    {
+        id: "#709243",
+        url: "broker-qx.pro/sign-up/?lid=709247",
+        type: "Ссылка на регистрацию",
+        program: "Доля дохода",
+        date: "26.03.2024"
+    }
+];
 
 export const DashboardPage = () => {
     return (
@@ -101,8 +110,28 @@ export const DashboardPage = () => {
                 </Title>
                 <div className="scrollbar">
                     <Table
+                        uniqueKey={"id"}
+                        rowHeaderKey={"id"}
                         headers={["id", "ссылка", "тип", "программа", "дата"]}
                         data={data}
+                        // renderData={data => (
+                        //     <tbody className="[&>*:nth-child(odd)]:bg-quaternary">
+                        //         {data.map(row => (
+                        //             <TableRow key={row.id}>
+                        //                 {Object.values(row)?.map(
+                        //                     (cell, index) => (
+                        //                         <TableCell
+                        //                             key={index}
+                        //                             className="text-blue-500"
+                        //                         >
+                        //                             {cell}
+                        //                         </TableCell>
+                        //                     )
+                        //                 )}
+                        //             </TableRow>
+                        //         ))}
+                        //     </tbody>
+                        // )}
                         renderColumns={
                             <colgroup>
                                 <col />
@@ -111,6 +140,11 @@ export const DashboardPage = () => {
                                 <col />
                                 <col />
                             </colgroup>
+                        }
+                        components={
+                            {
+                                // TableRow: <tr className="bg-red-600" />
+                            }
                         }
                         // className="w-auto"
                     />

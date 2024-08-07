@@ -7,5 +7,5 @@ export const useLatest = <V,>(value: V) => {
         valueRef.current = value;
     });
 
-    return valueRef;
+    return valueRef.current;
 };

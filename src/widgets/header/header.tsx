@@ -2,6 +2,8 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 
 import * as BurgerMenu from "../burger-menu/ui/burger-menu";
 
+import { UserSignOutButton } from "@/features/user/logout";
+
 import { SVGPicker } from "./model/svg-picker";
 import { Title } from "@/shared/ui/title";
 
@@ -50,11 +52,6 @@ const links = [
         url: "/telegram",
         name: "telegram",
         title: "Telegram"
-    },
-    {
-        url: "/exit",
-        name: "exit",
-        title: "Выход"
     }
 ] as const;
 
@@ -160,6 +157,14 @@ export const Header = () => {
                             </NavLink>
                         </li>
                     ))}
+                    <li className="size-[clamp(3rem,_0.375rem_+_5.45vw,_4.75rem)] bg-[#2b2930] has-[a[aria-current=page]]:bg-violet-primary">
+                        <UserSignOutButton>
+                            <SVGPicker
+                                name={"exit"}
+                                className="text-2xl-3xl-md-xl"
+                            />
+                        </UserSignOutButton>
+                    </li>
                     {/* <li>
                         <a>
                             <SVGPicker
@@ -229,7 +234,10 @@ export const Header = () => {
 
                             <BurgerMenu.Menu className="mt-4 w-max text-white-primary">
                                 {links.map((link, index) => (
-                                    <BurgerMenu.MenuItem key={index}>
+                                    <BurgerMenu.MenuItem
+                                        key={index}
+                                        index={index}
+                                    >
                                         <NavLink
                                             to={link.url}
                                             className="flex cursor-pointer items-center gap-x-4 bg-[#2d2930] p-4 focus:bg-violet-primary focus:outline-none focus-visible:outline-transparent"

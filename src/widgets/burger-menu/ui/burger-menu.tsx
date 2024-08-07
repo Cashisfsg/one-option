@@ -220,7 +220,9 @@ const Content: React.FC<ContentProps> = ({
         }
 
         if (key === "Tab") {
-            const firstFocusableElement = focusableElements.current?.at(0);
+            const firstFocusableElement = focusableElements.current?.at(
+                currentFocusableElementIndex.current
+            );
             const lastFocusableElement = focusableElements.current?.at(-1);
 
             if (
@@ -375,7 +377,9 @@ const Header: React.FC<HeaderProps> = props => {
 Header.displayName = "BurgerMenu.Header";
 
 interface MenuProps
-    extends Omit<React.ComponentProps<"ul">, "role" | "aria-labelledby"> {}
+    extends Omit<React.ComponentProps<"ul">, "role" | "aria-labelledby"> {
+    children: React.FC<MenuItemProps>;
+}
 
 const Menu: React.FC<MenuProps> = props => {
     const { burgerMenuId, burgerMenuTriggerId } = useBurgerMenuContext();
@@ -393,15 +397,17 @@ const Menu: React.FC<MenuProps> = props => {
 Menu.displayName = "BurgerMenu.Menu";
 
 interface MenuItemProps extends React.ComponentProps<"li"> {
+    index: number;
     children: React.ReactElement<React.ComponentProps<"a">>;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
+    index,
     className,
     children,
     ...props
 }) => {
-    const { dialogRef } = useBurgerMenuContext();
+    const { dialogRef, currentFocusableElementIndex } = useBurgerMenuContext();
 
     const anchorElement = React.Children.only(children) as React.ReactElement;
     const { onClick, onMouseOver, ...anchorProps } = anchorElement.props;
@@ -417,6 +423,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
     > = event => {
         const target = event.currentTarget;
         target.focus();
+        console.log(index);
+        currentFocusableElementIndex.current = index;
     };
 
     return (

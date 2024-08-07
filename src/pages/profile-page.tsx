@@ -6,7 +6,7 @@ import { Section } from "@/shared/ui/section";
 import { Button } from "@/shared/ui/button";
 
 import { UserFTDMeter } from "@/entities/user/ui/ftd-meter";
-import { Table, Row, Cell } from "@/shared/ui/table";
+import { Table, TableRow } from "@/shared/ui/table";
 import * as Tooltip from "@/shared/ui/tooltip";
 
 import Avatar from "@/assets/avatar.png";
@@ -15,7 +15,13 @@ import TelegramLogo from "@/assets/img/telegram-logo.png";
 import InstagramLogo from "@/assets/img/instagram-logo.png";
 import YouTubeLogo from "@/assets/img/youtube-logo.png";
 
-const tooltipData = { level: 1, revenue: 40, turnover: 2, deposit: "0 - 50" };
+const tooltipData = {
+    level: 1,
+    revenue: 40,
+    turnover: 2,
+    deposit: "0 - 50"
+} as const;
+const data = Array(5).fill(tooltipData);
 
 export const ProfilePage = () => {
     const formId = useId();
@@ -67,6 +73,7 @@ export const ProfilePage = () => {
                                             </p>
                                         </header>
                                         <Table
+                                            uniqueKey="id"
                                             headers={[
                                                 "Уровень",
                                                 "Доход",
@@ -76,7 +83,7 @@ export const ProfilePage = () => {
                                             data={Array(5).fill(tooltipData)}
                                             renderHeader={headers => (
                                                 <thead>
-                                                    <Row>
+                                                    <TableRow>
                                                         {headers.map(
                                                             (header, i) => (
                                                                 <th
@@ -87,7 +94,7 @@ export const ProfilePage = () => {
                                                                 </th>
                                                             )
                                                         )}
-                                                    </Row>
+                                                    </TableRow>
                                                 </thead>
                                             )}
                                             renderData={data => (

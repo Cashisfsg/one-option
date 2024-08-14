@@ -1,7 +1,8 @@
+import { withTV } from "tailwind-variants/transformer";
 import containerPlugin from "@tailwindcss/container-queries";
 
 /** @type {import('tailwindcss').Config} */
-export default {
+export default withTV({
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
@@ -83,4 +84,4 @@ export default {
         container: false
     },
     plugins: [containerPlugin]
-};
+});

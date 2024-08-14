@@ -6,14 +6,32 @@ import {
     Navigate
 } from "react-router-dom";
 
+import { useAuth } from "@/shared/lib/hooks/use-auth";
+
+import { GoogleAuthenticationPage } from "@/pages/authentication/google";
+
+import { AuthenticationLayout } from "@/pages/authentication/layout";
 import { App } from "@/App";
 import { AppLayout } from "@/pages/app-layout";
-import { SignInPage } from "@/pages/sign-in-page";
+import { SignInPage } from "@/pages/authentication/sign-in";
 import { SignUpPage } from "@/pages/sign-up-page";
+
+const RecoverPasswordPage = lazy(async () =>
+    import("@/pages/recover-password").then(module => ({
+        default: module.RecoverPasswordPage
+    }))
+);
+
+const RecoverPasswordConfirmPage = lazy(async () =>
+    import("@/pages/recover-password-confirm").then(module => ({
+        default: module.RecoverPasswordConfirmPage
+    }))
+);
+
 import { StartPage } from "@/pages/start-page";
 
 const DashboardPage = lazy(async () =>
-    import("@/pages/dashboard-page").then(module => ({
+    import("@/pages/dashboard").then(module => ({
         default: module.DashboardPage
     }))
 );
@@ -43,14 +61,14 @@ const CashOutPage = lazy(async () =>
 );
 
 const ProfilePage = lazy(async () =>
-    import("@/pages/profile-page").then(module => ({
+    import("@/pages/profile/page").then(module => ({
         default: module.ProfilePage
     }))
 );
 
-const router = createBrowserRouter([
+const publicRouter = createBrowserRouter([
     {
-        path: "/start",
+        path: "/",
         element: <StartPage />
     },
     {
@@ -67,6 +85,43 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "auth",
+        element: <AuthenticationLayout />,
+        children: [
+            {
+                path: "sign/in",
+                element: <SignInPage />
+            }
+        ]
+    },
+    {
+        path: "password/recover",
+        element: (
+            <Suspense fallback={<>Loading...</>}>
+                <RecoverPasswordPage />
+            </Suspense>
+        )
+    },
+    {
+        path: "password/recover/confirm",
+        element: (
+            <Suspense fallback={<>Loading...</>}>
+                <RecoverPasswordConfirmPage />
+            </Suspense>
+        )
+    },
+    {
+        path: "google/complete/",
+        element: <GoogleAuthenticationPage />
+    },
+    {
+        path: "*",
+        element: <Navigate to="/" />
+    }
+]);
+
+const privateRouter = createBrowserRouter([
     {
         path: "/",
         element: <AppLayout />,
@@ -123,10 +178,14 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <Navigate to="/sign/in" />
+        element: <Navigate to="/" />
     }
 ]);
 
-export const ReactRouterProvider = () => {
+export const RouterProvider = () => {
+    const { isAuthenticated } = useAuth();
+
+    const router = isAuthenticated ? privateRouter : publicRouter;
+
     return <Provider router={router} />;
 };

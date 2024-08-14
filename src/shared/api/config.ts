@@ -13,7 +13,7 @@ const baseQuery = fetchBaseQuery({
         const token = (getState() as RootStore).auth.token;
 
         if (token) {
-            headers.set("Token", token);
+            headers.set("Authorization", `Token ${token}`);
         }
 
         return headers;

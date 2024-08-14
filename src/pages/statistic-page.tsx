@@ -1,3 +1,5 @@
+import { BalanceOverview } from "@/entities/user/ui/balance-overview";
+
 import { Section } from "@/shared/ui/section";
 import { Table } from "@/shared/ui/table";
 import { LineChart } from "@/shared/ui/line-chart";
@@ -31,10 +33,15 @@ export const StatisticPage = () => {
     return (
         <Article>
             <Section>
-                <LineChart />
+                <LineChart
+                    data={[
+                        [1, 1],
+                        [2, 2]
+                    ]}
+                />
             </Section>
 
-            <Section className="space-y-4">
+            {/* <Section className="space-y-4">
                 <Title as="h2">Ваш баланс</Title>
 
                 <ul className="grid gap-3 sm:grid-cols-3 md:gap-4 lg:gap-6">
@@ -65,7 +72,8 @@ export const StatisticPage = () => {
                         </strong>
                     </li>
                 </ul>
-            </Section>
+            </Section> */}
+            <BalanceOverview />
 
             <Section>
                 <header className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">

@@ -1,14 +1,28 @@
 import { useId } from "react";
 import { UserAuthenticationForm } from "@/features/user/authenticate";
 
+// import { useLazySignInWithGoogleQuery } from "@/shared/api";
+
 import Logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 
 export const SignInPage = () => {
     const authenticationFormId = `form-${useId}`;
 
+    // const [signInWithGoogle] = useLazySignInWithGoogleQuery();
+
+    // const authenticateWithGoogle: React.MouseEventHandler<
+    //     HTMLButtonElement
+    // > = async () => {
+    //     try {
+    //         await signInWithGoogle();
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+
     return (
-        <section className="min-h-[100dvh] bg-[url('@/assets/bg.webp')]">
+        <section className="min-h-dvh bg-[url('@/assets/bg.webp')]">
             <div className="mx-auto max-w-3xl space-y-6-8-xs-md px-4 py-8 text-center @container md:px-8">
                 <header className="space-y-2-3-xs-md">
                     <img
@@ -32,9 +46,13 @@ export const SignInPage = () => {
                         {/* <button className="clip-path w-72"> */}
                         Войти
                     </button>
-                    <button className="rounded-lg border-2 border-white-primary py-3 transition-colors duration-300 sm:px-16 mh:hover:bg-white-primary mh:hover:text-black">
+                    <a
+                        href="/google/"
+                        // onClick={authenticateWithGoogle}
+                        className="rounded-lg border-2 border-white-primary py-3 transition-colors duration-300 sm:px-16 mh:hover:bg-white-primary mh:hover:text-black"
+                    >
                         Войти через Google
-                    </button>
+                    </a>
                 </div>
 
                 <footer className="text-sm-lg-xs-md">

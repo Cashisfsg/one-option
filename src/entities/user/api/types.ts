@@ -7,7 +7,17 @@ export interface FetchUserDataResponse {
     ftd_count: number;
 }
 
+export interface FetchUserBalanceResponse {
+    total_income: string;
+    income_oborot: string;
+    income_doxod: string;
+}
+
 export interface AuthenticateUserRequest {
     email: string;
     password: string;
+}
+
+export interface UpdateUserPhotoRequest {
+    photo: string;
 }

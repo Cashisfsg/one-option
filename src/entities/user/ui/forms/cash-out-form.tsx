@@ -1,4 +1,4 @@
-import { Input } from "@/shared/ui/input";
+import { Input } from "@/shared/ui/input/input";
 import { Button } from "@/shared/ui/button";
 
 interface CashOutFormProps extends React.ComponentProps<"form"> {}

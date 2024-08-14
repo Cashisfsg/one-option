@@ -14,3 +14,20 @@ export type SuccessResponse = {
 export type SignInSuccessResponse = SuccessResponse & {
     token: string;
 };
+
+export interface RecoverPasswordRequest {
+    email: string;
+}
+
+export interface ConfirmPasswordRequest {
+    new_password: string;
+    confirm_password: string;
+}
+
+export interface ChangePasswordRequest {
+    old_password: string;
+    new_password: string;
+    new_password_confirm: string;
+}
+
+export interface ChangePasswordResponse extends SuccessResponse {}

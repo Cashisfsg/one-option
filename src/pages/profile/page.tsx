@@ -1,6 +1,12 @@
 import { useId } from "react";
 
+import { UpdateUserPhotoForm } from "@/features/user/update-avatar";
+
 import { ChangePasswordForm } from "@/entities/user/ui/forms/change-password-form";
+
+import { UserBalanceCard } from "@/entities/user/ui/balance-card";
+
+import { Dialog } from "@/shared/ui/dialog";
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
 import { Button } from "@/shared/ui/button";
@@ -9,11 +15,12 @@ import { UserFTDMeter } from "@/entities/user/ui/ftd-meter";
 import { Table, TableRow } from "@/shared/ui/table";
 import * as Tooltip from "@/shared/ui/tooltip";
 
-import Avatar from "@/assets/avatar.png";
+// import Avatar from "@/assets/avatar.png";
 
 import TelegramLogo from "@/assets/img/telegram-logo.png";
 import InstagramLogo from "@/assets/img/instagram-logo.png";
 import YouTubeLogo from "@/assets/img/youtube-logo.png";
+import { AddWalletForm } from "@/features/wallet/add";
 
 const tooltipData = {
     level: 1,
@@ -21,7 +28,6 @@ const tooltipData = {
     turnover: 2,
     deposit: "0 - 50"
 } as const;
-const data = Array(5).fill(tooltipData);
 
 export const ProfilePage = () => {
     const formId = useId();
@@ -134,11 +140,13 @@ export const ProfilePage = () => {
                     </h2>
                 </header>
 
-                <img
+                {/* <img
                     src={Avatar}
                     alt=""
                     className="width-48 aspect-square rounded-full border-4 border-violet-primary"
-                />
+                /> */}
+
+                <UpdateUserPhotoForm />
 
                 <h3 className="w-full truncate text-4xl">vikhlyaevvik</h3>
                 <p className="w-full truncate font-secondary text-2xl">
@@ -178,37 +186,7 @@ export const ProfilePage = () => {
                 </footer>
             </Section>
 
-            <Section className="flex flex-col gap-y-2 bg-violet-primary md:px-4">
-                <h2 className="text-2xl">Ваш баланс</h2>
-                <div className="mt-2 rounded-lg bg-violet-secondary px-4 py-2 text-lg">
-                    <p className="font-secondary">Общий доход:</p>
-                    <p className="py-4 text-center text-3xl">0.00$</p>
-                </div>
-                <div className="rounded-lg bg-violet-secondary px-4 py-2 text-lg">
-                    <p>
-                        <span className="font-secondary">Доля от дохода:</span>{" "}
-                        0.00 $
-                    </p>
-                </div>
-
-                <div className="rounded-lg bg-violet-secondary px-4 py-2 text-lg">
-                    <p>
-                        <span className="font-secondary">Доля от оборота:</span>{" "}
-                        0.00 $
-                    </p>
-                </div>
-
-                <p className="mt-2 text-center">
-                    Обновляется каждые 10-20 минут.
-                </p>
-                <p className="text-center">
-                    Привлекайте новых трейдеров и увеличивайте доход!
-                </p>
-
-                <Button className="mx-auto mt-auto block h-auto bg-violet-tertiary">
-                    Перейти к выводу средств
-                </Button>
-            </Section>
+            <UserBalanceCard />
 
             <Section className="grid grid-rows-[auto_auto_1fr] gap-y-4 md:px-4">
                 <h2 className="text-2xl">Безопасность</h2>
@@ -226,7 +204,15 @@ export const ProfilePage = () => {
             <Section className="lg:col-span-3">
                 <header className="flex justify-between">
                     <h2>Кошельки</h2>
-                    <Button>Добавить</Button>
+                    <Dialog.Root>
+                        <Dialog.Trigger className="rounded-lg bg-violet-primary px-10 py-2.5">
+                            Добавить
+                        </Dialog.Trigger>
+
+                        <Dialog.Portal>
+                            <AddWalletForm />
+                        </Dialog.Portal>
+                    </Dialog.Root>
                 </header>
             </Section>
         </Article>

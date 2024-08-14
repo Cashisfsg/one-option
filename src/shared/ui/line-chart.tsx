@@ -2,15 +2,15 @@ import { useEffect, useRef } from "react";
 import { select, line, scaleLinear, extent } from "d3";
 import useMeasure from "react-use-measure";
 
-export const LineChart = () => {
-    const data = [
-        [0, 0],
-        [10, 10],
-        [30, 15],
-        [35, 20],
-        [45, 25],
-        [100, 200]
-    ];
+export const LineChart = ({ data }: { data: number | string[][] }) => {
+    // const data = [
+    //     [0, 0],
+    //     [10, 10],
+    //     [30, 15],
+    //     [35, 20],
+    //     [45, 25],
+    //     [100, 200]
+    // ];
 
     const [ref, bounds] = useMeasure();
 
@@ -30,7 +30,15 @@ export const LineChart = () => {
     );
 };
 
-const Chart = ({ data, width, height }) => {
+const Chart = ({
+    data,
+    width,
+    height
+}: {
+    data: any;
+    width: number;
+    height: number;
+}) => {
     const chartRef = useRef<SVGSVGElement>(null);
 
     const margin = {
@@ -40,7 +48,7 @@ const Chart = ({ data, width, height }) => {
         left: 40
     };
 
-    const yExtent = extent(data.map((d: number[][]) => d[1]));
+    const yExtent = extent(data?.map((d: number[][]) => d[1]));
 
     const xScale = scaleLinear()
         .domain(extent(data.map(d => d[0])))
@@ -60,15 +68,25 @@ const Chart = ({ data, width, height }) => {
         const chart = select(chartRef.current);
 
         chart
-            .select(".yAxis")
+            .select(".xAxis")
             .attr("x1", margin.left)
             .attr("y1", margin.top)
             .attr("x2", margin.left)
-            .attr("y2", yScale(Number(yExtent[0])))
+            .attr("y2", height - margin.bottom)
             .attr("fill", "none")
             .attr("stroke", "currentColor")
             .attr("stroke-width", "0.5");
-    }, [height]);
+
+        chart
+            .select(".yAxis")
+            .attr("x1", margin.left)
+            .attr("y1", height - margin.bottom)
+            .attr("x2", width - margin.right)
+            .attr("y2", height - margin.bottom)
+            .attr("fill", "none")
+            .attr("stroke", "currentColor")
+            .attr("stroke-width", "0.5");
+    }, [height, width]);
 
     return (
         <svg
@@ -80,21 +98,39 @@ const Chart = ({ data, width, height }) => {
             <path
                 d={d}
                 fill="none"
-                stroke="red"
+                stroke="#FF8551"
+                strokeWidth="5"
             />
 
+            <line className="xAxis" />
             <line className="yAxis" />
 
-            {yScale.ticks(5).map(max => (
+            {xScale
+                .ticks(5)
+                // .slice(1)
+                .map(tick => (
+                    <line
+                        x1={xScale(tick)}
+                        y1={margin.top}
+                        x2={xScale(tick)}
+                        y2={height - margin.bottom}
+                        stroke="currentColor"
+                        strokeWidth="0.25"
+                        opacity="0.7"
+                    />
+                ))}
+
+            {yScale.ticks(5).map(tick => (
                 <g
-                    key={max}
-                    transform={`translate(0,${yScale(max)})`}
+                    key={tick}
+                    transform={`translate(0,${yScale(tick)})`}
                 >
                     <line
                         x1={margin.left}
                         x2={width - margin.right}
                         stroke="currentColor"
-                        strokeWidth="0.5"
+                        strokeWidth="0.25"
+                        opacity="0.7"
                     />
                     <text
                         // y={-5}
@@ -102,9 +138,9 @@ const Chart = ({ data, width, height }) => {
                         fill="currentColor"
                         alignmentBaseline="middle"
                         textAnchor="end"
-                        className="text-xs-base-xs-lg"
+                        className="font-primary text-xs-base-xs-lg"
                     >
-                        {max}
+                        {tick}
                     </text>
                 </g>
             ))}

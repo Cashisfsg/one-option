@@ -1,6 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { RootStore } from "@/app/providers/redux/types";
 import { rootApi } from "./api";
 
 type AuthorizedUser = {
@@ -34,6 +33,14 @@ export const authSlice = createSlice({
         } as AuthState;
     },
     reducers: {
+        login: (state, action: PayloadAction<{ token: string }>) => {
+            state.token = action.payload.token;
+            state.isAuthenticated = true;
+            localStorage.setItem(
+                "token",
+                JSON.stringify({ token: action.payload.token })
+            );
+        },
         logout: state => {
             state.token = null;
             state.isAuthenticated = false;
@@ -44,12 +51,12 @@ export const authSlice = createSlice({
         builder.addMatcher(
             rootApi.endpoints.signIn.matchFulfilled,
             (state, { payload }) => {
+                state.token = payload.token;
+                state.isAuthenticated = true;
                 localStorage.setItem(
                     "token",
                     JSON.stringify({ token: payload.token })
                 );
-                state.token = payload.token;
-                state.isAuthenticated = true;
             }
         );
     }
@@ -57,9 +64,4 @@ export const authSlice = createSlice({
 
 export const { reducer: authReducer, actions: authActions } = authSlice;
 
-export const { logout } = authSlice.actions;
-
-export const getAuthenticationStatus = (state: RootStore) => ({
-    token: state.auth.token,
-    isAuthenticated: state.auth.isAuthenticated
-});
+export const { login, logout } = authSlice.actions;

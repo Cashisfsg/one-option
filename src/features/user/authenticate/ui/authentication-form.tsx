@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { cn } from "@/shared/lib";
 
@@ -94,7 +94,12 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                     <span className="leading-none">Запомнить меня</span>
                 </label>
 
-                <a className="underline underline-offset-2">Забыли пароль?</a>
+                <Link
+                    to="/password/recover"
+                    className="underline underline-offset-2"
+                >
+                    Забыли пароль?
+                </Link>
             </fieldset>
         </form>
     );

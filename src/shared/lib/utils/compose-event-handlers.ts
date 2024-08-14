@@ -1,6 +1,8 @@
-export const composeEventHandlers = <E extends React.SyntheticEvent>(
-    external: ((event: E) => void) | undefined,
-    internal: (event: E) => void
+interface EventType extends React.SyntheticEvent {}
+
+export const composeEventHandlers = <E extends EventType>(
+    external: ((event: E) => unknown) | undefined,
+    internal: (event: E) => unknown
 ): ((event: E) => void) => {
     return function (event) {
         external?.(event);

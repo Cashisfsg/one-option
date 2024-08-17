@@ -11,20 +11,19 @@ import { useAuth } from "@/shared/lib/hooks/use-auth";
 import { GoogleAuthenticationPage } from "@/pages/authentication/google";
 
 import { AuthenticationLayout } from "@/pages/authentication/layout";
-import { App } from "@/App";
 import { AppLayout } from "@/pages/app-layout";
 import { SignInPage } from "@/pages/authentication/sign-in";
-import { SignUpPage } from "@/pages/sign-up-page";
+import { SignUpPage } from "@/pages/authentication/sign-up";
 
-const RecoverPasswordPage = lazy(async () =>
-    import("@/pages/recover-password").then(module => ({
-        default: module.RecoverPasswordPage
+const ResetPasswordPage = lazy(async () =>
+    import("@/pages/authentication/password-reset").then(module => ({
+        default: module.ResetPasswordPage
     }))
 );
 
-const RecoverPasswordConfirmPage = lazy(async () =>
-    import("@/pages/recover-password-confirm").then(module => ({
-        default: module.RecoverPasswordConfirmPage
+const ResetPasswordConfirmPage = lazy(async () =>
+    import("@/pages/authentication/recover-password-confirm").then(module => ({
+        default: module.ResetPasswordConfirmPage
     }))
 );
 
@@ -49,14 +48,14 @@ const SubReferralPage = lazy(async () =>
 );
 
 const StatisticPage = lazy(async () =>
-    import("@/pages/statistic-page").then(module => ({
+    import("@/pages/statistic").then(module => ({
         default: module.StatisticPage
     }))
 );
 
-const CashOutPage = lazy(async () =>
-    import("@/pages/cash-out-page").then(module => ({
-        default: module.CashOutPage
+const WithdrawalPage = lazy(async () =>
+    import("@/pages/withdrawal").then(module => ({
+        default: module.WithdrawalPage
     }))
 );
 
@@ -72,42 +71,48 @@ const publicRouter = createBrowserRouter([
         element: <StartPage />
     },
     {
-        path: "sign",
-        element: <App />,
-        children: [
-            {
-                path: "in",
-                element: <SignInPage />
-            },
-            {
-                path: "up",
-                element: <SignUpPage />
-            }
-        ]
-    },
-    {
         path: "auth",
         element: <AuthenticationLayout />,
         children: [
             {
                 path: "sign/in",
                 element: <SignInPage />
+            },
+            {
+                path: "sign/up",
+                element: <SignUpPage />
+            },
+            {
+                path: "password/reset",
+                element: (
+                    <Suspense fallback={<>Loading...</>}>
+                        <ResetPasswordPage />
+                    </Suspense>
+                )
+            },
+            {
+                path: "password/reset/confirm/:token",
+                element: (
+                    <Suspense fallback={<>Loading...</>}>
+                        <ResetPasswordConfirmPage />
+                    </Suspense>
+                )
             }
         ]
     },
     {
-        path: "password/recover",
+        path: "password/reset",
         element: (
             <Suspense fallback={<>Loading...</>}>
-                <RecoverPasswordPage />
+                <ResetPasswordPage />
             </Suspense>
         )
     },
     {
-        path: "password/recover/confirm",
+        path: "password/reset/confirm",
         element: (
             <Suspense fallback={<>Loading...</>}>
-                <RecoverPasswordConfirmPage />
+                <ResetPasswordConfirmPage />
             </Suspense>
         )
     },
@@ -135,7 +140,7 @@ const privateRouter = createBrowserRouter([
                 )
             },
             {
-                path: "/referral",
+                path: "referral",
                 element: (
                     <Suspense>
                         <ReferralPage />
@@ -143,7 +148,7 @@ const privateRouter = createBrowserRouter([
                 )
             },
             {
-                path: "/sub/referral",
+                path: "sub/referral",
                 element: (
                     <Suspense>
                         <SubReferralPage />
@@ -151,7 +156,7 @@ const privateRouter = createBrowserRouter([
                 )
             },
             {
-                path: "/statistic",
+                path: "statistic",
                 element: (
                     <Suspense>
                         <StatisticPage />
@@ -159,15 +164,15 @@ const privateRouter = createBrowserRouter([
                 )
             },
             {
-                path: "/cash/out",
+                path: "withdrawal",
                 element: (
                     <Suspense>
-                        <CashOutPage />
+                        <WithdrawalPage />
                     </Suspense>
                 )
             },
             {
-                path: "/profile",
+                path: "profile",
                 element: (
                     <Suspense>
                         <ProfilePage />

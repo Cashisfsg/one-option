@@ -1,12 +1,14 @@
 import { useId } from "react";
 
+import { AttachWalletDialog } from "@/widgets/wallet/attach-wallet-dialog";
+import { WalletList } from "@/widgets/wallet/table";
+
 import { UpdateUserPhotoForm } from "@/features/user/update-avatar";
 
 import { ChangePasswordForm } from "@/entities/user/ui/forms/change-password-form";
 
 import { UserBalanceCard } from "@/entities/user/ui/balance-card";
 
-import { Dialog } from "@/shared/ui/dialog";
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
 import { Button } from "@/shared/ui/button";
@@ -20,7 +22,6 @@ import * as Tooltip from "@/shared/ui/tooltip";
 import TelegramLogo from "@/assets/img/telegram-logo.png";
 import InstagramLogo from "@/assets/img/instagram-logo.png";
 import YouTubeLogo from "@/assets/img/youtube-logo.png";
-import { AddWalletForm } from "@/features/wallet/add";
 
 const tooltipData = {
     level: 1,
@@ -204,16 +205,10 @@ export const ProfilePage = () => {
             <Section className="lg:col-span-3">
                 <header className="flex justify-between">
                     <h2>Кошельки</h2>
-                    <Dialog.Root>
-                        <Dialog.Trigger className="rounded-lg bg-violet-primary px-10 py-2.5">
-                            Добавить
-                        </Dialog.Trigger>
-
-                        <Dialog.Portal>
-                            <AddWalletForm />
-                        </Dialog.Portal>
-                    </Dialog.Root>
+                    <AttachWalletDialog />
                 </header>
+
+                <WalletList />
             </Section>
         </Article>
     );

@@ -20,6 +20,7 @@ export interface RecoverPasswordRequest {
 }
 
 export interface ConfirmPasswordRequest {
+    token: string;
     new_password: string;
     confirm_password: string;
 }

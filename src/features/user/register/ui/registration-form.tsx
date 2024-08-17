@@ -68,6 +68,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         id={emailId}
                         type="email"
                         name="email"
+                        required
                         autoComplete="off"
                         maxLength={255}
                         placeholder="Почта"
@@ -87,6 +88,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         id={passwordId}
                         type="password"
                         name="password"
+                        required
                         autoComplete="off"
                         maxLength={128}
                         placeholder="Пароль"
@@ -106,6 +108,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         id={confirmPasswordId}
                         type="password"
                         name="password2"
+                        required
                         autoComplete="off"
                         maxLength={128}
                         placeholder="Подтвердите пароль"

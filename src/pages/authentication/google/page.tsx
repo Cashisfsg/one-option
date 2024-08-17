@@ -4,7 +4,6 @@ import { useAppDispatch } from "@/app/providers/redux/hooks";
 import { login } from "@/shared/api/authSlice";
 
 export const GoogleAuthenticationPage = () => {
-    // const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -15,8 +14,6 @@ export const GoogleAuthenticationPage = () => {
         if (searchParams.has("token")) {
             dispatch(login({ token: searchParams.get("token")! }));
         }
-
-        // navigate("/");
     }, []);
 
     return <Navigate to="/" />;

@@ -47,6 +47,30 @@ export const ReferenceStatistic = () => {
                         ))}
                     </ul>
                 )}
+                loadingFallback={
+                    <ul className="grid grid-cols-2 gap-4 lg:grid-cols-3 2xl:grid-cols-7">
+                        {statistics.map(stats => (
+                            <li
+                                key={stats.id}
+                                className="grid grid-cols-2 gap-y-3 rounded-2xl bg-[#2b2930] px-4 py-3 @container first:bg-violet-primary [&:nth-child(2)]:bg-violet-secondary"
+                            >
+                                <h2 className="col-span-2 row-start-3 text-sm/none @[15rem]:row-start-1 @[15rem]:text-lg/none">
+                                    {stats.label}
+                                </h2>
+
+                                <svg
+                                    width="45"
+                                    height="45"
+                                >
+                                    <use
+                                        xlinkHref={`${DashboardSprite}#${stats.icon}`}
+                                    />
+                                </svg>
+                                <span className="col-span-2 mt-4 self-center text-2xl leading-none @[15rem]:col-span-1 @[15rem]:mt-0 @[15rem]:text-3xl"></span>
+                            </li>
+                        ))}
+                    </ul>
+                }
             />
         </Section>
     );

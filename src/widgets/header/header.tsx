@@ -29,7 +29,7 @@ const links = [
         title: "Статистика"
     },
     {
-        url: "/cash/out",
+        url: "withdrawal",
         name: "cash-out",
         title: "Вывод средств"
     },

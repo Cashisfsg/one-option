@@ -23,7 +23,6 @@ export const rootApi = createApi({
                 body: body
             })
         }),
-        signInWithGoogle: builder.query<any, void>({ query: () => "/google/" }),
         signUp: builder.mutation<SuccessResponse, SignUpRequest>({
             query: body => ({
                 url: "/register/",
@@ -45,10 +44,13 @@ export const rootApi = createApi({
             SuccessResponse,
             ConfirmPasswordRequest
         >({
-            query: body => ({
-                url: `/password_reset/${JSON.parse(localStorage.getItem("token") || "{}")?.token}`,
+            query: ({ token, new_password, confirm_password }) => ({
+                url: `/password_reset/${token}/`,
                 method: "POST",
-                body: body
+                body: {
+                    new_password,
+                    confirm_password
+                }
             })
         }),
         changePassword: builder.mutation<
@@ -72,8 +74,7 @@ export const rootApi = createApi({
 
 export const {
     useSignInMutation,
-    useSignInWithGoogleQuery,
-    useLazySignInWithGoogleQuery,
+
     useSignUpMutation,
     useRecoverPasswordMutation,
     useConfirmPasswordMutation,

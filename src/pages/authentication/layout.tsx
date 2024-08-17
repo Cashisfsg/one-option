@@ -16,7 +16,7 @@ export const AuthenticationLayout: React.FC<AuthenticationLayoutProps> = ({
             )}
             {...props}
         >
-            <section className="mx-auto max-w-3xl space-y-6-8-xs-md">
+            <section className="mx-auto max-w-3xl space-y-6-8-xs-md text-center">
                 <Outlet />
             </section>
         </main>

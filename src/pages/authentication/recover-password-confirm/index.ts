@@ -1,0 +1,1 @@
+export { ResetPasswordConfirmPage } from "./page";

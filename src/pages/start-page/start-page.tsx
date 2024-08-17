@@ -123,13 +123,13 @@ export const StartPage = () => {
                             </p>
                             <div className="flex flex-wrap justify-center gap-y-6 @container">
                                 <Link
-                                    to="/sign/in"
+                                    to="/auth/sign/in"
                                     className="sign-in basis-full py-[18px] text-base-lg-xs-lg/none @md:basis-5/12"
                                 >
                                     Вход
                                 </Link>
                                 <Link
-                                    to="/sign/up"
+                                    to="/auth/sign/up"
                                     className="sign-up basis-full py-[18px] text-base-lg-xs-lg/none @md:-ml-6 @md:basis-7/12"
                                     // className="sign-up"
                                 >

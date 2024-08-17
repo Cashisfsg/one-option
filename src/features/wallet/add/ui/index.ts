@@ -1,1 +1,1 @@
-export { AddWalletForm } from "./add-wallet-form";
+export { AttachWalletForm } from "./attach-wallet-form";

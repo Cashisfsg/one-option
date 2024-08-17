@@ -95,7 +95,7 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                 </label>
 
                 <Link
-                    to="/password/recover"
+                    to="/auth/password/reset"
                     className="underline underline-offset-2"
                 >
                     Забыли пароль?

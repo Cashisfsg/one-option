@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import { useFetchUserBalanceQuery } from "@/entities/user/api";
 
 import { Section } from "@/shared/ui/section";
-import { Button } from "@/shared/ui/button";
+import { buttonVariants } from "@/shared/ui/button";
 
 export const UserBalanceCard = () => {
     const { data: balance } = useFetchUserBalanceQuery();
@@ -12,7 +13,7 @@ export const UserBalanceCard = () => {
             <div className="mt-2 rounded-lg bg-violet-secondary px-4 py-2 text-lg">
                 <p className="font-secondary">Общий доход:</p>
                 <p className="py-4 text-center text-3xl">
-                    {balance?.total_income}$
+                    {balance?.total_income} $
                 </p>
             </div>
             <div className="rounded-lg bg-violet-secondary px-4 py-2 text-lg">
@@ -30,13 +31,18 @@ export const UserBalanceCard = () => {
             </div>
 
             <p className="mt-2 text-center">Обновляется каждые 10-20 минут.</p>
-            <p className="text-center">
+            <p className="flex-auto text-center">
                 Привлекайте новых трейдеров и увеличивайте доход!
             </p>
 
-            <Button className="mx-auto mt-4 block h-auto bg-violet-tertiary">
+            <Link
+                to="/withdrawal"
+                className={buttonVariants({
+                    className: "mx-auto mt-6 block h-auto bg-violet-tertiary"
+                })}
+            >
                 Перейти к выводу средств
-            </Button>
+            </Link>
         </Section>
     );
 };

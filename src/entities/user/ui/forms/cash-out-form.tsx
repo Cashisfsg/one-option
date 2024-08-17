@@ -1,13 +1,28 @@
+import { cnBase } from "tailwind-variants";
+import { useFetchWithdrawQuery } from "@/entities/wallet";
+
+import { Fetch } from "@/shared/ui/fetch";
 import { Input } from "@/shared/ui/input/input";
 import { Button } from "@/shared/ui/button";
 
-interface CashOutFormProps extends React.ComponentProps<"form"> {}
+import { composeEventHandlers } from "@/shared/lib/utils/compose-event-handlers";
 
-export const CashOutForm: React.FC<CashOutFormProps> = props => {
+interface WithdrawalFormProps extends React.ComponentProps<"form"> {}
+
+export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
+    className,
+    onSubmit,
+    ...props
+}) => {
+    const onSubmitHandler: React.FormEventHandler<HTMLFormElement> = event => {
+        event.preventDefault();
+    };
+
     return (
         <form
+            onSubmit={composeEventHandlers(onSubmit, onSubmitHandler)}
+            className={cnBase("grid gap-y-4", className)}
             {...props}
-            className="grid gap-y-4"
         >
             <label className="grid gap-y-2">
                 <span>Сумма</span>
@@ -19,10 +34,24 @@ export const CashOutForm: React.FC<CashOutFormProps> = props => {
 
             <label className="grid gap-y-2">
                 <span>Кошелек</span>
-                <select className="h-11 rounded-lg bg-quaternary px-4 outline-offset-2 outline-slate-100 focus-visible:outline">
-                    <option value="">Опция 1</option>
-                    <option value="">Опция 2</option>
-                    <option value="">Опция 3</option>
+                <select
+                    defaultValue=""
+                    className="h-11 rounded-lg bg-quaternary px-4 outline-offset-2 outline-slate-100 focus-visible:outline"
+                >
+                    <option
+                        value=""
+                        disabled
+                    >
+                        Выберите кошелёк
+                    </option>
+                    <Fetch
+                        useQuery={useFetchWithdrawQuery}
+                        args={undefined}
+                        renderSuccess={data => {
+                            console.log(data);
+                            return <></>;
+                        }}
+                    />
                 </select>
             </label>
 

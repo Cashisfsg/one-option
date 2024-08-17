@@ -27,7 +27,7 @@ export const SignInPage = () => {
                     Войти
                 </button>
                 <a
-                    href="/google/"
+                    href={`${import.meta.env.VITE_BASE_API_URL}/google/`}
                     className="rounded-lg border-2 border-white-primary py-3 transition-colors duration-300 sm:px-16 mh:hover:bg-white-primary mh:hover:text-black"
                 >
                     Войти через Google
@@ -38,7 +38,7 @@ export const SignInPage = () => {
                 <p>
                     Еще нет аккаунта?{" "}
                     <Link
-                        to="/sign/up"
+                        to="/auth/sign/up"
                         className="underline underline-offset-2"
                     >
                         Зарегистрироваться

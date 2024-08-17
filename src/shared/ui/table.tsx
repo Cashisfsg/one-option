@@ -31,7 +31,7 @@ const useTableContext = () => {
 
     if (!context) {
         throw new Error(
-            "Component must be rendered as child of table component"
+            "Component must be rendered as child of Table component"
         );
     }
 

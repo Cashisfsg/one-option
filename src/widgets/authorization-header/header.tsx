@@ -12,7 +12,7 @@ export const AuthorizationHeaderWidget: React.FC<AuthorizationHeaderProps> = ({
 }) => {
     return (
         <header
-            className={cnBase("space-y-2-3-xs-md text-center", className)}
+            className={cnBase("space-y-2-3-xs-md", className)}
             {...props}
         >
             <img

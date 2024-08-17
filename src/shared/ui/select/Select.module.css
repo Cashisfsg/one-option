@@ -1,0 +1,16 @@
+.root {
+    position: relative;
+}
+
+.trigger[aria-expanded="true"] + .menu {
+    display: block;
+}
+
+.trigger[aria-expanded="false"] + .menu {
+    display: none;
+}
+
+.menu {
+    position: absolute;
+    top: 100%;
+}

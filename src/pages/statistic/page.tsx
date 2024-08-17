@@ -41,38 +41,6 @@ export const StatisticPage = () => {
                 />
             </Section>
 
-            {/* <Section className="space-y-4">
-                <Title as="h2">Ваш баланс</Title>
-
-                <ul className="grid gap-3 sm:grid-cols-3 md:gap-4 lg:gap-6">
-                    <li className="grid grid-cols-2 grid-rows-2 rounded-xl bg-violet-primary px-3-4-xs-md py-3">
-                        <h3 className="col-span-2 text-sm-base-xs-lg">
-                            Общий доход
-                        </h3>
-                        <strong className="col-span-2 justify-self-center text-2xl-3xl-xs-lg lg:col-start-2">
-                            0,00 $
-                        </strong>
-                    </li>
-
-                    <li className="grid grid-cols-2 grid-rows-2 rounded-xl bg-tertiary px-3-4-xs-md py-3">
-                        <h3 className="col-span-2 text-sm-base-xs-lg">
-                            Доля от оборота
-                        </h3>
-                        <strong className="col-span-2 justify-self-center text-2xl-3xl-xs-lg lg:col-start-2">
-                            0,00 $
-                        </strong>
-                    </li>
-
-                    <li className="grid grid-cols-2 grid-rows-2 rounded-xl bg-tertiary px-3-4-xs-md py-3">
-                        <h3 className="col-span-2 text-sm-base-xs-lg">
-                            Доля от дохода
-                        </h3>
-                        <strong className="col-span-2 justify-self-center text-2xl-3xl-xs-lg lg:col-start-2">
-                            0,00 $
-                        </strong>
-                    </li>
-                </ul>
-            </Section> */}
             <BalanceOverview />
 
             <Section>

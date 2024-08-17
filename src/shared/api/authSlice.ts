@@ -48,17 +48,23 @@ export const authSlice = createSlice({
         }
     },
     extraReducers: builder => {
-        builder.addMatcher(
-            rootApi.endpoints.signIn.matchFulfilled,
-            (state, { payload }) => {
-                state.token = payload.token;
-                state.isAuthenticated = true;
-                localStorage.setItem(
-                    "token",
-                    JSON.stringify({ token: payload.token })
-                );
-            }
-        );
+        builder
+            .addMatcher(
+                rootApi.endpoints.signIn.matchFulfilled,
+                (state, { payload }) => {
+                    state.token = payload.token;
+                    state.isAuthenticated = true;
+                    localStorage.setItem(
+                        "token",
+                        JSON.stringify({ token: payload.token })
+                    );
+                }
+            )
+            .addMatcher(rootApi.endpoints.signOut.matchFulfilled, state => {
+                state.token = null;
+                state.isAuthenticated = false;
+                localStorage.removeItem("token");
+            });
     }
 });
 

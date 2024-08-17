@@ -74,7 +74,6 @@ export const rootApi = createApi({
 
 export const {
     useSignInMutation,
-
     useSignUpMutation,
     useRecoverPasswordMutation,
     useConfirmPasswordMutation,

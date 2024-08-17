@@ -1,7 +1,5 @@
 import { cnBase } from "tailwind-variants";
-import { useFetchWithdrawQuery } from "@/entities/wallet";
 
-import { Fetch } from "@/shared/ui/fetch";
 import { Input } from "@/shared/ui/input/input";
 import { Button } from "@/shared/ui/button";
 
@@ -44,14 +42,6 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
                     >
                         Выберите кошелёк
                     </option>
-                    <Fetch
-                        useQuery={useFetchWithdrawQuery}
-                        args={undefined}
-                        renderSuccess={data => {
-                            console.log(data);
-                            return <></>;
-                        }}
-                    />
                 </select>
             </label>
 

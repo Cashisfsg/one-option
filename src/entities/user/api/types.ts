@@ -1,6 +1,5 @@
 export interface FetchUserDataResponse {
-    first_name: string;
-    last_name: string;
+    nickname: string;
     email: string;
     photo?: string;
     level?: number;
@@ -16,6 +15,15 @@ export interface FetchUserBalanceResponse {
 export interface AuthenticateUserRequest {
     email: string;
     password: string;
+}
+
+export interface UpdateUserDataRequest {
+    nickname: string;
+    email?: string;
+}
+
+export interface UpdateUserDataResponse {
+    details: string;
 }
 
 export interface UpdateUserPhotoRequest {

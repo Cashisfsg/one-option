@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
-import { useFetchUserBalanceQuery } from "@/entities/user/api";
 
 import { Section } from "@/shared/ui/section";
 import { buttonVariants } from "@/shared/ui/button";
 
-export const UserBalanceCard = () => {
-    const { data: balance } = useFetchUserBalanceQuery();
+import { FetchUserBalanceResponse } from "../../api";
 
+interface UserBalanceCardProps
+    extends React.ComponentPropsWithoutRef<"section"> {
+    balance: FetchUserBalanceResponse;
+}
+
+export const UserBalanceCard: React.FC<UserBalanceCardProps> = ({
+    balance,
+    ...props
+}) => {
     return (
-        <Section className="flex flex-col gap-y-2 bg-violet-primary md:px-4">
+        <Section
+            className="flex flex-col gap-y-2 bg-violet-primary md:px-4"
+            {...props}
+        >
             <h2 className="text-2xl">Ваш баланс</h2>
             <div className="mt-2 rounded-lg bg-violet-secondary px-4 py-2 text-lg">
                 <p className="font-secondary">Общий доход:</p>
@@ -38,7 +48,8 @@ export const UserBalanceCard = () => {
             <Link
                 to="/withdrawal"
                 className={buttonVariants({
-                    className: "mx-auto mt-6 block h-auto bg-violet-tertiary"
+                    className:
+                        "mx-auto mt-6 block h-auto bg-violet-tertiary text-center"
                 })}
             >
                 Перейти к выводу средств

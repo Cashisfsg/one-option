@@ -1,6 +1,11 @@
 import { rootApi, SuccessResponse } from "@/shared/api";
 
-import type { FetchUserDataResponse, FetchUserBalanceResponse } from "./types";
+import type {
+    FetchUserDataResponse,
+    FetchUserBalanceResponse,
+    UpdateUserDataRequest,
+    UpdateUserDataResponse
+} from "./types";
 
 export const userApi = rootApi
     .enhanceEndpoints({ addTagTypes: ["User"] })
@@ -12,6 +17,17 @@ export const userApi = rootApi
             }),
             fetchUserBalance: builder.query<FetchUserBalanceResponse, void>({
                 query: () => "/profile/balance"
+            }),
+            updateUserData: builder.mutation<
+                UpdateUserDataResponse,
+                UpdateUserDataRequest
+            >({
+                query: body => ({
+                    url: "/profile/",
+                    method: "POST",
+                    body: body
+                }),
+                invalidatesTags: (result, error) => (error ? [] : ["User"])
             }),
             updateUserPhoto: builder.mutation<SuccessResponse, File>({
                 query: photo => {
@@ -36,5 +52,6 @@ export const {
     useLazyFetchUserDataQuery,
     useFetchUserBalanceQuery,
     useLazyFetchUserBalanceQuery,
+    useUpdateUserDataMutation,
     useUpdateUserPhotoMutation
 } = userApi;

@@ -1,13 +1,13 @@
 import { useId } from "react";
+import { useFetchUserDataQuery } from "@/entities/user/api";
 
+import { BalanceCard } from "@/widgets/user";
 import { AttachWalletDialog } from "@/widgets/wallet/attach-wallet-dialog";
 import { WalletList } from "@/widgets/wallet/table";
 
 import { UpdateUserPhotoForm } from "@/features/user/update-avatar";
 
 import { ChangePasswordForm } from "@/entities/user/ui/forms/change-password-form";
-
-import { UserBalanceCard } from "@/entities/user/ui/balance-card";
 
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
@@ -32,6 +32,8 @@ const tooltipData = {
 
 export const ProfilePage = () => {
     const formId = useId();
+
+    const { data: user } = useFetchUserDataQuery();
 
     return (
         <Article
@@ -149,9 +151,9 @@ export const ProfilePage = () => {
 
                 <UpdateUserPhotoForm />
 
-                <h3 className="w-full truncate text-4xl">vikhlyaevvik</h3>
+                <h3 className="w-full truncate text-4xl">{user?.nickname}</h3>
                 <p className="w-full truncate font-secondary text-2xl">
-                    vikhlyaevvik@yandex.ru
+                    {user?.email}
                 </p>
 
                 <div className="my-2 w-full rounded-xl bg-quaternary px-2.5 py-1.5 font-secondary text-lg">
@@ -161,19 +163,19 @@ export const ProfilePage = () => {
                         <li className="flex size-12 items-center justify-center rounded-lg bg-[#2b2930]">
                             <img
                                 src={TelegramLogo}
-                                alt=""
+                                alt="Telegram"
                             />
                         </li>
                         <li className="flex size-12 items-center justify-center rounded-lg bg-[#2b2930]">
                             <img
                                 src={InstagramLogo}
-                                alt=""
+                                alt="Instagram"
                             />
                         </li>
                         <li className="flex size-12 items-center justify-center rounded-lg bg-[#2b2930]">
                             <img
                                 src={YouTubeLogo}
-                                alt=""
+                                alt="YouTube"
                             />
                         </li>
                     </ul>
@@ -187,7 +189,7 @@ export const ProfilePage = () => {
                 </footer>
             </Section>
 
-            <UserBalanceCard />
+            <BalanceCard />
 
             <Section className="grid grid-rows-[auto_auto_1fr] gap-y-4 md:px-4">
                 <h2 className="text-2xl">Безопасность</h2>

@@ -18,7 +18,7 @@ export const AttachWalletDialog = () => {
                 <Dialog.Content className="space-y-8 rounded-2xl bg-[#141218] px-8 pb-8 pt-4">
                     <Title as="h2">Добавление кошелька</Title>
 
-                    <AttachWalletForm />
+                    <AttachWalletForm id={formId} />
 
                     <footer className="flex justify-end gap-x-5">
                         <Dialog.Close

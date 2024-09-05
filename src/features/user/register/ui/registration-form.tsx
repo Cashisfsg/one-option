@@ -41,7 +41,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 password2: password2.value
             }).unwrap();
 
-            navigate("/sign/in");
+            navigate("/auth/sign/in");
 
             console.log(response);
         } catch (error) {

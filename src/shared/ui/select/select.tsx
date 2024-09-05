@@ -144,11 +144,13 @@ export const Trigger: React.FC<TriggerProps> = ({
     return (
         <button
             id={triggerId}
+            type="button"
             role="combobox"
             aria-expanded="false"
             aria-haspopup="listbox"
             aria-controls={selectMenuId}
             aria-activedescendant=""
+            popovertarget={selectMenuId}
             className={cnBase(Select.trigger, className)}
             onClick={composeEventHandlers(onClick, onClickHandler)}
             onKeyDown={composeEventHandlers(onKeyDown, onKeyDownHandler)}
@@ -190,6 +192,7 @@ export const Menu: React.FC<MenuProps> = ({ className, onClick, ...props }) => {
             id={selectMenuId}
             role="listbox"
             tabIndex={-1}
+            popover="auto"
             className={cnBase(Select.menu, className)}
             onClick={composeEventHandlers(onClick, onClickHandler)}
             ref={menuRef}

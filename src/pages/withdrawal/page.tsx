@@ -1,8 +1,8 @@
-import { WithdrawalForm } from "@/entities/user/ui/forms/cash-out-form";
+import { WithdrawalForm } from "@/entities/user/ui/forms/withdrawal-form";
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
 
-import { Select } from "@/shared/ui/select";
+// import { Select } from "@/shared/ui/select";
 import { FAQ } from "@/widgets/faq";
 
 export const WithdrawalPage = () => {
@@ -16,16 +16,16 @@ export const WithdrawalPage = () => {
                 <WithdrawalForm />
             </Section>
 
-            <FAQ />
-
-            <Select.Root>
+            {/* <Select.Root>
                 <Select.Trigger>Choose a fruit</Select.Trigger>
                 <Select.Menu>
                     <Select.Option>Apple</Select.Option>
                     <Select.Option>Banana</Select.Option>
                     <Select.Option>Mango</Select.Option>
                 </Select.Menu>
-            </Select.Root>
+            </Select.Root> */}
+
+            <FAQ />
         </Article>
     );
 };

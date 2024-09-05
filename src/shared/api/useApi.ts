@@ -8,7 +8,7 @@ const api = {
         balance: userApi.useFetchUserBalanceQuery,
         data: userApi.useFetchUserDataQuery
     }
-};
+} as const;
 
 type StringObject = Record<string, unknown>;
 
@@ -55,8 +55,20 @@ const reducer = <T extends StringObject, K extends keyof T>(acc: T, key: K) => {
     return acc;
 };
 
-export const getApi = <T extends ApiKeys>(schema: T) => {
-    return schema.split(".").reduce(reducer, api);
+export const getApi = <T extends ApiKeys>(
+    schema: T
+): GetByFlattenKey<Api, ApiKeys> => {
+    // return schema.split(".").reduce(reducer, api);
+
+    const keys = schema.split(".");
+
+    for (const key of keys) {
+        if (typeof api[key] === "object" && api[key] !== null) {
+            return api[key];
+        }
+
+        return;
+    }
 };
 
 export type FunctionArgs<T extends StringObject, K extends string> =
@@ -94,11 +106,11 @@ export const useYouQueryWrapper = <
     ResultType,
     QueryArg,
     BaseQuery extends BaseQueryFn,
-    D extends QueryDefinition<QueryArg, BaseQuery, any, ResultType>
-    // T extends ApiKeys
+    D extends QueryDefinition<QueryArg, BaseQuery, any, ResultType>,
+    T extends ApiKeys
 >(
     useQueryHook: TypedUseQuery<ResultType, QueryArg, BaseQuery>,
-    // schema: T,
+    schema: T,
     args: QueryArgFrom<D>
 ) => {
     // const hook = getApi(schema) as TypedUseQuery<
@@ -107,7 +119,5 @@ export const useYouQueryWrapper = <
     //     BaseQuery
     // >;
 
-    const { data, isLoading } = useQueryHook(args);
-
-    return data;
+    return getApi(schema)();
 };

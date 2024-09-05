@@ -1,4 +1,4 @@
-.root {
+/* .root {
     position: relative;
 }
 
@@ -13,4 +13,58 @@
 .menu {
     position: absolute;
     top: 100%;
+} */
+
+.trigger {
+    anchor-name: --select-trigger;
 }
+
+.menu {
+    all: unset;
+    position-anchor: --select-trigger;
+    /* inset: unset; */
+    /* position-try-fallback: --top-to-bottom; */
+    position: absolute;
+    background-color: red;
+    /* inset-area: top center; */
+    position-try: inset-area(top center), inset-area(bottom center);
+    /* position-try-fallbacks: --select-menu; */
+    /* translate: -50% 0%; */
+    /* left: anchor(center);
+    top: anchor(bottom); */
+    /* top: anchor(bottom); */
+
+    /* position-try: most-inline-size; */
+    /* position-area: top center; */
+
+    /* position-try-fallbacks: flip-inline; */
+    /* position-try: flip-inline; */
+    /* position-try-fallbacks:
+        flip-block,
+        flip-inline,
+        flip-block flip-inline; */
+}
+
+@position-try --select-menu {
+    @try {
+        bottom: anchor(top);
+        left: anchor(center);
+    }
+
+    @try {
+        top: anchor(bottom);
+        left: anchor(center);
+    }
+}
+
+/* @position-try-fallbacks --select-menu {
+    @try {
+        bottom: anchor(top);
+        left: anchor(center);
+    }
+
+    @try {
+        top: anchor(bottom);
+        left: anchor(center);
+    }
+} */

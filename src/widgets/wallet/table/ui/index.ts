@@ -1,1 +1,1 @@
-export { WalletList } from "./list";
+export { WalletListWidget } from "./list";

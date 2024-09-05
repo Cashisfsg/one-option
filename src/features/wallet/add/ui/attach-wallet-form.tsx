@@ -1,17 +1,27 @@
-import { Input } from "@/shared/ui/input/input";
+import { Input, inputVariants } from "@/shared/ui/input";
+import { Fetch } from "@/shared/ui/fetch";
 
-import { useAttachWalletMutation } from "@/entities/wallet";
+import {
+    useFetchWalletQuery,
+    useAttachWalletMutation
+} from "@/entities/wallet/api";
 
 interface AttachWalletFormProps
     extends React.ComponentPropsWithoutRef<"form"> {}
 
 interface FormFields {
-    type: HTMLInputElement;
+    type: HTMLSelectElement;
     id: HTMLInputElement;
 }
 
 export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
-    const [attachWallet, { isError, error }] = useAttachWalletMutation();
+    const [attachWallet] = useAttachWalletMutation();
+
+    const onChangeHandled: React.ChangeEventHandler<
+        HTMLSelectElement
+    > = event => {
+        event.currentTarget.classList.replace("text-white/30", "text-white");
+    };
 
     const onSubmitHandler: React.FormEventHandler<
         HTMLFormElement & FormFields
@@ -35,14 +45,60 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
             onSubmit={onSubmitHandler}
             {...props}
         >
-            <label>
-                <span>Выберите тип кошелька:</span>
-                <Input
-                    placeholder="Выберите тип кошелька"
-                    required
-                    name="type"
-                />
-            </label>
+            <Fetch
+                useQuery={useFetchWalletQuery}
+                args={undefined}
+                renderSuccess={wallets => (
+                    <label>
+                        <span>Выберите тип кошелька:</span>
+                        <select
+                            required
+                            name="type"
+                            defaultValue=""
+                            onChange={onChangeHandled}
+                            className={inputVariants({
+                                className: "text-white/30"
+                            })}
+                        >
+                            <option
+                                value=""
+                                disabled
+                            >
+                                Выберите тип кошелька
+                            </option>
+                            {wallets.map(wallet => (
+                                <option
+                                    key={wallet?.name}
+                                    value={wallet?.name}
+                                    className="text-white"
+                                >
+                                    {wallet?.name}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                )}
+                loadingFallback={
+                    <label>
+                        <span>Выберите тип кошелька:</span>
+                        <Input
+                            placeholder="Выберите тип кошелька"
+                            required
+                            readOnly
+                        />
+                    </label>
+                }
+                renderError={() => (
+                    <label>
+                        <span>Выберите тип кошелька:</span>
+                        <Input
+                            placeholder="Выберите тип кошелька"
+                            required
+                            readOnly
+                        />
+                    </label>
+                )}
+            />
 
             <label>
                 <span>Кошелек:</span>
@@ -53,9 +109,9 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                     minLength={1}
                     maxLength={100}
                 />
-                {isError ? (
-                    <output htmlFor="">{error?.data?.message}</output>
-                ) : null}
+                {/* {isError ? (
+                    <output htmlFor="">{error?.data?.wallet_address}</output>
+                ) : null} */}
             </label>
         </form>
     );

@@ -1,6 +1,6 @@
 import { Wallet } from "../../api";
 
-import { WalletListItem } from "./list-item";
+import { WalletListItem } from "./wallet-list-item";
 
 interface WalletListProps
     extends Omit<React.ComponentPropsWithoutRef<"ul">, "children"> {

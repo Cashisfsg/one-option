@@ -3,6 +3,8 @@ import { cnBase } from "tailwind-variants";
 import { Input } from "@/shared/ui/input/input";
 import { Button } from "@/shared/ui/button";
 
+import { useFetchWithdrawListQuery } from "@/entities/wallet/api";
+
 import { composeEventHandlers } from "@/shared/lib/utils/compose-event-handlers";
 
 interface WithdrawalFormProps extends React.ComponentProps<"form"> {}
@@ -15,6 +17,8 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
     const onSubmitHandler: React.FormEventHandler<HTMLFormElement> = event => {
         event.preventDefault();
     };
+
+    const { data } = useFetchWithdrawListQuery();
 
     return (
         <form

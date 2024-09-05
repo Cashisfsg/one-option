@@ -1,9 +1,10 @@
 import { useId } from "react";
 import { useFetchUserDataQuery } from "@/entities/user/api";
+import { useFetchWalletQuery } from "@/entities/wallet";
 
 import { BalanceCard } from "@/widgets/user";
 import { AttachWalletDialog } from "@/widgets/wallet/attach-wallet-dialog";
-import { WalletList } from "@/widgets/wallet/table";
+import { WalletListWidget } from "@/widgets/wallet/table";
 
 import { UpdateUserPhotoForm } from "@/features/user/update-avatar";
 
@@ -34,6 +35,7 @@ export const ProfilePage = () => {
     const formId = useId();
 
     const { data: user } = useFetchUserDataQuery();
+    const { data } = useFetchWalletQuery();
 
     return (
         <Article
@@ -210,7 +212,7 @@ export const ProfilePage = () => {
                     <AttachWalletDialog />
                 </header>
 
-                <WalletList />
+                <WalletListWidget />
             </Section>
         </Article>
     );

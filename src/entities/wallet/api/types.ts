@@ -3,10 +3,10 @@ export type Wallet = {
     wallet_id: string;
 };
 
-export interface FetchWalletListResponse {
+export type FetchWalletListResponse = {
     type_wallet: string;
     wallet_id: string;
-}
+}[];
 
 export interface FetchWithdrawListResponse {
     wallet: string;

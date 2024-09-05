@@ -1,12 +1,13 @@
 import { useFetchWalletListQuery } from "@/entities/wallet";
 import { Fetch } from "@/shared/ui/fetch";
+import { WalletList } from "@/entities/wallet/ui";
 
-export const WalletList = () => {
+export const WalletListWidget = () => {
     return (
         <Fetch
             useQuery={useFetchWalletListQuery}
             args={undefined}
-            renderSuccess={() => <></>}
+            renderSuccess={wallets => <WalletList wallets={wallets} />}
             loadingFallback={
                 <ul className="mt-6">
                     {Array(5)

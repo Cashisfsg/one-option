@@ -10,10 +10,22 @@ export const walletApi = rootApi
     .enhanceEndpoints({ addTagTypes: ["Wallet"] })
     .injectEndpoints({
         endpoints: builder => ({
-            fetchWallet: builder.query<any, any>({ query: () => "/wallet/" }),
+            fetchWallet: builder.query<{ name: string }[], void>({
+                query: () => "/wallet/"
+            }),
 
             fetchWalletList: builder.query<FetchWalletListResponse, void>({
-                query: () => "/wallet/list"
+                query: () => "/wallet/list",
+                providesTags: result =>
+                    result
+                        ? [
+                              ...result.map(({ wallet_id }) => ({
+                                  type: "Wallet" as const,
+                                  id: wallet_id as string
+                              })),
+                              "Wallet"
+                          ]
+                        : ["Wallet"]
             }),
 
             fetchWithdrawList: builder.query<FetchWithdrawListResponse, void>({
@@ -25,7 +37,9 @@ export const walletApi = rootApi
                     url: "/wallet/",
                     method: "POST",
                     body: body
-                })
+                }),
+                invalidatesTags: (result, error, arg) =>
+                    error ? [] : [{ type: "Wallet", id: arg.wallet_id }]
             }),
 
             withdrawal: builder.mutation<any, any>({

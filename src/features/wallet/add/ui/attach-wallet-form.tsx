@@ -5,6 +5,7 @@ import {
     useFetchWalletQuery,
     useAttachWalletMutation
 } from "@/entities/wallet/api";
+import { Select } from "@/shared/ui/select";
 
 interface AttachWalletFormProps
     extends React.ComponentPropsWithoutRef<"form"> {}
@@ -49,34 +50,40 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                 useQuery={useFetchWalletQuery}
                 args={undefined}
                 renderSuccess={wallets => (
-                    <label>
-                        <span>Выберите тип кошелька:</span>
-                        <select
-                            required
-                            name="type"
-                            defaultValue=""
-                            onChange={onChangeHandled}
-                            className={inputVariants({
-                                className: "text-white/30"
-                            })}
-                        >
-                            <option
-                                value=""
-                                disabled
-                            >
-                                Выберите тип кошелька
-                            </option>
-                            {wallets.map(wallet => (
-                                <option
-                                    key={wallet?.name}
-                                    value={wallet?.name}
-                                    className="text-white"
+                    <fieldset className="grid gap-y-2">
+                        <label>Выберите тип кошелька</label>
+                        <Select.Root>
+                            <Select.Input
+                                placeholder="Выберите тип кошелька"
+                                name="type"
+                            />
+                            <Select.Trigger>
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 16 16"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="transition-transform duration-300 group-aria-expanded:rotate-180"
                                 >
-                                    {wallet?.name}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
+                                    <path
+                                        d="M7.24677 11.1399L2.45054 5.6585C1.88478 5.01192 2.34396 4 3.20312 4H12.7956C13.6547 4 14.1139 5.01192 13.5482 5.6585L8.75193 11.1399C8.35352 11.5952 7.64518 11.5952 7.24677 11.1399Z"
+                                        fill="white"
+                                    />
+                                </svg>
+                            </Select.Trigger>
+                            <Select.Menu>
+                                {wallets.map(wallet => (
+                                    <Select.Option
+                                        key={wallet?.name}
+                                        value={wallet?.name}
+                                    >
+                                        {wallet?.name}
+                                    </Select.Option>
+                                ))}
+                            </Select.Menu>
+                        </Select.Root>
+                    </fieldset>
                 )}
                 loadingFallback={
                     <label>

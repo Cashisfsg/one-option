@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 export const SelectContext = createContext<{
     triggerId: string;
     selectMenuId: string;
+    inputRef: React.RefObject<HTMLInputElement>;
     triggerRef: React.RefObject<HTMLButtonElement>;
     menuRef: React.RefObject<HTMLUListElement>;
 } | null>(null);

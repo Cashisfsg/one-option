@@ -1,4 +1,4 @@
-import { Input } from "@/shared/ui/input/input";
+import { Input } from "@/shared/ui/input";
 
 import { useChangePasswordMutation } from "@/shared/api";
 

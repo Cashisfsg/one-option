@@ -1,13 +1,13 @@
+import { composeEventHandlers } from "../lib/utils/compose-event-handlers";
+
 interface ClipboardCopyProps
-    extends Omit<
-        React.ComponentPropsWithoutRef<"form">,
-        "onSubmit" | "children"
-    > {
+    extends Omit<React.ComponentPropsWithoutRef<"form">, "children"> {
     textToCopy: number | string | undefined;
 }
 
 export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
     textToCopy,
+    onSubmit,
     ...props
 }) => {
     const copyToClipboard: React.FormEventHandler<
@@ -26,12 +26,12 @@ export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
 
     return (
         <form
-            onSubmit={copyToClipboard}
+            onSubmit={composeEventHandlers(onSubmit, copyToClipboard)}
             className="grid grid-cols-[minmax(0,_1fr)_auto] gap-x-2 @container"
             {...props}
         >
             <input
-                className="text-sm-base-xs-sm h-11 rounded-md bg-quaternary px-4 py-3"
+                className="h-11 rounded-md bg-quaternary px-4 py-3 text-sm-base-xs-sm"
                 defaultValue={textToCopy}
                 readOnly
             />

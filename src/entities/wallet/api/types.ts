@@ -8,8 +8,8 @@ export type FetchWalletListResponse = {
     wallet_id: string;
 }[];
 
-export interface FetchWithdrawListResponse {
+export type FetchWithdrawListResponse = {
     wallet: string;
-}
+}[];
 
 export type AttachWalletRequest = Wallet;

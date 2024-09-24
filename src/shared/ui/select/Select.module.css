@@ -1,49 +1,29 @@
-/* .root {
-    position: relative;
+.trigger {
+    cursor: pointer;
+    user-select: none;
+    outline: none !important;
 }
 
-.trigger[aria-expanded="true"] + .menu {
+.menu {
+    display: none;
+    inset-inline: 0;
+    top: 100%;
+
+    position: absolute;
+    background-color: #36343b;
+    cursor: pointer;
+    position-try: inset-area(bottom), inset-area(top);
+}
+
+.root:has(.trigger[aria-expanded="true"]) .menu,
+.root:has(.input[aria-expanded="true"]) .menu {
     display: block;
 }
 
-.trigger[aria-expanded="false"] + .menu {
-    display: none;
-}
-
-.menu {
-    position: absolute;
-    top: 100%;
+/* .trigger[aria-expanded="true"] + .menu,
+.input[aria-expanded="true"] + * + .menu {
+    display: block;
 } */
-
-.trigger {
-    anchor-name: --select-trigger;
-}
-
-.menu {
-    all: unset;
-    position-anchor: --select-trigger;
-    /* inset: unset; */
-    /* position-try-fallback: --top-to-bottom; */
-    position: absolute;
-    background-color: red;
-    /* inset-area: top center; */
-    position-try: inset-area(top center), inset-area(bottom center);
-    /* position-try-fallbacks: --select-menu; */
-    /* translate: -50% 0%; */
-    /* left: anchor(center);
-    top: anchor(bottom); */
-    /* top: anchor(bottom); */
-
-    /* position-try: most-inline-size; */
-    /* position-area: top center; */
-
-    /* position-try-fallbacks: flip-inline; */
-    /* position-try: flip-inline; */
-    /* position-try-fallbacks:
-        flip-block,
-        flip-inline,
-        flip-block flip-inline; */
-}
 
 @position-try --select-menu {
     @try {

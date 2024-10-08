@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { inputVariants, type InputVariants } from "./input-variants";
+
 import { composeEventHandlers } from "@/shared/lib/utils/compose-event-handlers";
 
 interface InputProps extends React.ComponentProps<"input">, InputVariants {}
@@ -12,7 +13,7 @@ export const Input: React.FC<InputProps> = ({
     autoComplete = "off",
     ...props
 }) => {
-    const validatedValue = useRef("");
+    const unvalidatedValue = useRef("");
 
     const onBeforeInputHandler: React.FormEventHandler<
         HTMLInputElement
@@ -21,7 +22,7 @@ export const Input: React.FC<InputProps> = ({
 
         if (!input.hasAttribute("pattern")) return;
 
-        validatedValue.current = input.value;
+        unvalidatedValue.current = input.value;
     };
 
     const onChangeHandler: React.ChangeEventHandler<
@@ -30,9 +31,7 @@ export const Input: React.FC<InputProps> = ({
         const input = event.currentTarget;
 
         if (input.validity.patternMismatch) {
-            console.log("Pattern mismatch");
-
-            input.value = validatedValue.current;
+            input.value = unvalidatedValue.current;
         }
     };
 

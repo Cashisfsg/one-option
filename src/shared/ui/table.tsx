@@ -5,24 +5,31 @@ import { cn } from "../lib";
 
 // type Data<T extends string | number | symbol> = Record<T, string | number>;
 
+// type Data = Record<string, number | string>;
+
 type DataType<
-    T extends Record<string, string | number> = Record<string, string | number>
+    T extends Record<string, unknown> = Record<string, string | number>
 > = T;
 
 type Header<T extends (string | number)[] = (string | number)[]> = T;
 
-type UniqueKey<D extends DataType = DataType, T extends keyof D = keyof D> = T;
+// type UniqueKey<D extends DataType = DataType, T extends keyof D = keyof D> = T;
 
 interface TableComponents {
-    TableRow?: React.ReactElement<React.ComponentProps<"tr">, "tr">;
+    TableCaption?: () => React.ReactElement<
+        React.ComponentPropsWithoutRef<"caption">,
+        "caption"
+    >;
+    TableRow?: (
+        props: React.ComponentPropsWithoutRef<"tr">
+    ) => React.ReactElement<React.ComponentPropsWithoutRef<"tr">, "tr">;
     // TableRow?: JSX.IntrinsicElements["tr"];
     // TableRow?: React.ReactElement<HTMLTableCellElement>;
-    TableCell?: React.ReactElement;
+    TableCell?: () => React.ReactElement;
 }
 
 const TableContext = React.createContext<{
     uniqueKey: unknown;
-    rowHeaderKey: unknown;
     components?: TableComponents;
 } | null>(null);
 
@@ -38,12 +45,13 @@ const useTableContext = () => {
     return context;
 };
 
-type TableProps<H, D, U> = {
-    uniqueKey: U;
-    rowHeaderKey?: U;
+type TableProps<H, D> = {
+    uniqueKey: (key: keyof D) => string | number;
     headers: H;
     data: D[];
-    renderCaption?: React.ReactNode;
+    renderCaption?: (
+        props: React.ComponentPropsWithoutRef<"caption">
+    ) => React.ComponentPropsWithoutRef<"caption">;
     renderColumns?: React.ReactNode;
     renderHeaders?: (headers: Header) => React.ReactElement;
     renderData?: (
@@ -51,28 +59,22 @@ type TableProps<H, D, U> = {
         rowElement?: React.FC<TableRowProps>
     ) => React.ReactElement;
     components?: TableComponents;
-} & React.ComponentProps<"table">;
+} & React.ComponentPropsWithoutRef<"table">;
 
-export const Table = <
-    H extends Header,
-    D extends DataType,
-    U extends UniqueKey<D>
->({
+export const Table = <H extends Header, D extends DataType>({
     uniqueKey,
-    rowHeaderKey,
     headers,
     data,
-    renderCaption: caption,
     components,
     renderColumns: columns,
     renderHeaders,
     renderData,
     className,
     ...props
-}: TableProps<H, D, U>) => {
+}: TableProps<H, D>) => {
     const context = React.useMemo(
-        () => ({ uniqueKey, rowHeaderKey, components }),
-        [uniqueKey, rowHeaderKey, components]
+        () => ({ uniqueKey, components }),
+        [uniqueKey, components]
     );
 
     return (
@@ -84,7 +86,7 @@ export const Table = <
                     className
                 )}
             >
-                <Caption>{caption}</Caption>
+                <Caption />
                 {columns}
                 <TableHead
                     headers={headers}
@@ -101,22 +103,24 @@ export const Table = <
 
 interface TableCaptionProps extends React.ComponentProps<"caption"> {}
 
-export const Caption: React.FC<TableCaptionProps> = ({
-    className,
-    children,
-    ...props
-}) => {
-    if (children === undefined) {
+export const Caption: React.FC<TableCaptionProps> = () => {
+    const { components } = useTableContext();
+
+    if (components === undefined || components.TableCaption === undefined) {
         return null;
     }
 
+    const caption = components?.TableCaption();
+    const props = caption.props;
+    const children = props?.children;
+
     return (
         <caption
-            {...props}
             className={cn(
                 "border-b-4 border-double border-quaternary bg-inherit px-4 py-3 text-lg-xl-xs-lg",
-                className
+                props?.className
             )}
+            {...props}
         >
             {children}
         </caption>
@@ -158,7 +162,7 @@ const TableBody = <D extends DataType>({
     renderData,
     ...props
 }: TableBodyProps<D>) => {
-    const { uniqueKey, rowHeaderKey } = useTableContext();
+    const { uniqueKey } = useTableContext();
 
     if (renderData) {
         return renderData(data);
@@ -173,12 +177,9 @@ const TableBody = <D extends DataType>({
                 // if (rowHeaderKey === undefined) {
                 // }
 
-                const { [rowHeaderKey as keyof D]: rowHeader, ...restData } =
-                    row;
+                const { ...restData } = row;
                 return (
                     <TableRow key={row[uniqueKey as keyof D]}>
-                        <RowHeaderCell>{rowHeader}</RowHeaderCell>
-
                         {Object.keys(restData)?.map(key => (
                             <TableCell key={key}>{row[key]}</TableCell>
                         ))}
@@ -207,7 +208,7 @@ export const RowHeaderCell: React.FC<TableRowHeaderCellProps> = ({
     );
 };
 
-interface TableRowProps extends React.ComponentProps<"tr"> {}
+interface TableRowProps extends React.ComponentPropsWithoutRef<"tr"> {}
 
 export const TableRow: React.FC<TableRowProps> = ({
     className,
@@ -228,18 +229,15 @@ export const TableRow: React.FC<TableRowProps> = ({
 
     const { TableRow } = components;
 
-    const { className: rowClassName, ...tableRowProps } = TableRow.props;
+    const { className: rowClassName, ...tableRowProps } = TableRow(props).props;
 
-    return (
-        <>
-            {React.cloneElement(TableRow, {
-                className: cn(rowClassName, className),
-                children,
-                ...tableRowProps,
-                ...props
-            })}
-        </>
-    );
+    return;
+    React.cloneElement(TableRow(props), {
+        className: cn(rowClassName, className),
+        children,
+        ...tableRowProps,
+        ...props
+    });
 };
 
 interface TableHeaderCellProps extends React.ComponentProps<"th"> {}

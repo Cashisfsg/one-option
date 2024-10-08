@@ -1,4 +1,4 @@
-import { Input, inputVariants } from "@/shared/ui/input";
+import { Input } from "@/shared/ui/input";
 import { Fetch } from "@/shared/ui/fetch";
 
 import {
@@ -11,18 +11,12 @@ interface AttachWalletFormProps
     extends React.ComponentPropsWithoutRef<"form"> {}
 
 interface FormFields {
-    type: HTMLSelectElement;
-    id: HTMLInputElement;
+    wallet_type: HTMLInputElement;
+    wallet_id: HTMLInputElement;
 }
 
 export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
     const [attachWallet] = useAttachWalletMutation();
-
-    const onChangeHandled: React.ChangeEventHandler<
-        HTMLSelectElement
-    > = event => {
-        event.currentTarget.classList.replace("text-white/30", "text-white");
-    };
 
     const onSubmitHandler: React.FormEventHandler<
         HTMLFormElement & FormFields
@@ -30,11 +24,11 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
         event.preventDefault();
 
         try {
-            const { type, id } = event.currentTarget;
+            const { wallet_type, wallet_id } = event.currentTarget;
 
             attachWallet({
-                type_wallet: type.value,
-                wallet_id: id.value
+                type_wallet: wallet_type.value,
+                wallet_id: wallet_id.value
             }).unwrap();
         } catch (error) {
             console.error(error);
@@ -55,7 +49,8 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                         <Select.Root>
                             <Select.Input
                                 placeholder="Выберите тип кошелька"
-                                name="type"
+                                name="wallet_type"
+                                className="w-full"
                             />
                             <Select.Trigger>
                                 <svg
@@ -112,13 +107,10 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                 <Input
                     placeholder="Введите ID кошелька"
                     required
-                    name="id"
+                    name="wallet_id"
                     minLength={1}
                     maxLength={100}
                 />
-                {/* {isError ? (
-                    <output htmlFor="">{error?.data?.wallet_address}</output>
-                ) : null} */}
             </label>
         </form>
     );

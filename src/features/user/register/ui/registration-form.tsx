@@ -1,7 +1,6 @@
 import { useId } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { cn } from "@/shared/lib";
+import { cnBase } from "tailwind-variants";
 
 import { useSignUpMutation } from "@/shared/api";
 
@@ -35,15 +34,24 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         const { email, password, password2 } = event.currentTarget;
 
         try {
-            const response = await signUp({
+            let request = {
                 email: email.value,
                 password: password.value,
                 password2: password2.value
-            }).unwrap();
+            };
 
+            const token = sessionStorage.getItem("token");
+
+            if (token) {
+                request = Object.assign(request, {
+                    token_ref: JSON.parse(token)?.token
+                });
+            }
+
+            await signUp(request).unwrap();
+
+            sessionStorage.removeItem("token");
             navigate("/auth/sign/in");
-
-            console.log(response);
         } catch (error) {
             console.error(error);
         }
@@ -52,7 +60,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
     return (
         <form
             onSubmit={onSubmitHandler}
-            className={cn("gap-y-6-8-xs-md", className)}
+            className={cnBase("gap-y-6-8-xs-md", className)}
             {...props}
         >
             <fieldset className="grid gap-y-2-4-xs-md">
@@ -72,7 +80,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         autoComplete="off"
                         maxLength={255}
                         placeholder="Почта"
-                        className="flex-auto rounded-lg px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                     />
                 </div>
 
@@ -92,7 +100,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         autoComplete="off"
                         maxLength={128}
                         placeholder="Пароль"
-                        className="flex-auto rounded-lg px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                     />
                 </div>
 
@@ -112,7 +120,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         autoComplete="off"
                         maxLength={128}
                         placeholder="Подтвердите пароль"
-                        className="flex-auto rounded-lg px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                     />
                 </div>
             </fieldset>

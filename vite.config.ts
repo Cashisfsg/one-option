@@ -1,10 +1,36 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import legacy from "@vitejs/plugin-legacy";
+// import { ViteAliases } from "vite-aliases";
 import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
+    base: "./",
+    server: {
+        port: 3000,
+        host: "0.0.0.0",
+        hmr: true
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                entryFileNames: "main.js",
+                assetFileNames: "assets/[name][extname]",
+                manualChunks: undefined
+            }
+        }
+    },
+    plugins: [
+        legacy({
+            modernPolyfills: [
+                /* ... */
+            ],
+            renderLegacyChunks: false
+        }),
+        react()
+        // ViteAliases()
+    ],
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "./src"),

@@ -5,6 +5,7 @@ export interface SignInRequest {
 
 export interface SignUpRequest extends SignInRequest {
     password2: string;
+    token_ref?: string;
 }
 
 export type SuccessResponse = {

@@ -15,23 +15,23 @@ export const AttachWalletDialog = () => {
             </Dialog.Trigger>
 
             <Dialog.Portal>
-                <Dialog.Content className="space-y-8 rounded-2xl bg-[#141218] px-8 pb-8 pt-4">
+                <Dialog.Content className="grid w-full gap-y-8 rounded-2xl bg-[#141218] px-8 pb-8 pt-4">
                     <Title as="h2">Добавление кошелька</Title>
 
                     <AttachWalletForm id={formId} />
 
-                    <footer className="flex justify-end gap-x-5">
+                    <footer className="flex flex-wrap-reverse justify-end gap-5">
                         <Dialog.Close
                             className={buttonVariants({
                                 variant: "outlined",
-                                className: "basis-60"
+                                className: "w-fit flex-auto sm:max-w-60"
                             })}
                         >
                             Отмена
                         </Dialog.Close>
                         <Button
                             form={formId}
-                            className="basis-60"
+                            className="w-fit flex-auto sm:max-w-60"
                         >
                             Добавить
                         </Button>

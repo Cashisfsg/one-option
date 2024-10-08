@@ -1,19 +1,16 @@
 import { useLayoutEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "@/app/providers/redux/hooks";
 import { login } from "@/shared/api/authSlice";
 
 export const GoogleAuthenticationPage = () => {
+    const [searchParams] = useSearchParams();
     const dispatch = useAppDispatch();
 
     useLayoutEffect(() => {
-        const queryString = window.location.search;
+        if (!searchParams.has("token")) return;
 
-        const searchParams = new URLSearchParams(queryString);
-
-        if (searchParams.has("token")) {
-            dispatch(login({ token: searchParams.get("token")! }));
-        }
+        dispatch(login({ token: searchParams.get("token")! }));
     }, []);
 
     return <Navigate to="/" />;

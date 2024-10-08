@@ -1,6 +1,4 @@
 import { useId } from "react";
-import { useFetchUserDataQuery } from "@/entities/user/api";
-import { useFetchWalletQuery } from "@/entities/wallet";
 
 import { BalanceCard } from "@/widgets/user";
 import { AttachWalletDialog } from "@/widgets/wallet/attach-wallet-dialog";
@@ -23,6 +21,7 @@ import * as Tooltip from "@/shared/ui/tooltip";
 import TelegramLogo from "@/assets/img/telegram-logo.png";
 import InstagramLogo from "@/assets/img/instagram-logo.png";
 import YouTubeLogo from "@/assets/img/youtube-logo.png";
+import { EditAccountCredentialsForm } from "@/features/user/edit-account-credentials";
 
 const tooltipData = {
     level: 1,
@@ -33,9 +32,6 @@ const tooltipData = {
 
 export const ProfilePage = () => {
     const formId = useId();
-
-    const { data: user } = useFetchUserDataQuery();
-    const { data } = useFetchWalletQuery();
 
     return (
         <Article
@@ -91,7 +87,16 @@ export const ProfilePage = () => {
                                                 "Оборот",
                                                 "Депозит"
                                             ]}
-                                            data={Array(5).fill(tooltipData)}
+                                            data={
+                                                Array(5).fill(
+                                                    tooltipData
+                                                ) as (typeof tooltipData)[]
+                                            }
+                                            components={{
+                                                TableCaption: () => (
+                                                    <caption>Caption</caption>
+                                                )
+                                            }}
                                             renderHeader={headers => (
                                                 <thead>
                                                     <TableRow>
@@ -145,18 +150,14 @@ export const ProfilePage = () => {
                     </h2>
                 </header>
 
-                {/* <img
-                    src={Avatar}
-                    alt=""
-                    className="width-48 aspect-square rounded-full border-4 border-violet-primary"
-                /> */}
-
                 <UpdateUserPhotoForm />
 
-                <h3 className="w-full truncate text-4xl">{user?.nickname}</h3>
+                <EditAccountCredentialsForm />
+
+                {/* <h3 className="w-full truncate text-4xl">{user?.nickname}</h3>
                 <p className="w-full truncate font-secondary text-2xl">
                     {user?.email}
-                </p>
+                </p> */}
 
                 <div className="my-2 w-full rounded-xl bg-quaternary px-2.5 py-1.5 font-secondary text-lg">
                     <p className="text-start">Привлечение реферралов из:</p>

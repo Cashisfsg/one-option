@@ -5,6 +5,9 @@ import {
     useConfirmPasswordMutation,
     type ConfirmPasswordRequest
 } from "@/shared/api";
+
+import { Input } from "@/shared/ui/input";
+
 import { PasswordIcon } from "@/entities/user/assets";
 import Logo from "@/assets/logo.png";
 
@@ -45,8 +48,6 @@ export const ResetPasswordConfirmPage = () => {
 
     return (
         <>
-            {/* <main className="min-h-dvh bg-[url('@/assets/bg.webp')]"> */}
-            {/* <section className="mx-auto max-w-3xl space-y-6-8-xs-md px-4 py-8"> */}
             <header className="space-y-2-3-xs-md">
                 <img
                     src={Logo}
@@ -73,11 +74,10 @@ export const ResetPasswordConfirmPage = () => {
                         <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
                         <span className="sr-only">Пароль</span>
                     </label>
-                    <input
+                    <Input
                         id={newPasswordId}
                         type="password"
                         name="new_password"
-                        autoComplete="off"
                         minLength={8}
                         maxLength={128}
                         placeholder="Пароль"
@@ -93,11 +93,10 @@ export const ResetPasswordConfirmPage = () => {
                         <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
                         <span className="sr-only">Повторите пароль</span>
                     </label>
-                    <input
+                    <Input
                         id={confirmPasswordId}
                         type="password"
                         name="confirm_password"
-                        autoComplete="off"
                         minLength={8}
                         maxLength={128}
                         placeholder="Подтвердите пароль"
@@ -124,8 +123,6 @@ export const ResetPasswordConfirmPage = () => {
                     </Link>
                 </p>
             </footer>
-            {/* </section> */}
-            {/* </main> */}
         </>
     );
 };

@@ -34,6 +34,7 @@ export default withTV({
                 "4-6-xs-lg": "clamp(1rem, 0.75rem + 1.2cqi, 1.5rem)"
             },
             margin: {
+                4.5: "1.125rem",
                 "2-3-xs-md": "clamp(0.5rem, 0.3rem + 1cqi, 0.75rem)"
             },
             spacing: {

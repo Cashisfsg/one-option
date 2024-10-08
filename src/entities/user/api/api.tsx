@@ -18,7 +18,7 @@ export const userApi = rootApi
             fetchUserBalance: builder.query<FetchUserBalanceResponse, void>({
                 query: () => "/profile/balance"
             }),
-            updateUserData: builder.mutation<
+            updateUserCredentials: builder.mutation<
                 UpdateUserDataResponse,
                 UpdateUserDataRequest
             >({
@@ -52,6 +52,6 @@ export const {
     useLazyFetchUserDataQuery,
     useFetchUserBalanceQuery,
     useLazyFetchUserBalanceQuery,
-    useUpdateUserDataMutation,
+    useUpdateUserCredentialsMutation,
     useUpdateUserPhotoMutation
 } = userApi;

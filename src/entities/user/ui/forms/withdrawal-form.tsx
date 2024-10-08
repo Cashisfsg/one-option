@@ -16,12 +16,6 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
     onSubmit,
     ...props
 }) => {
-    // const onChangeHandler: React.ChangeEventHandler<
-    //     HTMLSelectElement
-    // > = event => {
-    //     event.currentTarget.classList.replace("text-white/30", "text-white");
-    // };
-
     const onSubmitHandler: React.FormEventHandler<
         HTMLFormElement
     > = async event => {

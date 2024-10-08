@@ -1,7 +1,6 @@
 import { useId } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import { cn } from "@/shared/lib";
+import { cnBase } from "tailwind-variants";
 
 import { useSignInMutation } from "@/shared/api";
 
@@ -13,6 +12,7 @@ interface AuthenticationFormProps extends React.ComponentProps<"form"> {}
 interface FormFields {
     email: HTMLInputElement;
     password: HTMLInputElement;
+    memoize: HTMLInputElement;
 }
 
 export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
@@ -29,13 +29,14 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
         HTMLFormElement & FormFields
     > = async event => {
         event.preventDefault();
-        const { email, password } = event.currentTarget;
+        const { email, password, memoize } = event.currentTarget;
 
         try {
-            await authenticate({
-                email: email.value,
-                password: password.value
-            }).unwrap();
+            if (memoize.checked) {
+                console.log("Remember me, ", memoize.checked);
+            }
+            const request = { email: email.value, password: password.value };
+            await authenticate(request).unwrap();
 
             navigate("/");
         } catch (error) {
@@ -46,7 +47,7 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
     return (
         <form
             onSubmit={onSubmitHandler}
-            className={cn("gap-y-6-8-xs-md", className)}
+            className={cnBase("gap-y-6-8-xs-md", className)}
             {...props}
         >
             <fieldset className="grid gap-y-2-4-xs-md">
@@ -65,7 +66,7 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                         required
                         autoComplete="off"
                         placeholder="Почта"
-                        className="flex-auto rounded-lg px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                     />
                 </div>
 
@@ -83,14 +84,17 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                         name="password"
                         required
                         placeholder="Пароль"
-                        className="flex-auto rounded-lg px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                     />
                 </div>
             </fieldset>
 
             <fieldset className="flex items-center justify-between text-lg text-sm-lg-xs-md ">
                 <label className="grid grid-cols-[auto_auto] place-items-center gap-x-2">
-                    <Checkbox className="checkbox size-6-8-xs-md" />
+                    <Checkbox
+                        name="memoize"
+                        className="checkbox size-6-8-xs-md"
+                    />
                     <span className="leading-none">Запомнить меня</span>
                 </label>
 

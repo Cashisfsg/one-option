@@ -7,6 +7,8 @@ import { UserSignOutButton } from "@/features/user/logout";
 import { SVGPicker } from "./model/svg-picker";
 import { Title } from "@/shared/ui/title";
 
+import NavigationSprite from "@/assets/img/svg/navigation-sprite.svg";
+
 const links = [
     {
         url: "/",
@@ -15,27 +17,27 @@ const links = [
     },
     {
         url: "/referral",
-        name: "referral",
+        name: "partnership-program",
         title: "Парнерская программа"
     },
     {
         url: "/sub/referral",
-        name: "sub-referral",
+        name: "sub-partnership-program",
         title: "Суб-партнерская программа"
     },
     {
-        url: "/statistic",
-        name: "statistic",
+        url: "/statistics",
+        name: "statistics",
         title: "Статистика"
     },
     {
         url: "withdrawal",
-        name: "cash-out",
+        name: "withdrawal",
         title: "Вывод средств"
     },
     {
-        url: "/profile",
-        name: "profile",
+        url: "/account",
+        name: "account",
         title: "Профиль"
     },
     {
@@ -117,62 +119,66 @@ export const Header = () => {
                     {links.slice(0, 6).map((link, index) => (
                         <li
                             key={index}
+                            role="presentation"
                             className="size-[clamp(3rem,_0.375rem_+_5.45vw,_4.75rem)] bg-[#2b2930] has-[a[aria-current=page]]:bg-violet-primary"
                         >
                             <NavLink
                                 to={link.url}
-                                className="flex h-full items-center justify-center"
+                                className="flex h-full items-center justify-center text-2xl-3xl-md-xl"
                             >
-                                <SVGPicker
-                                    name={link.name}
-                                    className="text-2xl-3xl-md-xl"
-                                />
+                                <span className="sr-only">{link.title}</span>
+                                <svg
+                                    width="1em"
+                                    height="1em"
+                                >
+                                    <use
+                                        xlinkHref={`${NavigationSprite}#${link.name}`}
+                                    />
+                                </svg>
                             </NavLink>
                         </li>
                     ))}
-                    {/* <li>
-                        <a>
-                            <SVGPicker
-                                name="notification"
-                                className="text-xl-2xl-xs-lg"
-                            />
-                        </a>
-                    </li> */}
                 </ul>
 
                 <ul className="flex gap-x-1.5">
                     {links.slice(6).map((link, index) => (
                         <li
                             key={index}
+                            role="presentation"
                             className="size-[clamp(3rem,_0.375rem_+_5.45vw,_4.75rem)] bg-[#2b2930] has-[a[aria-current=page]]:bg-violet-primary"
                         >
                             <NavLink
                                 to={link.url}
-                                className="flex h-full items-center justify-center"
+                                className="flex h-full items-center justify-center text-2xl-3xl-md-xl"
                             >
-                                <SVGPicker
-                                    name={link.name}
-                                    className="text-2xl-3xl-md-xl"
-                                />
+                                <span className="sr-only">{link.title}</span>
+                                <svg
+                                    className="icon"
+                                    height="1em"
+                                    width="1em"
+                                >
+                                    <use
+                                        xlinkHref={`${NavigationSprite}#${link.name}`}
+                                    />
+                                </svg>
                             </NavLink>
                         </li>
                     ))}
-                    <li className="size-[clamp(3rem,_0.375rem_+_5.45vw,_4.75rem)] bg-[#2b2930] has-[a[aria-current=page]]:bg-violet-primary">
-                        <UserSignOutButton>
-                            <SVGPicker
-                                name={"exit"}
-                                className="text-2xl-3xl-md-xl"
-                            />
+                    <li
+                        role="presentation"
+                        className="size-[clamp(3rem,_0.375rem_+_5.45vw,_4.75rem)] bg-[#2b2930] has-[a[aria-current=page]]:bg-violet-primary"
+                    >
+                        <UserSignOutButton className="text-2xl-3xl-md-xl">
+                            <span className="sr-only">Выйти</span>
+                            <svg
+                                className="icon"
+                                height="1em"
+                                width="1em"
+                            >
+                                <use xlinkHref={`${NavigationSprite}#logout`} />
+                            </svg>
                         </UserSignOutButton>
                     </li>
-                    {/* <li>
-                        <a>
-                            <SVGPicker
-                                name="notification"
-                                className="text-xl-2xl-xs-lg"
-                            />
-                        </a>
-                    </li> */}
                 </ul>
             </nav>
 

@@ -1,12 +1,24 @@
+import { useRef } from "react";
+
 import { Link } from "react-router-dom";
 
 import "./index.css";
 import { Title } from "@/shared/ui/title";
 
 export const StartPage = () => {
+    const headerRef = useRef<HTMLElement>(null);
+
+    const onClickHandler = () => {
+        headerRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    };
+
     return (
         <main>
             <header
+                ref={headerRef}
                 className="header md:px-12"
                 // className="grid grid-cols-1 place-items-center gap-16 lg:grid-cols-2 lg:grid-rows-1"
                 // className="container grid max-w-screen-2xl grid-rows-[minmax(0,_1fr)_auto] lg:grid-cols-2"
@@ -339,7 +351,7 @@ export const StartPage = () => {
                             </div>
                         </header>
 
-                        <Link to="/sign/up">Регистрация</Link>
+                        <a href='#header' className="scroll-smooth">Регистрация</a>
                     </div>
 
                     <figure>

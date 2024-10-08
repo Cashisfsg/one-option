@@ -40,6 +40,7 @@ export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
                 title="Скопировать в буфер обмена"
                 className="flex size-11 items-center justify-center rounded-md bg-violet-primary"
             >
+                <span className="sr-only">Скопировать в буфер обмена</span>
                 <svg
                     width="20"
                     height="20"

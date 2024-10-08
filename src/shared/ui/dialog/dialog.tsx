@@ -26,7 +26,7 @@ Root.displayName = "Dialog.Root";
 interface TriggerProps
     extends Omit<
         React.ComponentProps<"button">,
-        "aria-haspopup" | "aria-controls"
+        "aria-expanded" | "aria-haspopup" | "aria-controls"
     > {}
 
 export const Trigger: React.FC<TriggerProps> = ({ onClick, ...props }) => {
@@ -36,13 +36,15 @@ export const Trigger: React.FC<TriggerProps> = ({ onClick, ...props }) => {
         HTMLButtonElement
     > = event => {
         const trigger = event.currentTarget;
-        const dialog = dialogRef.current;
+        const rootElement = document.querySelector("#root")!;
         const dialogOpen = trigger.getAttribute("aria-expanded") === "true";
 
         if (dialogOpen) {
-            dialog?.close();
+            dialogRef.current?.close();
         } else {
-            dialog?.showModal();
+            dialogRef.current?.showModal();
+            rootElement.setAttribute("inert", "");
+            rootElement.setAttribute("aria-hidden", "true");
         }
 
         trigger.setAttribute("aria-expanded", String(!dialogOpen));
@@ -75,30 +77,50 @@ interface ContentProps extends React.ComponentProps<"dialog"> {}
 export const Content: React.FC<ContentProps> = ({
     className,
     onClick,
+    onClose,
     children,
     ...props
 }) => {
+    const contentId = `dialog-content-${useId()}`;
+    const contentRef = useRef<HTMLElement>(null);
+
     const { dialogRef, triggerRef } = useDialogContext();
 
     const handleOverlayClick: React.MouseEventHandler<
         HTMLDialogElement
-    > = event => {
-        if (event.target !== dialogRef.current) return;
-
+    > = () => {
         dialogRef.current?.close();
+    };
+
+    const onCloseHandler: React.ReactEventHandler<HTMLDialogElement> = () => {
+        const rootElement = document.querySelector("div#root");
+
+        if (!rootElement) return;
+
+        rootElement.removeAttribute("inert");
+        rootElement.removeAttribute("aria-hidden");
         triggerRef.current?.setAttribute("aria-expanded", "false");
+        triggerRef.current?.focus();
     };
 
     return (
         <dialog
-            className={Dialog.content}
+            className={Dialog.modal}
             onClick={handleOverlayClick}
+            onClose={composeEventHandlers(onClose, onCloseHandler)}
             ref={dialogRef}
             {...props}
         >
             <section
-                className={className}
-                onClick={onClick}
+                id={contentId}
+                className={
+                    className
+                        ? `${Dialog.Content} ${className}`
+                        : Dialog.content
+                }
+                // className={Dialog.content}
+                onClick={event => event.stopPropagation()}
+                ref={contentRef}
             >
                 {children}
             </section>
@@ -118,11 +140,8 @@ export const Close: React.FC<CloseProps> = ({ onClick, ...props }) => {
     const { dialogRef, triggerRef } = useDialogContext();
 
     const onClickHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
-        const trigger = triggerRef.current;
-        const dialog = dialogRef.current;
-
-        dialog?.close();
-        trigger?.setAttribute("aria-expanded", "false");
+        dialogRef.current?.close();
+        triggerRef.current?.setAttribute("aria-expanded", "false");
     };
 
     return (

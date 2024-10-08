@@ -3,9 +3,9 @@ import { BalanceOverview } from "@/entities/user/ui/balance-overview";
 import { Section } from "@/shared/ui/section";
 import { Table } from "@/shared/ui/table";
 import { LineChart } from "@/shared/ui/line-chart";
-import { SearchForm, SearchFormFields } from "@/shared/ui/search-form";
 import { Article } from "@/shared/ui/article";
 import { Title } from "@/shared/ui/title";
+import { SearchReferralForm } from "@/features/referral/search-referral";
 
 const data = Array(6).fill({
     number: 1,
@@ -20,16 +20,6 @@ const data = Array(6).fill({
 });
 
 export const StatisticPage = () => {
-    const onSearchHandler: React.FormEventHandler<
-        HTMLFormElement & SearchFormFields
-    > = event => {
-        event.preventDefault();
-
-        const { query } = event.currentTarget;
-
-        console.log(query.value);
-    };
-
     return (
         <Article>
             <Section>
@@ -51,10 +41,7 @@ export const StatisticPage = () => {
                     >
                         Таблица рефералов
                     </Title>
-                    <SearchForm
-                        className="justify-self-end sm:max-w-none sm:justify-self-stretch"
-                        onSubmit={onSearchHandler}
-                    />
+                    <SearchReferralForm />
                 </header>
                 <div className="scrollbar">
                     <Table

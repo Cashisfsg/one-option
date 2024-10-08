@@ -6,12 +6,14 @@ import {
     Navigate
 } from "react-router-dom";
 
+import { publicRoutes, privateRoutes } from "./routes";
+
 import { useAuth } from "@/shared/lib/hooks/use-auth";
 
 import { GoogleAuthenticationPage } from "@/pages/authentication/google";
 
-import { AuthenticationLayout } from "@/pages/authentication/layout";
-import { AppLayout } from "@/pages/app-layout";
+// import { AuthenticationLayout } from "@/pages/authentication/layout";
+// import { AppLayout } from "@/pages/app-layout";
 import { SignInPage } from "@/pages/authentication/sign-in";
 import { SignUpPage } from "@/pages/authentication/sign-up";
 
@@ -28,6 +30,7 @@ const ResetPasswordConfirmPage = lazy(async () =>
 );
 
 import { StartPage } from "@/pages/start-page";
+import { TokenPage } from "@/pages/token";
 
 const DashboardPage = lazy(async () =>
     import("@/pages/dashboard").then(module => ({
@@ -67,12 +70,21 @@ const ProfilePage = lazy(async () =>
 
 const publicRouter = createBrowserRouter([
     {
-        path: "/",
+        path: publicRoutes.root,
         element: <StartPage />
+    },
+
+    {
+        path: "/:token",
+        element: <TokenPage />
     },
     {
         path: "auth",
-        element: <AuthenticationLayout />,
+        // element: <AuthenticationLayout />,
+        lazy: async () =>
+            await import("@/pages/authentication/layout").then(module => ({
+                Component: module.AuthenticationLayout
+            })),
         children: [
             {
                 path: "sign/in",
@@ -126,10 +138,13 @@ const publicRouter = createBrowserRouter([
     }
 ]);
 
-const privateRouter = createBrowserRouter([
+export const routes = [
     {
-        path: "/",
-        element: <AppLayout />,
+        path: privateRoutes.root,
+        lazy: async () =>
+            await import("@/pages/app-layout").then(module => ({
+                Component: module.AppLayout
+            })),
         children: [
             {
                 index: true,
@@ -156,7 +171,7 @@ const privateRouter = createBrowserRouter([
                 )
             },
             {
-                path: "statistic",
+                path: privateRoutes.statistics,
                 element: (
                     <Suspense>
                         <StatisticPage />
@@ -164,7 +179,7 @@ const privateRouter = createBrowserRouter([
                 )
             },
             {
-                path: "withdrawal",
+                path: privateRoutes.withdrawal,
                 element: (
                     <Suspense>
                         <WithdrawalPage />
@@ -172,7 +187,7 @@ const privateRouter = createBrowserRouter([
                 )
             },
             {
-                path: "profile",
+                path: privateRoutes.account,
                 element: (
                     <Suspense>
                         <ProfilePage />
@@ -185,12 +200,15 @@ const privateRouter = createBrowserRouter([
         path: "*",
         element: <Navigate to="/" />
     }
-]);
+];
+
+export const privateRouter = createBrowserRouter(routes);
 
 export const RouterProvider = () => {
     const { isAuthenticated } = useAuth();
 
     const router = isAuthenticated ? privateRouter : publicRouter;
+    // const router = privateRouter;
 
     return <Provider router={router} />;
 };

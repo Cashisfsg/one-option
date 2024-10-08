@@ -1,0 +1,1 @@
+import{j as s,M as a,O as x}from"../main.js";const m=({className:t,...e})=>s.jsx("main",{className:a("min-h-dvh bg-[url('@/assets/bg.webp')] px-4 py-8",t),...e,children:s.jsx("section",{className:"mx-auto max-w-3xl space-y-6-8-xs-md text-center",children:s.jsx(x,{})})});export{m as AuthenticationLayout};

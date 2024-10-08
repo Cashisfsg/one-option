@@ -1,0 +1,1020 @@
+{
+  "\u0000D:/Projects/vite/one-option/node_modules/react-dom/cjs/react-dom.production.min.js?commonjs-exports": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/react-dom/index.js?commonjs-module": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/react/cjs/react-jsx-runtime.production.min.js?commonjs-exports": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/react/cjs/react.production.min.js?commonjs-exports": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/react/index.js?commonjs-module": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/react/jsx-runtime.js?commonjs-module": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/scheduler/cjs/scheduler.production.min.js?commonjs-exports": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/scheduler/index.js?commonjs-module": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/use-sync-external-store/cjs/use-sync-external-store-with-selector.production.min.js?commonjs-exports": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000D:/Projects/vite/one-option/node_modules/use-sync-external-store/with-selector.js?commonjs-module": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000commonjsHelpers.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000vite/modulepreload-polyfill.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "\u0000vite/preload-helper.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "index.html": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/@reduxjs/toolkit/dist/query/react/rtk-query-react.modern.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/@reduxjs/toolkit/dist/query/rtk-query.modern.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/@reduxjs/toolkit/dist/redux-toolkit.modern.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/@remix-run/router/dist/router.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/class-variance-authority/dist/index.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/class-variance-authority/node_modules/clsx/dist/clsx.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/clsx/dist/clsx.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/d3-array/src/ascending.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-array/src/bisect.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-array/src/bisector.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-array/src/descending.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-array/src/extent.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-array/src/number.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-array/src/ticks.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-color/src/color.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-color/src/define.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-dispatch/src/dispatch.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-ease/src/cubic.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/defaultLocale.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/exponent.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatDecimal.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatGroup.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatNumerals.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatPrefixAuto.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatRounded.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatSpecifier.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatTrim.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/formatTypes.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/identity.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/locale.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/precisionFixed.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/precisionPrefix.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-format/src/precisionRound.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/array.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/color.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/constant.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/date.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/number.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/numberArray.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/object.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/rgb.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/round.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/string.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/transform/decompose.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/transform/index.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/transform/parse.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-interpolate/src/value.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-path/src/path.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-scale/src/constant.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-scale/src/continuous.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-scale/src/init.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-scale/src/linear.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-scale/src/number.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-scale/src/tickFormat.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/array.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/constant.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/creator.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/matcher.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/namespace.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/namespaces.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/select.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/append.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/attr.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/call.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/classed.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/clone.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/data.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/datum.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/dispatch.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/each.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/empty.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/enter.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/exit.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/filter.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/html.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/index.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/insert.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/iterator.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/join.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/lower.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/merge.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/node.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/nodes.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/on.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/order.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/property.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/raise.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/remove.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/select.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/selectAll.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/selectChild.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/selectChildren.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/size.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/sort.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/sparse.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/style.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selection/text.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selector.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/selectorAll.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-selection/src/window.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-shape/src/array.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-shape/src/constant.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-shape/src/curve/linear.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-shape/src/line.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-shape/src/path.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-shape/src/point.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-timer/src/timeout.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-timer/src/timer.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/interrupt.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/selection/index.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/selection/interrupt.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/selection/transition.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/attr.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/attrTween.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/delay.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/duration.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/ease.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/easeVarying.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/end.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/filter.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/index.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/interpolate.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/merge.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/on.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/remove.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/schedule.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/select.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/selectAll.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/selection.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/style.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/styleTween.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/text.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/textTween.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/transition.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-transition/src/transition/tween.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/d3-zoom/src/transform.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/debounce/index.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/immer/dist/immer.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react-dom/cjs/react-dom.production.min.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react-dom/client.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react-dom/index.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react-redux/dist/react-redux.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react-router-dom/dist/index.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react-router/dist/index.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react-use-measure/dist/web.js": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "node_modules/react/cjs/react-jsx-runtime.production.min.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react/cjs/react.production.min.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react/index.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/react/jsx-runtime.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/redux-thunk/dist/redux-thunk.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/redux/dist/redux.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/reselect/dist/reselect.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/scheduler/cjs/scheduler.production.min.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/scheduler/index.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/tailwind-merge/dist/bundle-mjs.mjs": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/tailwind-variants/dist/chunk-JXBJZR5A.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/tailwind-variants/dist/index.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/use-sync-external-store/cjs/use-sync-external-store-with-selector.production.min.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "node_modules/use-sync-external-store/with-selector.js": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/app/providers/redux/hooks/use-app-dispatch.ts": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/app/providers/redux/hooks/use-state-selector.ts": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/app/providers/redux/provider.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/app/providers/redux/store.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/app/providers/router/provider.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/app/providers/router/routes.ts": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/assets/img/instagram-logo.png": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/assets/img/svg/dashboard-sprite.svg": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/assets/img/svg/navigation-sprite.svg": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/assets/img/telegram-logo.png": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/assets/img/youtube-logo.png": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/assets/logo.png": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/entities/reference/api/api.tsx": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/entities/reference/ui/reference-statistic-list/reference-statistic-list-item-skeleton.tsx": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/entities/reference/ui/reference-statistic-list/reference-statistic-list-item.tsx": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/entities/reference/ui/reference-statistic-list/reference-statistic-list.tsx": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/entities/user/api/api.tsx": [
+    "./assets/api-CmSXizYf.js"
+  ],
+  "src/entities/user/assets/email-icon.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/entities/user/assets/password-icon.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/entities/user/ui/balance-card/balance-card-skeleton.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/entities/user/ui/balance-card/balance-card.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/entities/user/ui/balance-overview/balance-overview-list-item.tsx": [
+    "./assets/index-BS2rGXSB.js"
+  ],
+  "src/entities/user/ui/balance-overview/balance-overview-list.tsx": [
+    "./assets/index-BS2rGXSB.js"
+  ],
+  "src/entities/user/ui/balance-overview/balance-overview.tsx": [
+    "./assets/index-BS2rGXSB.js"
+  ],
+  "src/entities/user/ui/fetch/ui/fetch.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/entities/user/ui/forms/change-password-form.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/entities/user/ui/forms/withdrawal-form.tsx": [
+    "./assets/index-Dmh7J4u1.js"
+  ],
+  "src/entities/user/ui/ftd-meter/ftd-meter.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/entities/user/ui/ftd-meter/index.css": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/entities/wallet/api/api.ts": [
+    "./assets/select-9u-ZWhn1.js",
+    "./assets/select.css"
+  ],
+  "src/entities/wallet/ui/wallet-list/wallet-list-item.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/entities/wallet/ui/wallet-list/wallet-list.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/features/referral/search-referral/ui/search-referral-form.tsx": [
+    "./assets/index-BS2rGXSB.js"
+  ],
+  "src/features/user/authenticate/ui/authentication-form.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/features/user/edit-account-credentials/ui/edit-account-credentials-form.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/features/user/logout/ui/logout-button.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/features/user/register/ui/registration-form.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/features/user/update-avatar/ui/update-photo.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/features/wallet/add/ui/attach-wallet-form.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/main.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/pages/app-layout.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/pages/authentication/google/page.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/pages/authentication/layout.tsx": [
+    "./assets/layout-CCSmrLWF.js"
+  ],
+  "src/pages/authentication/password-reset/index.ts": [
+    "./assets/index-CDf-gHKH.js"
+  ],
+  "src/pages/authentication/password-reset/page.tsx": [
+    "./assets/index-CDf-gHKH.js"
+  ],
+  "src/pages/authentication/recover-password-confirm/index.ts": [
+    "./assets/index-WCT9d0Rm.js"
+  ],
+  "src/pages/authentication/recover-password-confirm/page.tsx": [
+    "./assets/index-WCT9d0Rm.js"
+  ],
+  "src/pages/authentication/sign-in/page.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/pages/authentication/sign-up/page.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/pages/dashboard/index.ts": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/pages/dashboard/page.tsx": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/pages/profile/page.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/pages/referral-page.tsx": [
+    "./assets/referral-page-CT_ysgDk.js"
+  ],
+  "src/pages/start-page/index.css": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/pages/start-page/start-page.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/pages/statistic/index.ts": [
+    "./assets/index-BS2rGXSB.js"
+  ],
+  "src/pages/statistic/page.tsx": [
+    "./assets/index-BS2rGXSB.js"
+  ],
+  "src/pages/sub-referral-page.tsx": [
+    "./assets/sub-referral-page-CoigmH3f.js"
+  ],
+  "src/pages/withdrawal/index.ts": [
+    "./assets/index-Dmh7J4u1.js"
+  ],
+  "src/pages/withdrawal/page.tsx": [
+    "./assets/index-Dmh7J4u1.js"
+  ],
+  "src/shared/api/api.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/api/authSlice.ts": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/api/config.ts": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/lib/hooks/use-auth.ts": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/lib/hooks/use-event.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/shared/lib/hooks/use-fetch.tsx": [
+    "./assets/fetch-Bb95O_Yn.js"
+  ],
+  "src/shared/lib/hooks/use-outside-click.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/shared/lib/hooks/use-window-event.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/shared/lib/utils/compose-event-handlers.ts": [
+    "./assets/compose-event-handlers-Dd9F8Ltl.js"
+  ],
+  "src/shared/lib/utils/tailwind-merge.ts": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/ui/article.tsx": [
+    "./assets/article-C177ch-M.js"
+  ],
+  "src/shared/ui/button/button-variants.ts": [
+    "./assets/select-9u-ZWhn1.js",
+    "./assets/select.css"
+  ],
+  "src/shared/ui/button/button.tsx": [
+    "./assets/select-9u-ZWhn1.js",
+    "./assets/select.css"
+  ],
+  "src/shared/ui/checkbox/checkbox.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/ui/checkbox/index.module.css": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/ui/clipboard-copy.tsx": [
+    "./assets/clipboard-copy-Cd5g90LN.js"
+  ],
+  "src/shared/ui/dialog/Dialog.module.css": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/shared/ui/dialog/dialog.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/shared/ui/dialog/use-dialog-context.ts": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/shared/ui/fetch/fetch.tsx": [
+    "./assets/fetch-Bb95O_Yn.js"
+  ],
+  "src/shared/ui/input/input-variants.ts": [
+    "./assets/input-DtOliOJj.js"
+  ],
+  "src/shared/ui/input/input.tsx": [
+    "./assets/input-DtOliOJj.js"
+  ],
+  "src/shared/ui/line-chart.tsx": [
+    "./assets/line-chart-Dr1l6EQO.js"
+  ],
+  "src/shared/ui/portal/portal.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/shared/ui/search/search.tsx": [
+    "./assets/index-BS2rGXSB.js"
+  ],
+  "src/shared/ui/section.tsx": [
+    "./assets/section-DaQOGCV6.js"
+  ],
+  "src/shared/ui/select/Select.module.css": [
+    "./assets/select-9u-ZWhn1.js",
+    "./assets/select.css"
+  ],
+  "src/shared/ui/select/select.tsx": [
+    "./assets/select-9u-ZWhn1.js",
+    "./assets/select.css"
+  ],
+  "src/shared/ui/select/use-select-context.ts": [
+    "./assets/select-9u-ZWhn1.js",
+    "./assets/select.css"
+  ],
+  "src/shared/ui/table.tsx": [
+    "./assets/table-CDm8Uxam.js"
+  ],
+  "src/shared/ui/title.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/shared/ui/tooltip/tooltip.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/shared/ui/tooltip/use-tooltip-context.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/widgets/authorization-header/header.tsx": [
+    "./assets/logo.png",
+    "./assets/bg.webp"
+  ],
+  "src/widgets/burger-menu/ui/burger-menu.css": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/burger-menu/ui/burger-menu.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/burger-menu/ui/use-burger-menu-context.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/faq/ui/faq.tsx": [
+    "./assets/index-Dmh7J4u1.js"
+  ],
+  "src/widgets/header/assets/cash-out-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/dashboard-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/exit-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/notification-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/partnership-agreement-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/profile-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/referral-program-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/statistic-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/sub-referral-program-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/support-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/assets/telegram-icon.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/header.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/header/model/svg-picker.tsx": [
+    "./assets/app-layout-U2YfIZza.js",
+    "./assets/app-layout.css",
+    "./assets/navigation-sprite.svg"
+  ],
+  "src/widgets/reference-activity-chart/chart.tsx": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/widgets/reference/reference-statistic/statistic.tsx": [
+    "./assets/index-DqRhY6Zf.js",
+    "./assets/dashboard-sprite.svg"
+  ],
+  "src/widgets/user/ui/balance-card/balance-card.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/widgets/wallet/attach-wallet-dialog/ui/attach-wallet-dialog.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ],
+  "src/widgets/wallet/table/ui/list.tsx": [
+    "./assets/page-Bmph5Q-T.js",
+    "./assets/page.css"
+  ]
+}

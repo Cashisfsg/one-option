@@ -8,16 +8,19 @@ import type {
 } from "./types";
 
 export const userApi = rootApi
-    .enhanceEndpoints({ addTagTypes: ["User"] })
+    .enhanceEndpoints({ addTagTypes: ["User", "Balance"] })
     .injectEndpoints({
         endpoints: builder => ({
             fetchUserData: builder.query<FetchUserDataResponse, void>({
                 query: () => "/profile/",
                 providesTags: ["User"]
             }),
+
             fetchUserBalance: builder.query<FetchUserBalanceResponse, void>({
-                query: () => "/profile/balance"
+                query: () => "/profile/balance",
+                providesTags: ["Balance"]
             }),
+
             updateUserCredentials: builder.mutation<
                 UpdateUserDataResponse,
                 UpdateUserDataRequest
@@ -29,6 +32,7 @@ export const userApi = rootApi
                 }),
                 invalidatesTags: (result, error) => (error ? [] : ["User"])
             }),
+
             updateUserPhoto: builder.mutation<SuccessResponse, File>({
                 query: photo => {
                     const formData = new FormData();

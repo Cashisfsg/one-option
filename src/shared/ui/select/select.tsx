@@ -111,7 +111,7 @@ export const Input: React.FC<InputProps> = ({
             inputRef.current?.setAttribute("aria-activedescendant", "");
         };
 
-        console.log(code);
+        if (!inputRef.current) return;
 
         switch (code) {
             case "Space":
@@ -128,7 +128,7 @@ export const Input: React.FC<InputProps> = ({
                     if (!activeDescendant) break;
                     const value = activeDescendant.getAttribute("value");
 
-                    inputRef.current?.setAttribute("value", value);
+                    inputRef.current.value = value;
 
                     hideDropDownMenu();
                     const previousSelectedOption = Array.prototype.find.call(
@@ -175,8 +175,8 @@ export const Input: React.FC<InputProps> = ({
                     break;
                 }
 
-                if (inputRef.current?.hasAttribute("value")) {
-                    inputRef.current?.removeAttribute("value");
+                if (inputRef.current.value !== "") {
+                    inputRef.current.value = "";
                     Array.from(menuRef.current?.children || [])
                         .find(
                             element =>
@@ -431,6 +431,8 @@ export const Menu: React.FC<MenuProps> = ({ className, onClick, ...props }) => {
     const { selectMenuId, inputRef, triggerRef, menuRef } = useSelectContext();
 
     const onClickHandler: React.MouseEventHandler<HTMLUListElement> = event => {
+        if (!inputRef.current) return;
+
         const currentSelectedOption = (event.target as HTMLElement).closest(
             "li"
         );
@@ -444,10 +446,9 @@ export const Menu: React.FC<MenuProps> = ({ className, onClick, ...props }) => {
         previousSelectedOption?.setAttribute("aria-selected", "false");
         previousSelectedOption?.classList.remove("current-option");
         currentSelectedOption?.setAttribute("aria-selected", "true");
-        inputRef.current?.setAttribute(
-            "value",
-            String(currentSelectedOption?.getAttribute("value")) || ""
-        );
+        inputRef.current.value =
+            String(currentSelectedOption?.getAttribute("value")) || "";
+
         inputRef.current?.setAttribute("aria-expanded", "false");
         triggerRef.current?.setAttribute("aria-expanded", "false");
         inputRef.current?.setAttribute("aria-activedescendant", "");

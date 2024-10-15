@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "../lib";
+import { cnBase } from "tailwind-variants";
 
 // type UniqueKey<T extends string | number | symbol = "id"> = T;
 
@@ -12,6 +12,8 @@ type DataType<
 > = T;
 
 type Header<T extends (string | number)[] = (string | number)[]> = T;
+
+type UniqueKey<D extends DataType> = keyof D;
 
 // type UniqueKey<D extends DataType = DataType, T extends keyof D = keyof D> = T;
 
@@ -29,7 +31,7 @@ interface TableComponents {
 }
 
 const TableContext = React.createContext<{
-    uniqueKey: unknown;
+    uniqueKey: UniqueKey<DataType>;
     components?: TableComponents;
 } | null>(null);
 
@@ -45,8 +47,8 @@ const useTableContext = () => {
     return context;
 };
 
-type TableProps<H, D> = {
-    uniqueKey: (key: keyof D) => string | number;
+type TableProps<H, D extends DataType> = {
+    uniqueKey: UniqueKey<D>;
     headers: H;
     data: D[];
     renderCaption?: (
@@ -81,7 +83,7 @@ export const Table = <H extends Header, D extends DataType>({
         <TableContext.Provider value={context}>
             <table
                 {...props}
-                className={cn(
+                className={cnBase(
                     "w-full overflow-hidden rounded-2xl bg-secondary",
                     className
                 )}
@@ -116,7 +118,7 @@ export const Caption: React.FC<TableCaptionProps> = () => {
 
     return (
         <caption
-            className={cn(
+            className={cnBase(
                 "border-b-4 border-double border-quaternary bg-inherit px-4 py-3 text-lg-xl-xs-lg",
                 props?.className
             )}
@@ -179,7 +181,7 @@ const TableBody = <D extends DataType>({
 
                 const { ...restData } = row;
                 return (
-                    <TableRow key={row[uniqueKey as keyof D]}>
+                    <TableRow key={uniqueKey}>
                         {Object.keys(restData)?.map(key => (
                             <TableCell key={key}>{row[key]}</TableCell>
                         ))}
@@ -194,12 +196,13 @@ interface TableRowHeaderCellProps extends React.ComponentProps<"th"> {}
 
 export const RowHeaderCell: React.FC<TableRowHeaderCellProps> = ({
     className,
+    scope = "row",
     ...props
 }) => {
     return (
         <th
-            scope="row"
-            className={cn(
+            scope={scope}
+            className={cnBase(
                 "px-3 py-2 text-center font-secondary text-sm-base-xs-lg font-normal",
                 className
             )}
@@ -228,15 +231,15 @@ export const TableRow: React.FC<TableRowProps> = ({
         );
 
     const { TableRow } = components;
+    const TableRowElement = TableRow(props);
 
-    const { className: rowClassName, ...tableRowProps } = TableRow(props).props;
+    const { className: rowClassName, ...tableRowProps } = TableRowElement.props;
 
-    return;
-    React.cloneElement(TableRow(props), {
-        className: cn(rowClassName, className),
+    return React.cloneElement(TableRowElement, {
+        className: cnBase(className, rowClassName),
         children,
-        ...tableRowProps,
-        ...props
+        // ...props,
+        ...tableRowProps
     });
 };
 
@@ -244,14 +247,18 @@ interface TableHeaderCellProps extends React.ComponentProps<"th"> {}
 
 export const TableHeaderCell: React.FC<TableHeaderCellProps> = ({
     className,
+    scope = "col",
     children,
     ...props
 }) => {
     return (
         <th
+            scope={scope}
+            className={cnBase(
+                "px-4 py-2 text-lg-xl-xs-lg uppercase",
+                className
+            )}
             {...props}
-            scope="col"
-            className={cn("px-4 py-2 text-lg-xl-xs-lg uppercase", className)}
         >
             {children}
         </th>
@@ -267,11 +274,11 @@ export const TableCell: React.FC<TableCellProps> = ({
 }) => {
     return (
         <td
-            {...props}
-            className={cn(
+            className={cnBase(
                 "px-3 py-2 text-center font-secondary text-sm-base-xs-lg",
                 className
             )}
+            {...props}
         >
             {children}
         </td>

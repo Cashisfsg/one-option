@@ -11,9 +11,11 @@ export const FTDMeter: React.FC<FTDMeterProps> = ({ className, ...props }) => {
     return (
         <div
             role="meter"
-            style={{
-                "--start": `${Math.round((props["aria-valuenow"] / props["aria-valuemax"]) * 100)}%`
-            }}
+            style={
+                {
+                    "--progress": `${Math.round((props["aria-valuenow"] / props["aria-valuemax"]) * 100)}%`
+                } as React.CSSProperties
+            }
             className={cn("meter", className)}
             {...props}
         >

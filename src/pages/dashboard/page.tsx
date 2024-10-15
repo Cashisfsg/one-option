@@ -115,42 +115,8 @@ export const DashboardPage = () => {
                 <div className="scrollbar">
                     <Table
                         uniqueKey={"id"}
-                        rowHeaderKey={"id"}
                         headers={["id", "ссылка", "тип", "программа", "дата"]}
                         data={data}
-                        // renderData={data => (
-                        //     <tbody className="[&>*:nth-child(odd)]:bg-quaternary">
-                        //         {data.map(row => (
-                        //             <TableRow key={row.id}>
-                        //                 {Object.values(row)?.map(
-                        //                     (cell, index) => (
-                        //                         <TableCell
-                        //                             key={index}
-                        //                             className="text-blue-500"
-                        //                         >
-                        //                             {cell}
-                        //                         </TableCell>
-                        //                     )
-                        //                 )}
-                        //             </TableRow>
-                        //         ))}
-                        //     </tbody>
-                        // )}
-                        renderColumns={
-                            <colgroup>
-                                <col />
-                                <col className="text-lg text-red-500" />
-                                <col />
-                                <col />
-                                <col />
-                            </colgroup>
-                        }
-                        components={
-                            {
-                                // TableRow: <tr className="bg-red-600" />
-                            }
-                        }
-                        // className="w-auto"
                     />
                 </div>
             </Section>

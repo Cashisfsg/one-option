@@ -106,7 +106,7 @@ export const Content: React.FC<ContentProps> = ({
     return (
         <dialog
             className={Dialog.modal}
-            onClick={handleOverlayClick}
+            onClick={composeEventHandlers(onClick, handleOverlayClick)}
             onClose={composeEventHandlers(onClose, onCloseHandler)}
             ref={dialogRef}
             {...props}

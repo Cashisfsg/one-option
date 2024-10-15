@@ -26,10 +26,12 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
         try {
             const { wallet_type, wallet_id } = event.currentTarget;
 
-            attachWallet({
+            await attachWallet({
                 type_wallet: wallet_type.value,
                 wallet_id: wallet_id.value
             }).unwrap();
+
+            wallet_id.value = "";
         } catch (error) {
             console.error(error);
         }
@@ -49,6 +51,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                         <Select.Root>
                             <Select.Input
                                 placeholder="Выберите тип кошелька"
+                                required
                                 name="wallet_type"
                                 className="w-full"
                             />

@@ -1,4 +1,5 @@
 import { rootApi } from "@/shared/api";
+import { userApi } from "@/entities/user/api";
 
 import type {
     FetchWalletListResponse,
@@ -7,7 +8,7 @@ import type {
 } from "./types";
 
 export const walletApi = rootApi
-    .enhanceEndpoints({ addTagTypes: ["Wallet"] })
+    .enhanceEndpoints({ addTagTypes: ["Wallet", "Withdrawal"] })
     .injectEndpoints({
         endpoints: builder => ({
             fetchWallet: builder.query<{ name: string }[], void>({
@@ -29,7 +30,8 @@ export const walletApi = rootApi
             }),
 
             fetchWithdrawList: builder.query<FetchWithdrawListResponse, void>({
-                query: () => "/withdraw/"
+                query: () => "/withdraw/",
+                providesTags: ["Withdrawal"]
             }),
 
             attachWallet: builder.mutation<any, AttachWalletRequest>({
@@ -39,14 +41,26 @@ export const walletApi = rootApi
                     body: body
                 }),
                 invalidatesTags: (result, error, arg) =>
-                    error ? [] : [{ type: "Wallet", id: arg.wallet_id }]
+                    error
+                        ? []
+                        : [{ type: "Wallet", id: arg.wallet_id }, "Withdrawal"]
             }),
 
-            withdrawal: builder.mutation<any, any>({
-                query: () => ({
+            withdrawal: builder.mutation<
+                any,
+                { wallet: string; amount: string }
+            >({
+                query: body => ({
                     url: "/withdraw/",
-                    method: "POST"
-                })
+                    method: "POST",
+                    body: body
+                }),
+                async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                    try {
+                        await queryFulfilled;
+                        dispatch(userApi.util.invalidateTags(["Balance"]));
+                    } catch {}
+                }
             })
         })
     });

@@ -1,21 +1,16 @@
 import { useEffect, useRef } from "react";
-import { select, line, scaleLinear, extent } from "d3";
+import { select, line, scaleLinear, scaleUtc, extent } from "d3";
 import useMeasure from "react-use-measure";
 
-export const LineChart = ({ data }: { data: number | string[][] }) => {
-    // const data = [
-    //     [0, 0],
-    //     [10, 10],
-    //     [30, 15],
-    //     [35, 20],
-    //     [45, 25],
-    //     [100, 200]
-    // ];
-
+export const LineChart = ({
+    data
+}: {
+    data: { date: string; value: number }[];
+}) => {
     const [ref, bounds] = useMeasure();
 
     return (
-        <div
+        <figure
             className="aspect-[785_/_595] min-h-[460px] w-full md:aspect-[640_/_240]"
             ref={ref}
         >
@@ -26,7 +21,7 @@ export const LineChart = ({ data }: { data: number | string[][] }) => {
                     height={bounds.height}
                 />
             ) : null}
-        </div>
+        </figure>
     );
 };
 
@@ -35,7 +30,7 @@ const Chart = ({
     width,
     height
 }: {
-    data: any;
+    data: { date: string; value: number }[];
     width: number;
     height: number;
 }) => {
@@ -48,19 +43,21 @@ const Chart = ({
         left: 40
     };
 
-    const yExtent = extent(data?.map((d: number[][]) => d[1]));
+    const xExtent = extent(data.map(d => new Date(d.date)));
+    const yExtent = extent(data.map(d => d.value));
 
-    const xScale = scaleLinear()
-        .domain(extent(data.map(d => d[0])))
+    console.log("xExtent", xExtent);
+
+    const xScale = scaleUtc()
+        .domain(xExtent)
         .range([margin.left, width - margin.right]);
-
     const yScale = scaleLinear()
-        .domain(yExtent)
+        .domain([yExtent[0], yExtent[1] > 0 ? yExtent[1] : 10])
         .range([height - margin.bottom, margin.top]);
 
-    const lineChart = line()
-        .x(data => xScale(data[0]))
-        .y(data => yScale(data[1]));
+    const lineChart = line<(typeof data)[number]>()
+        .x(data => xScale(new Date(data.date)))
+        .y(data => yScale(data.value));
 
     const d = lineChart(data);
 
@@ -78,7 +75,7 @@ const Chart = ({
             .attr("stroke-width", "0.5");
 
         chart
-            .select(".yAxis")
+            .select(".yAxis ")
             .attr("x1", margin.left)
             .attr("y1", height - margin.bottom)
             .attr("x2", width - margin.right)
@@ -90,9 +87,9 @@ const Chart = ({
 
     return (
         <svg
-            width={width}
-            height={height}
-            viewBox={`0 0 ${width} ${height}`}
+            width={Math.round(width)}
+            height={Math.round(height)}
+            viewBox={`0 0 ${Math.round(width)} ${Math.round(height)}`}
             ref={chartRef}
         >
             <path
@@ -106,28 +103,51 @@ const Chart = ({
             <line className="yAxis" />
 
             {xScale
-                .ticks(5)
+                .ticks(data.length)
+                // .tickFormat(timeFormat("%b %Y"))
                 // .slice(1)
-                .map(tick => (
+                // .map(xScale.tickFormat(timeDay.every(1), timeFormat("%b %Y")))
+                .map((tick, i) => (
+                    // <g
+                    //     key={i}
+                    //     transform={`translate(${Math.round(xScale(tick))}, 0)`}
+                    // >
                     <line
-                        x1={xScale(tick)}
+                        key={i}
+                        // x1={0}
+                        x1={Math.round(xScale(tick))}
                         y1={margin.top}
-                        x2={xScale(tick)}
-                        y2={height - margin.bottom}
+                        // x2={0}
+                        x2={Math.round(xScale(tick))}
+                        y2={Math.round(height - margin.bottom)}
                         stroke="currentColor"
                         strokeWidth="0.25"
                         opacity="0.7"
                     />
+                    // <text
+                    //     // x={`${xScale(tick)}`}
+                    //     x="0"
+                    //     y={height}
+                    //     fill="currentColor"
+                    //     textAnchor={i === 0 ? "start" : "middle"}
+                    //     className="font-primary text-xs-base-xs-lg"
+                    // >
+                    //     {new Intl.DateTimeFormat(undefined, {
+                    //         month: "2-digit",
+                    //         day: "2-digit"
+                    //     }).format(tick)}
+                    // </text>
+                    // </g>
                 ))}
 
-            {yScale.ticks(5).map(tick => (
+            {yScale.ticks(5).map((tick, i) => (
                 <g
-                    key={tick}
-                    transform={`translate(0,${yScale(tick)})`}
+                    key={i}
+                    transform={`translate(0, ${Math.round(yScale(tick))})`}
                 >
                     <line
                         x1={margin.left}
-                        x2={width - margin.right}
+                        x2={Math.round(width - margin.right)}
                         stroke="currentColor"
                         strokeWidth="0.25"
                         opacity="0.7"

@@ -41,8 +41,6 @@ export const EditAccountCredentialsForm: React.FC<
     > = async event => {
         event.preventDefault();
 
-        console.log("SubmitHandler");
-
         try {
             const { nickname, email } = event.currentTarget;
 

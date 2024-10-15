@@ -1,8 +1,8 @@
 .meter {
     background: linear-gradient(
         to right,
-        #793aff var(--start),
-        #36343b var(--start)
+        #793aff var(--progress),
+        #36343b var(--progress)
     );
     will-change: background;
 }

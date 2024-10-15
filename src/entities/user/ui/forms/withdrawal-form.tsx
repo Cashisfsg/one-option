@@ -1,6 +1,9 @@
 import { cnBase } from "tailwind-variants";
 
-import { useFetchWithdrawListQuery } from "@/entities/wallet/api";
+import {
+    useFetchWithdrawListQuery,
+    useWithdrawalMutation
+} from "@/entities/wallet/api";
 
 import { Fetch } from "@/shared/ui/fetch";
 import { Input } from "@/shared/ui/input";
@@ -11,17 +14,42 @@ import { composeEventHandlers } from "@/shared/lib/utils/compose-event-handlers"
 
 interface WithdrawalFormProps extends React.ComponentProps<"form"> {}
 
+interface FormFields {
+    amount: HTMLInputElement;
+    wallet: HTMLInputElement;
+}
+
 export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
     className,
     onSubmit,
     ...props
 }) => {
+    const [withdrawal] = useWithdrawalMutation();
+
     const onSubmitHandler: React.FormEventHandler<
-        HTMLFormElement
+        HTMLFormElement & FormFields
     > = async event => {
         event.preventDefault();
 
-        console.log(Object.fromEntries(new FormData(event.currentTarget)));
+        try {
+            const { amount, wallet } = event.currentTarget;
+
+            await withdrawal({
+                amount: amount.value,
+                wallet: wallet.value
+            }).unwrap();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const onBlurHandler: React.FocusEventHandler<HTMLInputElement> = event => {
+        const value = parseFloat(event.currentTarget.value);
+
+        if (isNaN(value)) {
+            return;
+        }
+        event.currentTarget.value = value.toFixed(2);
     };
 
     return (
@@ -38,6 +66,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
                     required
                     pattern="\d+([.,]\d{0,2})?"
                     placeholder="Введите сумму в долларах США"
+                    onBlur={onBlurHandler}
                 />
             </label>
 

@@ -27,13 +27,14 @@ export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
     return (
         <form
             onSubmit={composeEventHandlers(onSubmit, copyToClipboard)}
+            onCopy={() => console.log("Text copied to clipboard")}
             className="grid grid-cols-[minmax(0,_1fr)_auto] gap-x-2 @container"
             {...props}
         >
             <input
-                className="h-11 rounded-md bg-quaternary px-4 py-3 text-sm-base-xs-sm"
                 defaultValue={textToCopy}
                 readOnly
+                className="h-11 rounded-md bg-quaternary px-4 py-3 text-sm-base-xs-sm"
             />
 
             <button

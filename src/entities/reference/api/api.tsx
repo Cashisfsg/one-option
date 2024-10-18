@@ -3,7 +3,8 @@ import { rootApi } from "@/shared/api";
 import type {
     FetchReferenceStatisticResponse,
     FetchReferenceChartDataRequest,
-    FetchReferenceChartDataResponse
+    FetchReferenceChartDataResponse,
+    FetchReferenceActivityDataResponse
 } from "./types";
 
 export const referenceApi = rootApi
@@ -16,11 +17,37 @@ export const referenceApi = rootApi
             >({
                 query: () => "/profile/mainpage"
             }),
+
             fetchReferenceChartData: builder.query<
                 FetchReferenceChartDataResponse,
                 FetchReferenceChartDataRequest
             >({
                 query: ({ frequency }) => `/profile/mainpage/chart_${frequency}`
+            }),
+
+            fetchReferenceLinks: builder.query<any, void>({
+                query: () => "/referal/link",
+                transformResponse: (
+                    response: {
+                        code: string;
+                        type_display: string;
+                        referral_type: string;
+                    }[]
+                ) => {
+                    return response.map(data => ({
+                        code: data.code,
+                        link: `${import.meta.env.VITE_BASE_API_URL}/${data.code}`,
+                        type_display: data.type_display,
+                        referral_type: data.referral_type
+                    }));
+                }
+            }),
+
+            fetchReferenceList: builder.query<
+                FetchReferenceActivityDataResponse,
+                void
+            >({
+                query: () => "/referal/list"
             })
         })
     });
@@ -29,5 +56,9 @@ export const {
     useFetchReferenceStatisticQuery,
     useLazyFetchReferenceStatisticQuery,
     useFetchReferenceChartDataQuery,
-    useLazyFetchReferenceChartDataQuery
+    useLazyFetchReferenceChartDataQuery,
+    useFetchReferenceListQuery,
+    useLazyFetchReferenceListQuery,
+    useFetchReferenceLinksQuery,
+    useLazyFetchReferenceLinksQuery
 } = referenceApi;

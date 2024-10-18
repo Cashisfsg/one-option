@@ -17,9 +17,9 @@ export const BalanceOverviewListItem: React.FC<
             )}
             {...props}
         >
-            <dl className="grid grid-cols-2 grid-rows-2">
-                <dt className="col-span-2 text-sm-base-xs-lg">{label}</dt>
-                <dd className="col-span-2 justify-self-center text-2xl-3xl-xs-lg lg:col-start-2">
+            <dl className="grid grid-rows-2">
+                <dt className="text-sm-base-xs-lg">{label}</dt>
+                <dd className="justify-self-center text-2xl-3xl-xs-lg lg:justify-self-end">
                     {value} $
                 </dd>
             </dl>

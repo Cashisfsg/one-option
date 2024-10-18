@@ -332,7 +332,9 @@ export const Input: React.FC<InputProps> = ({
     return (
         <input
             type={type}
-            readOnly
+            value=""
+            autoComplete="off"
+            inputMode="none"
             role="combobox"
             aria-autocomplete="list"
             aria-expanded="false"
@@ -342,7 +344,7 @@ export const Input: React.FC<InputProps> = ({
             onKeyDown={composeEventHandlers(onKeyDown, onKeyDownHandler)}
             className={cnBase(
                 Select.input,
-                "flex-auto cursor-pointer select-none px-4 text-white outline-none placeholder:text-white/30",
+                "flex-auto cursor-pointer select-none px-4 text-white caret-transparent outline-none placeholder:text-white/30",
                 className
             )}
             ref={inputRef}

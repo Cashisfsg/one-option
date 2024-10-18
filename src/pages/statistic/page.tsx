@@ -1,23 +1,10 @@
 import { BalanceOverview } from "@/entities/user/ui/balance-overview";
+import { ReferralsTable } from "@/widgets/referrals-table/referrals-table";
 
 import { Section } from "@/shared/ui/section";
-import { Table } from "@/shared/ui/table";
 import { LineChart } from "@/shared/ui/line-chart";
 import { Article } from "@/shared/ui/article";
 import { Title } from "@/shared/ui/title";
-import { SearchReferralForm } from "@/features/referral/search-referral";
-
-const data = Array(6).fill({
-    number: 1,
-    nick: "Ник",
-    id: 3621548,
-    as: "70%",
-    asd: "231 $",
-    fds: "378 $",
-    gdf: "571 $",
-    gdfd: "572 $",
-    gdfg: "573 $"
-});
 
 const sales = [
     { date: "2023-04-30", value: 4 },
@@ -33,39 +20,47 @@ export const StatisticPage = () => {
     return (
         <Article>
             <Section>
+                <header className="flex flex-wrap items-center justify-between gap-3">
+                    <Title as="h2">График активности ссылки</Title>
+
+                    <div
+                        role="radiogroup"
+                        className="inline-flex gap-x-3 justify-self-end font-secondary"
+                    >
+                        <button
+                            type="button"
+                            role="radio"
+                            tabIndex={-1}
+                            aria-checked={true}
+                            className="rounded-md px-5 py-2.5 text-base-lg-xs-lg aria-[checked=false]:bg-[#2b2930] aria-[checked=true]:bg-violet-primary"
+                        >
+                            Месяц
+                        </button>
+                        <button
+                            type="button"
+                            role="radio"
+                            tabIndex={-1}
+                            className="rounded-md px-5 py-2.5 text-base-lg-xs-lg aria-[checked=false]:bg-[#2b2930] aria-[checked=true]:bg-violet-primary"
+                        >
+                            Неделя
+                        </button>
+                        <button
+                            type="button"
+                            role="radio"
+                            tabIndex={-1}
+                            className="rounded-md px-5 py-2.5 text-base-lg-xs-lg aria-[checked=false]:bg-[#2b2930] aria-[checked=true]:bg-violet-primary"
+                        >
+                            День
+                        </button>
+                    </div>
+                </header>
+
                 <LineChart data={sales} />
             </Section>
 
             <BalanceOverview />
 
-            <Section>
-                <header className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
-                    <Title
-                        as="h2"
-                        className="whitespace-nowrap text-lg-xl-xs-lg"
-                    >
-                        Таблица рефералов
-                    </Title>
-                    <SearchReferralForm />
-                </header>
-                <div className="scrollbar">
-                    <Table
-                        headers={[
-                            "#",
-                            "Никнейм",
-                            "ID",
-                            "Доходность",
-                            "Оборот",
-                            "Депозиты",
-                            "Выводы",
-                            "Баланс",
-                            "Прибыль"
-                        ]}
-                        uniqueKey={key => key}
-                        data={data}
-                    />
-                </div>
-            </Section>
+            <ReferralsTable />
         </Article>
     );
 };

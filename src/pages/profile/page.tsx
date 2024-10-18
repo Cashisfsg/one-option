@@ -12,7 +12,7 @@ import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
 import { Button } from "@/shared/ui/button";
 
-import { UserFTDMeter } from "@/entities/user/ui/ftd-meter";
+import { UserFTDMeter } from "@/entities/user/ui/user-ftd-meter";
 import { Table, TableRow } from "@/shared/ui/table";
 import * as Tooltip from "@/shared/ui/tooltip";
 
@@ -153,11 +153,6 @@ export const ProfilePage = () => {
                 <UpdateUserPhotoForm />
 
                 <EditAccountCredentialsForm />
-
-                {/* <h3 className="w-full truncate text-4xl">{user?.nickname}</h3>
-                <p className="w-full truncate font-secondary text-2xl">
-                    {user?.email}
-                </p> */}
 
                 <div className="my-2 w-full rounded-xl bg-quaternary px-2.5 py-1.5 font-secondary text-lg">
                     <p className="text-start">Привлечение реферралов из:</p>

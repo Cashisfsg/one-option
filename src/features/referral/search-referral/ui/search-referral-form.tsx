@@ -1,8 +1,23 @@
 import { Search } from "@/shared/ui/search";
 
-export const SearchReferralForm = () => {
-    const onSubmitHandler: React.FormEventHandler<HTMLFormElement> = event => {
+interface SearchReferralFormProps {
+    setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+interface FormFields {
+    query: HTMLInputElement;
+}
+
+export const SearchReferralForm: React.FC<SearchReferralFormProps> = ({
+    setQuery
+}) => {
+    const onSubmitHandler: React.FormEventHandler<
+        HTMLFormElement & FormFields
+    > = event => {
         event.preventDefault();
+
+        const { query } = event.currentTarget;
+        setQuery(query.value);
     };
 
     return (

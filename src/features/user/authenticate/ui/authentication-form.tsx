@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { cnBase } from "tailwind-variants";
+import { toast } from "sonner";
 
 import { useSignInMutation } from "@/shared/api";
 
@@ -41,6 +42,12 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
             navigate("/");
         } catch (error) {
             console.error(error);
+
+            toast.error(error?.data?.detail, {
+                className: "flex items-center",
+                description: "Error authenticating",
+                descriptionClassName: "font-secondary"
+            });
         }
     };
 

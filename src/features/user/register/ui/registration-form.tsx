@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { useNavigate } from "react-router-dom";
 import { cnBase } from "tailwind-variants";
+import { toast } from "sonner";
 
 import { useSignUpMutation } from "@/shared/api";
 
@@ -54,6 +55,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             navigate("/auth/sign/in");
         } catch (error) {
             console.error(error);
+
+            Object.values(error?.data)?.forEach(value =>
+                value?.forEach(v => toast.error(v))
+            );
         }
     };
 

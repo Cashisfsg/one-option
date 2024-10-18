@@ -10,6 +10,7 @@ export const Input: React.FC<InputProps> = ({
     className,
     onBeforeInput,
     onChange,
+    alert,
     autoComplete = "off",
     ...props
 }) => {
@@ -20,7 +21,7 @@ export const Input: React.FC<InputProps> = ({
     > = event => {
         const input = event.currentTarget;
 
-        if (!input.hasAttribute("pattern")) return;
+        // if (!input.hasAttribute("pattern")) return;
 
         unvalidatedValue.current = input.value;
     };
@@ -43,7 +44,7 @@ export const Input: React.FC<InputProps> = ({
                 onBeforeInputHandler
             )}
             onChange={composeEventHandlers(onChange, onChangeHandler)}
-            className={inputVariants({ variant, className })}
+            className={inputVariants({ variant, alert, className })}
             {...props}
         />
     );

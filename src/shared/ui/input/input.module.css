@@ -1,0 +1,6 @@
+.input {
+    &:user-invalid {
+        color: #cb3d40;
+        border: 2px solid #cb3d40;
+    }
+}

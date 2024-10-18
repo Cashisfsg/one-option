@@ -3,13 +3,23 @@ export type Wallet = {
     wallet_id: string;
 };
 
-export type FetchWalletListResponse = {
-    type_wallet: string;
-    wallet_id: string;
+export type FetchWalletsRequest = {
+    name: string;
 }[];
+
+export type FetchWalletListResponse = Wallet[];
 
 export type FetchWithdrawListResponse = {
     wallet: string;
 }[];
 
 export type AttachWalletRequest = Wallet;
+
+export interface WithdrawalRequest {
+    wallet: string;
+    amount: string;
+}
+
+export type WithdrawalResponse = {
+    details: string;
+};

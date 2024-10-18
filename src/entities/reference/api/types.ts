@@ -20,3 +20,16 @@ export interface FetchReferenceChartDataResponse {
     ftd_count: number;
     day?: string;
 }
+
+export type FetchReferenceActivityDataResponse = {
+    id: string;
+    email: string;
+    deposit: string;
+    withdraw: string;
+    oborot: string;
+    balance: string;
+    profit: string;
+    doxod_procent: number;
+    nickname: string;
+    flag_photo: string;
+}[];

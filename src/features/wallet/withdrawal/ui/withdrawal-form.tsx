@@ -1,4 +1,6 @@
+import { useId } from "react";
 import { cnBase } from "tailwind-variants";
+import { toast } from "sonner";
 
 import {
     useFetchWithdrawListQuery,
@@ -24,6 +26,9 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
     onSubmit,
     ...props
 }) => {
+    const amountId = `input-${useId()}`;
+    const walletId = `select-${useId()}`;
+
     const [withdrawal] = useWithdrawalMutation();
 
     const onSubmitHandler: React.FormEventHandler<
@@ -34,12 +39,18 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
         try {
             const { amount, wallet } = event.currentTarget;
 
-            await withdrawal({
+            const response = await withdrawal({
                 amount: amount.value,
                 wallet: wallet.value
             }).unwrap();
+
+            toast(response?.detail);
         } catch (error) {
             console.error(error);
+
+            Object.values(error?.data)?.forEach(value =>
+                value?.forEach(v => toast.error(v))
+            );
         }
     };
 
@@ -49,6 +60,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
         if (isNaN(value)) {
             return;
         }
+
         event.currentTarget.value = value.toFixed(2);
     };
 
@@ -61,10 +73,13 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
             <label>
                 <span>Сумма</span>
                 <Input
+                    id={amountId}
                     inputMode="numeric"
                     name="amount"
+                    alert={true}
                     required
-                    pattern="\d+([.,]\d{0,2})?"
+                    maxLength={10}
+                    pattern="\d{0,7}([.,]\d{0,2})?"
                     placeholder="Введите сумму в долларах США"
                     onBlur={onBlurHandler}
                 />
@@ -73,39 +88,14 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
             <Fetch
                 useQuery={useFetchWithdrawListQuery}
                 args={undefined}
-                // renderSuccess={wallets => (
-                //     <label>
-                //         <span>Кошелек</span>
-                //         <select
-                //             defaultValue=""
-                //             required
-                //             onChange={onChangeHandler}
-                //             className="h-11 rounded-lg bg-quaternary px-4 text-white/30 outline-offset-2 outline-slate-100 focus-visible:outline"
-                //         >
-                //             <option
-                //                 value=""
-                //                 disabled
-                //             >
-                //                 Выберите кошелёк
-                //             </option>
-                //             {wallets.map(wallet => (
-                //                 <option
-                //                     key={wallet?.wallet}
-                //                     value={wallet?.wallet}
-                //                     className="text-white"
-                //                 >
-                //                     {wallet?.wallet}
-                //                 </option>
-                //             ))}
-                //         </select>
-                //     </label>
-                // )}
                 renderSuccess={wallets => (
                     <fieldset className="grid gap-y-2">
                         <label>Кошелек</label>
                         <Select.Root>
                             <Select.Input
+                                id={walletId}
                                 name="wallet"
+                                required
                                 placeholder="Выберите кошелек"
                             />
                             <Select.Trigger>

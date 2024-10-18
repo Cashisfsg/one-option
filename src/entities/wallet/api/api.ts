@@ -2,16 +2,19 @@ import { rootApi } from "@/shared/api";
 import { userApi } from "@/entities/user/api";
 
 import type {
+    FetchWalletsRequest,
     FetchWalletListResponse,
     FetchWithdrawListResponse,
-    AttachWalletRequest
+    AttachWalletRequest,
+    WithdrawalRequest,
+    WithdrawalResponse
 } from "./types";
 
 export const walletApi = rootApi
     .enhanceEndpoints({ addTagTypes: ["Wallet", "Withdrawal"] })
     .injectEndpoints({
         endpoints: builder => ({
-            fetchWallet: builder.query<{ name: string }[], void>({
+            fetchWallet: builder.query<FetchWalletsRequest, void>({
                 query: () => "/wallet/"
             }),
 
@@ -40,28 +43,25 @@ export const walletApi = rootApi
                     method: "POST",
                     body: body
                 }),
-                invalidatesTags: (result, error, arg) =>
-                    error
-                        ? []
-                        : [{ type: "Wallet", id: arg.wallet_id }, "Withdrawal"]
+                invalidatesTags: (result, error) =>
+                    error ? [] : ["Wallet", "Withdrawal"]
             }),
 
-            withdrawal: builder.mutation<
-                any,
-                { wallet: string; amount: string }
-            >({
-                query: body => ({
-                    url: "/withdraw/",
-                    method: "POST",
-                    body: body
-                }),
-                async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                    try {
-                        await queryFulfilled;
-                        dispatch(userApi.util.invalidateTags(["Balance"]));
-                    } catch {}
+            withdrawal: builder.mutation<WithdrawalResponse, WithdrawalRequest>(
+                {
+                    query: body => ({
+                        url: "/withdraw/",
+                        method: "POST",
+                        body: body
+                    }),
+                    async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                        try {
+                            await queryFulfilled;
+                            dispatch(userApi.util.invalidateTags(["Balance"]));
+                        } catch {}
+                    }
                 }
-            })
+            )
         })
     });
 

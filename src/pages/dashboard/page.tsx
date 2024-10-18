@@ -4,10 +4,12 @@ import { ReferenceActivityChart } from "@/widgets/reference-activity-chart";
 
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
-import { Table } from "@/shared/ui/table";
+import { Table, TableRow } from "@/shared/ui/table";
 import { Title } from "@/shared/ui/title";
 
 import { ReferenceStatistic } from "@/widgets/reference/reference-statistic";
+import { Fetch } from "@/shared/ui/fetch";
+import { useFetchReferenceLinksQuery } from "@/entities/reference";
 
 const data = [
     {
@@ -112,11 +114,35 @@ export const DashboardPage = () => {
                 >
                     Ссылки на приглашение
                 </Title>
+
                 <div className="scrollbar">
-                    <Table
-                        uniqueKey={"id"}
-                        headers={["id", "ссылка", "тип", "программа", "дата"]}
-                        data={data}
+                    <Fetch
+                        useQuery={useFetchReferenceLinksQuery}
+                        args={undefined}
+                        renderSuccess={data => {
+                            console.log(data);
+                            return (
+                                <Table
+                                    uniqueKey={"code"}
+                                    headers={[
+                                        "id",
+                                        "ссылка",
+                                        "тип",
+                                        "программа"
+                                    ]}
+                                    data={data}
+                                    // renderData={links => (
+                                    //     <tbody>
+                                    //         {links.map(link => (
+                                    //             <TableRow
+                                    //                 key={link.id}
+                                    //             ></TableRow>
+                                    //         ))}
+                                    //     </tbody>
+                                    // )}
+                                />
+                            );
+                        }}
                     />
                 </div>
             </Section>

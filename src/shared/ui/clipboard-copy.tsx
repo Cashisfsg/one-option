@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 import { composeEventHandlers } from "../lib/utils/compose-event-handlers";
 
 interface ClipboardCopyProps
@@ -19,6 +21,7 @@ export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
 
         try {
             await navigator.clipboard.writeText(String(textToCopy));
+            toast("Ссылка скопирована в буфер обмена");
         } catch (error) {
             console.error(error);
         }

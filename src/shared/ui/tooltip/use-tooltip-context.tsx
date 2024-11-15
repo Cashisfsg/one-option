@@ -5,7 +5,7 @@ export const TooltipContext = createContext<{
     tooltipRef: React.RefObject<HTMLDivElement>;
     triggerId: string;
     tooltipId: string;
-    timerRef: React.RefObject<NodeJS.Timeout | undefined>;
+    timerRef: React.MutableRefObject<NodeJS.Timeout | undefined>;
 } | null>(null);
 
 export const useTooltipContext = () => {

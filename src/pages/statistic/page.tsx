@@ -5,16 +5,8 @@ import { Section } from "@/shared/ui/section";
 import { LineChart } from "@/shared/ui/line-chart";
 import { Article } from "@/shared/ui/article";
 import { Title } from "@/shared/ui/title";
-
-const sales = [
-    { date: "2023-04-30", value: 4 },
-    { date: "2023-05-01", value: 6 },
-    { date: "2023-05-02", value: 8 },
-    { date: "2023-05-03", value: 7 },
-    { date: "2023-05-04", value: 10 },
-    { date: "2023-05-05", value: 12 },
-    { date: "2023-05-06", value: 4 }
-];
+import { Fetch } from "@/shared/ui/fetch";
+import { useFetchReferenceActivityDataQuery } from "@/entities/reference";
 
 export const StatisticPage = () => {
     return (
@@ -55,7 +47,23 @@ export const StatisticPage = () => {
                     </div>
                 </header>
 
-                <LineChart data={sales} />
+                <Fetch
+                    useQuery={useFetchReferenceActivityDataQuery}
+                    args={{ frequency: "weekly" }}
+                    renderSuccess={data => (
+                        <LineChart
+                            options={{
+                                xAxis: { data: data.map(d => d?.date) },
+                                yAxis: [
+                                    {
+                                        data: data.map(d => d?.count),
+                                        color: "#652cde"
+                                    }
+                                ]
+                            }}
+                        />
+                    )}
+                />
             </Section>
 
             <BalanceOverview />

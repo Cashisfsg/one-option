@@ -25,7 +25,22 @@ export const referenceApi = rootApi
                 query: ({ frequency }) => `/profile/mainpage/chart_${frequency}`
             }),
 
-            fetchReferenceLinks: builder.query<any, void>({
+            fetchReferenceActivityData: builder.query<
+                { count: number; date: string },
+                { frequency: "daily" | "weekly" | "monthly" }
+            >({
+                query: ({ frequency }) => `/referal/count/${frequency}`
+            }),
+
+            fetchReferenceLinks: builder.query<
+                {
+                    code: string;
+                    link: string;
+                    type_display: string;
+                    referral_type: string;
+                }[],
+                void
+            >({
                 query: () => "/referal/link",
                 transformResponse: (
                     response: {
@@ -57,6 +72,8 @@ export const {
     useLazyFetchReferenceStatisticQuery,
     useFetchReferenceChartDataQuery,
     useLazyFetchReferenceChartDataQuery,
+    useFetchReferenceActivityDataQuery,
+    useLazyFetchReferenceActivityDataQuery,
     useFetchReferenceListQuery,
     useLazyFetchReferenceListQuery,
     useFetchReferenceLinksQuery,

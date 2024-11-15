@@ -17,10 +17,23 @@ export const ReferenceActivityChart: React.FC<ReferenceActivityChartProps> = ({
             args={{ frequency: frequency }}
             renderSuccess={data => (
                 <LineChart
-                    data={data.map(d => ({
-                        date: d.day || d.hour,
-                        value: d.clicks
-                    }))}
+                    options={{
+                        xAxis: { data: data.map(d => d?.date) },
+                        yAxis: [
+                            {
+                                data: data.map(d => d?.clicks),
+                                color: "#FF8551"
+                            },
+                            {
+                                data: data.map(d => d?.clicks),
+                                color: "#009A0F"
+                            }
+                        ]
+                    }}
+                    // data={data.map(d => ({
+                    //     date: d.day || d.hour,
+                    //     value: d.clicks
+                    // }))}
                 />
             )}
         />

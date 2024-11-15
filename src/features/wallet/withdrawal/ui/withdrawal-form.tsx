@@ -45,6 +45,8 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
             }).unwrap();
 
             toast(response?.detail);
+
+            event.currentTarget.reset();
         } catch (error) {
             console.error(error);
 

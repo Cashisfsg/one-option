@@ -21,5 +21,5 @@ export interface WithdrawalRequest {
 }
 
 export type WithdrawalResponse = {
-    details: string;
+    detail: string;
 };

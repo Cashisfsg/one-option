@@ -22,16 +22,15 @@ import TelegramLogo from "@/assets/img/telegram-logo.png";
 import InstagramLogo from "@/assets/img/instagram-logo.png";
 import YouTubeLogo from "@/assets/img/youtube-logo.png";
 import { EditAccountCredentialsForm } from "@/features/user/edit-account-credentials";
-
-const tooltipData = {
-    level: 1,
-    revenue: 40,
-    turnover: 2,
-    deposit: "0 - 50"
-} as const;
+import { Fetch } from "@/shared/ui/fetch";
+import {
+    useFetchLevelsListQuery,
+    useFetchUserDataQuery
+} from "@/entities/user/api";
 
 export const ProfilePage = () => {
     const formId = useId();
+    const { data: user, isSuccess } = useFetchUserDataQuery();
 
     return (
         <Article
@@ -79,62 +78,83 @@ export const ProfilePage = () => {
                                                 получай больше прибыли !
                                             </p>
                                         </header>
-                                        <Table
-                                            uniqueKey="id"
-                                            headers={[
-                                                "Уровень",
-                                                "Доход",
-                                                "Оборот",
-                                                "Депозит"
-                                            ]}
-                                            data={
-                                                Array(5).fill(
-                                                    tooltipData
-                                                ) as (typeof tooltipData)[]
-                                            }
-                                            components={{
-                                                TableCaption: () => (
-                                                    <caption>Caption</caption>
-                                                )
-                                            }}
-                                            renderHeader={headers => (
-                                                <thead>
-                                                    <TableRow>
-                                                        {headers.map(
-                                                            (header, i) => (
-                                                                <th
-                                                                    key={i}
-                                                                    className="bg-[#36343B] px-3 py-1.5 text-sm font-normal normal-case"
-                                                                >
-                                                                    {header}
-                                                                </th>
-                                                            )
-                                                        )}
-                                                    </TableRow>
-                                                </thead>
+                                        <Fetch
+                                            useQuery={useFetchLevelsListQuery}
+                                            args={undefined}
+                                            renderSuccess={data => (
+                                                <Table
+                                                    uniqueKey="level"
+                                                    headers={[
+                                                        "Уровень",
+                                                        "Доход",
+                                                        "Оборот",
+                                                        "Депозит"
+                                                    ]}
+                                                    data={data}
+                                                    renderHeader={headers => (
+                                                        <thead>
+                                                            <TableRow>
+                                                                {headers.map(
+                                                                    (
+                                                                        header,
+                                                                        i
+                                                                    ) => (
+                                                                        <th
+                                                                            key={
+                                                                                i
+                                                                            }
+                                                                            className="bg-[#36343B] px-3 py-1.5 text-sm font-normal normal-case"
+                                                                        >
+                                                                            {
+                                                                                header
+                                                                            }
+                                                                        </th>
+                                                                    )
+                                                                )}
+                                                            </TableRow>
+                                                        </thead>
+                                                    )}
+                                                    renderData={data => (
+                                                        <tbody className="text-center">
+                                                            {data.map(
+                                                                (row, i) => (
+                                                                    <tr
+                                                                        key={i}
+                                                                        className={
+                                                                            isSuccess &&
+                                                                            user.level ===
+                                                                                row.level
+                                                                                ? "bg-violet-primary"
+                                                                                : "bg-[#4a484f]"
+                                                                        }
+                                                                    >
+                                                                        {Object.values(
+                                                                            row
+                                                                        ).map(
+                                                                            (
+                                                                                cell,
+                                                                                j
+                                                                            ) => (
+                                                                                <td
+                                                                                    key={
+                                                                                        j
+                                                                                    }
+                                                                                    className="px-3 py-1.5"
+                                                                                >
+                                                                                    {
+                                                                                        cell
+                                                                                    }
+                                                                                </td>
+                                                                            )
+                                                                        )}
+                                                                    </tr>
+                                                                )
+                                                            )}
+                                                        </tbody>
+                                                    )}
+                                                    className="mt-2 border-separate border-spacing-x-0 border-spacing-y-0.5 rounded-lg shadow-lg"
+                                                />
                                             )}
-                                            renderData={data => (
-                                                <tbody className="text-center">
-                                                    {data.map((row, i) => (
-                                                        <tr
-                                                            key={i}
-                                                            className="bg-[#4A484F] first:bg-violet-primary"
-                                                        >
-                                                            {Object.values(
-                                                                row
-                                                            ).map((cell, j) => (
-                                                                <td
-                                                                    key={j}
-                                                                    className="px-3 py-1.5"
-                                                                >
-                                                                    {cell}
-                                                                </td>
-                                                            ))}
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            )}
-                                            className="mt-2 border-separate border-spacing-x-0 border-spacing-y-0.5 rounded-lg shadow-lg"
                                         />
 
                                         <footer className="-mx-4 mt-2 rounded-b-xl bg-violet-primary py-2.5 text-center">
@@ -180,9 +200,20 @@ export const ProfilePage = () => {
                 </div>
 
                 <footer className="-mx-6 mt-auto h-9 w-[calc(100%_+_3rem)] rounded-b-2xl text-center leading-9">
-                    <UserFTDMeter
-                        aria-valuenow={30}
-                        aria-valuemax={99}
+                    <Fetch
+                        useQuery={useFetchUserDataQuery}
+                        args={undefined}
+                        renderSuccess={user => (
+                            <UserFTDMeter
+                                aria-valuenow={user.ftd_count}
+                                aria-valuemax={99}
+                            />
+                        )}
+                        loadingFallback={
+                            <div className="h-9 place-content-center bg-quaternary">
+                                <div className="mx-auto my-auto h-3 w-32 animate-pulse rounded-full bg-slate-400" />
+                            </div>
+                        }
                     />
                 </footer>
             </Section>

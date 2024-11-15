@@ -1,22 +1,39 @@
 import { useEffect, useRef } from "react";
 import { select, line, scaleLinear, scaleUtc, extent } from "d3";
 import useMeasure from "react-use-measure";
+import { cnBase } from "tailwind-variants";
 
-export const LineChart = ({
-    data
-}: {
-    data: { date: string; value: number }[];
+type Data = { data: (string | number)[] };
+
+interface Options {
+    xAxis: Data;
+    yAxis: (Data & { color?: string })[];
+}
+
+interface LineChartProps extends React.ComponentPropsWithoutRef<"figure"> {
+    options: Options;
+}
+
+export const LineChart: React.FC<LineChartProps> = ({
+    className,
+    options,
+    ...props
 }) => {
     const [ref, bounds] = useMeasure();
 
     return (
         <figure
-            className="aspect-[785_/_595] min-h-[460px] w-full md:aspect-[640_/_240]"
+            className={cnBase(
+                "aspect-[785_/_595] min-h-[460px] w-full md:aspect-[640_/_240]",
+                className
+            )}
             ref={ref}
+            {...props}
         >
             {bounds.width > 0 ? (
                 <Chart
-                    data={data}
+                    xAxis={options.xAxis}
+                    yAxis={options.yAxis}
                     width={bounds.width}
                     height={bounds.height}
                 />
@@ -25,28 +42,33 @@ export const LineChart = ({
     );
 };
 
+const margin = {
+    top: 20,
+    right: 20,
+    bottom: 20,
+    left: 40
+};
+
 const Chart = ({
-    data,
+    xAxis,
+    yAxis,
     width,
     height
 }: {
-    data: { date: string; value: number }[];
+    xAxis: Data;
+    yAxis: (Data & { color?: string })[];
     width: number;
     height: number;
 }) => {
     const chartRef = useRef<SVGSVGElement>(null);
 
-    const margin = {
-        top: 20,
-        right: 20,
-        bottom: 20,
-        left: 40
-    };
+    const xExtent = extent(xAxis.data.map(value => new Date(value)));
+    const yExtent = extent(yAxis.flatMap(d => d.data));
 
-    const xExtent = extent(data.map(d => new Date(d.date)));
-    const yExtent = extent(data.map(d => d.value));
-
+    console.log("xAxis", xAxis);
+    console.log("yAxis", yAxis);
     console.log("xExtent", xExtent);
+    console.log("yExtent", yExtent);
 
     const xScale = scaleUtc()
         .domain(xExtent)
@@ -55,11 +77,22 @@ const Chart = ({
         .domain([yExtent[0], yExtent[1] > 0 ? yExtent[1] : 10])
         .range([height - margin.bottom, margin.top]);
 
-    const lineChart = line<(typeof data)[number]>()
-        .x(data => xScale(new Date(data.date)))
-        .y(data => yScale(data.value));
+    const lineChart = line<(typeof yAxis)[number]>()
+        .x((_, i) => xScale(new Date(xAxis.data[i])))
+        .y(data => yScale(data));
 
-    const d = lineChart(data);
+    // const d = lineChart(data);
+
+    const dArray = yAxis.map(yValue => {
+        console.log("yValue");
+        console.log(yValue);
+
+        return lineChart(yValue.data);
+    });
+
+    console.log("dArray");
+
+    console.log(dArray);
 
     useEffect(() => {
         const chart = select(chartRef.current);
@@ -92,18 +125,21 @@ const Chart = ({
             viewBox={`0 0 ${Math.round(width)} ${Math.round(height)}`}
             ref={chartRef}
         >
-            <path
-                d={d}
-                fill="none"
-                stroke="#FF8551"
-                strokeWidth="5"
-            />
+            {dArray.map((d, i) => (
+                <path
+                    key={i}
+                    d={d}
+                    fill="none"
+                    stroke={yAxis[i]?.color || "currentColor"}
+                    strokeWidth="5"
+                />
+            ))}
 
             <line className="xAxis" />
             <line className="yAxis" />
 
             {xScale
-                .ticks(data.length)
+                .ticks(xAxis.data.length)
                 // .tickFormat(timeFormat("%b %Y"))
                 // .slice(1)
                 // .map(xScale.tickFormat(timeDay.every(1), timeFormat("%b %Y")))

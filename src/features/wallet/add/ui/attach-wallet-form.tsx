@@ -110,6 +110,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                 <Input
                     placeholder="Введите ID кошелька"
                     required
+                    alert={true}
                     name="wallet_id"
                     minLength={1}
                     maxLength={100}

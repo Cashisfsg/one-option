@@ -1,7 +1,6 @@
 import React, { useId, useMemo, useRef } from "react";
 import ReactDOM from "react-dom";
-
-import { cn } from "@/shared/lib";
+import { cnBase } from "tailwind-variants";
 
 import { TooltipContext, useTooltipContext } from "./use-tooltip-context";
 
@@ -232,7 +231,7 @@ const Content: React.FC<TooltipContentProps> = ({
             role="tooltip"
             onMouseEnter={onMouseEnterHandler}
             onMouseLeave={onMouseLeaveHandler}
-            className={cn(
+            className={cnBase(
                 "absolute isolate aria-[hidden=false]:visible aria-[hidden=true]:invisible",
                 className
             )}

@@ -21,6 +21,18 @@ export const userApi = rootApi
                 providesTags: ["Balance"]
             }),
 
+            fetchLevelsList: builder.query<
+                {
+                    level: number;
+                    income_percent: string;
+                    turnover: string;
+                    deposit: string;
+                },
+                void
+            >({
+                query: () => "/level/list"
+            }),
+
             updateUserCredentials: builder.mutation<
                 UpdateUserDataResponse,
                 UpdateUserDataRequest
@@ -56,6 +68,8 @@ export const {
     useLazyFetchUserDataQuery,
     useFetchUserBalanceQuery,
     useLazyFetchUserBalanceQuery,
+    useFetchLevelsListQuery,
+    useLazyFetchLevelsListQuery,
     useUpdateUserCredentialsMutation,
     useUpdateUserPhotoMutation
 } = userApi;

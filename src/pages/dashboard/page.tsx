@@ -131,15 +131,6 @@ export const DashboardPage = () => {
                                         "программа"
                                     ]}
                                     data={data}
-                                    // renderData={links => (
-                                    //     <tbody>
-                                    //         {links.map(link => (
-                                    //             <TableRow
-                                    //                 key={link.id}
-                                    //             ></TableRow>
-                                    //         ))}
-                                    //     </tbody>
-                                    // )}
                                 />
                             );
                         }}

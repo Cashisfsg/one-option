@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useId } from "react";
+import React, { useRef, useMemo, useId, useEffect } from "react";
 import { cnBase } from "tailwind-variants";
 
 import { SelectContext, useSelectContext } from "./use-select-context";
@@ -16,6 +16,7 @@ export const Root: React.FC<RootProps> = ({ className, ...props }) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const triggerRef = useRef<HTMLButtonElement>(null);
     const menuRef = useRef<HTMLUListElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const contextValue = useMemo(
         () => ({
@@ -25,8 +26,27 @@ export const Root: React.FC<RootProps> = ({ className, ...props }) => {
             triggerRef,
             menuRef
         }),
-        []
+        [selectMenuId, triggerId]
     );
+
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (
+                containerRef.current &&
+                !(event.currentTarget as Node).contains(containerRef.current)
+            )
+                return;
+
+            inputRef.current?.setAttribute("aria-expanded", "false");
+            triggerRef.current?.setAttribute("aria-expanded", "false");
+        };
+
+        document.addEventListener("click", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("click", handleOutsideClick);
+        };
+    }, []);
 
     return (
         <SelectContext.Provider value={contextValue}>
@@ -86,6 +106,7 @@ export const Input: React.FC<InputProps> = ({
         inputRef.current?.setAttribute("aria-expanded", String(!isOpen));
         triggerRef.current?.setAttribute("aria-expanded", String(!isOpen));
         inputRef.current?.focus();
+        event.stopPropagation();
     };
 
     const onKeyDownHandler: React.KeyboardEventHandler<
@@ -332,7 +353,7 @@ export const Input: React.FC<InputProps> = ({
     return (
         <input
             type={type}
-            value=""
+            // value=""
             autoComplete="off"
             inputMode="none"
             role="combobox"
@@ -399,6 +420,7 @@ export const Trigger: React.FC<TriggerProps> = ({
         inputRef.current?.setAttribute("aria-expanded", String(!isOpen));
         triggerRef.current?.setAttribute("aria-expanded", String(!isOpen));
         inputRef.current?.focus();
+        event.stopPropagation();
     };
 
     return (

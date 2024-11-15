@@ -9,6 +9,7 @@
     inset-inline: 0;
     top: 100%;
 
+    color: white;
     position: absolute;
     background-color: #36343b;
     cursor: pointer;
@@ -18,6 +19,11 @@
 .root:has(.trigger[aria-expanded="true"]) .menu,
 .root:has(.input[aria-expanded="true"]) .menu {
     display: block;
+}
+
+.root:has(.input:user-invalid) {
+    color: #cb3d40;
+    border: 2px solid #cb3d40;
 }
 
 /* .trigger[aria-expanded="true"] + .menu,

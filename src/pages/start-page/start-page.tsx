@@ -351,7 +351,7 @@ export const StartPage = () => {
                             </div>
                         </header>
 
-                        <a href='#header' className="scroll-smooth">Регистрация</a>
+                        <Link to="/auth/sign/up">Регистрация</Link>
                     </div>
 
                     <figure>

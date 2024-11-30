@@ -1,9 +1,13 @@
+import { useFetchUserDataQuery } from "@/entities/user/api";
+
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
 import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
 import { Title } from "@/shared/ui/title";
 
 export const SubReferralPage = () => {
+    const { data: user } = useFetchUserDataQuery();
+
     return (
         <Article
             variant="grid"
@@ -17,7 +21,9 @@ export const SubReferralPage = () => {
                     Ссылка для привлечения партнеров
                 </Title>
 
-                <ClipboardCopy textToCopy="https//referal.link/nameadminname" />
+                <ClipboardCopy
+                    textToCopy={`${import.meta.env.VITE_BASE_API_URL}/${user?.sub_ref}`}
+                />
 
                 <p className="font-secondary text-base-lg-xs-md">
                     Привлекайте других партнеров в нашу партнерскую программу. И

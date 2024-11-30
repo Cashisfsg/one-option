@@ -4,6 +4,8 @@ export interface FetchUserDataResponse {
     photo?: string;
     level?: number;
     ftd_count: number;
+    sub_ref?: string;
+    next_level?: number;
 }
 
 export interface FetchUserBalanceResponse {

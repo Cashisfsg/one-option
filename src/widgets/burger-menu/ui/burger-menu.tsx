@@ -423,7 +423,6 @@ const MenuItem: React.FC<MenuItemProps> = ({
     > = event => {
         const target = event.currentTarget;
         target.focus();
-        console.log(index);
         currentFocusableElementIndex.current = index;
     };
 

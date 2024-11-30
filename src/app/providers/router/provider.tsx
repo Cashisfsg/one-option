@@ -30,7 +30,6 @@ const ResetPasswordConfirmPage = lazy(async () =>
 );
 
 import { StartPage } from "@/pages/start-page";
-import { TokenPage } from "@/pages/token";
 
 const DashboardPage = lazy(async () =>
     import("@/pages/dashboard").then(module => ({
@@ -74,10 +73,6 @@ const publicRouter = createBrowserRouter([
         element: <StartPage />
     },
 
-    {
-        path: "/:token",
-        element: <TokenPage />
-    },
     {
         path: "auth",
         // element: <AuthenticationLayout />,

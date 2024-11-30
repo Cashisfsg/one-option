@@ -6,7 +6,7 @@ import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
 import { Title } from "@/shared/ui/title";
 
 export const SubReferralPage = () => {
-    const { data: user } = useFetchUserDataQuery();
+    const { data: user, isSuccess } = useFetchUserDataQuery();
 
     return (
         <Article
@@ -22,7 +22,11 @@ export const SubReferralPage = () => {
                 </Title>
 
                 <ClipboardCopy
-                    textToCopy={`${import.meta.env.VITE_BASE_API_URL}/${user?.sub_ref}`}
+                    textToCopy={
+                        isSuccess
+                            ? `${import.meta.env.VITE_BASE_API_URL}?referral_id=${user?.sub_ref}`
+                            : ""
+                    }
                 />
 
                 <p className="font-secondary text-base-lg-xs-md">

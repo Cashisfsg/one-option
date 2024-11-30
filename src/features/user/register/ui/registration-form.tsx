@@ -41,7 +41,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 password2: password2.value
             };
 
-            const token = sessionStorage.getItem("token");
+            const token = sessionStorage.getItem("referralToken");
 
             if (token) {
                 request = Object.assign(request, {
@@ -51,7 +51,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
             await signUp(request).unwrap();
 
-            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("referralToken");
             navigate("/auth/sign/in");
         } catch (error) {
             console.error(error);

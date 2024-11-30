@@ -10,17 +10,15 @@ export const TokenPage = () => {
     useEffect(() => {
         (async () => {
             try {
-                console.log("Token: ", params.token);
+                if (!("token" in params) || params.token === undefined) return;
 
-                if ("token" in params && params.token !== undefined) {
-                    sessionStorage.setItem(
-                        "token",
-                        JSON.stringify({ token: params.token })
-                    );
-                    await incrementTokenCounter({
-                        token_ref: params.token
-                    }).unwrap();
-                }
+                sessionStorage.setItem(
+                    "token",
+                    JSON.stringify({ token: params.token })
+                );
+                await incrementTokenCounter({
+                    token_ref: params.token
+                }).unwrap();
             } catch (error) {
                 console.error(error);
             } finally {

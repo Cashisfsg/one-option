@@ -1,17 +1,25 @@
-import { useRef } from "react";
-
-import { Link } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 
 import "./index.css";
 import { Title } from "@/shared/ui/title";
 
 export const StartPage = () => {
-    const headerRef = useRef<HTMLElement>(null);
+    const [searchParams] = useSearchParams();
+
+    if (searchParams.has("referral_id")) {
+        const referralId = searchParams.get("referral_id");
+
+        sessionStorage.setItem(
+            "referralToken",
+            JSON.stringify({ token: referralId })
+        );
+
+        return <Navigate to="/auth/sign/up" />;
+    }
 
     return (
         <main>
             <header
-                ref={headerRef}
                 className="header md:px-12"
                 // className="grid grid-cols-1 place-items-center gap-16 lg:grid-cols-2 lg:grid-rows-1"
                 // className="container grid max-w-screen-2xl grid-rows-[minmax(0,_1fr)_auto] lg:grid-cols-2"

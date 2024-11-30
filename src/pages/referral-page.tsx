@@ -1,8 +1,11 @@
+import { useFetchReferenceLinksQuery } from "@/entities/reference";
 import { Article } from "@/shared/ui/article";
 import { Title } from "@/shared/ui/title";
 import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
 
 export const ReferralPage = () => {
+    const { data: links } = useFetchReferenceLinksQuery();
+
     return (
         <Article
             variant="grid"
@@ -68,7 +71,15 @@ export const ReferralPage = () => {
                     </li>
                 </ul>
 
-                <ClipboardCopy textToCopy="https//referal.link/nameadminname" />
+                <ClipboardCopy
+                    textToCopy={
+                        links?.find(
+                            link =>
+                                link.type_display === "Ссылка на регистрацию" &&
+                                link.referral_type === "Доля оборота"
+                        )?.link
+                    }
+                />
             </section>
 
             <section className="col-span-2 grid space-y-6 rounded-2xl bg-secondary py-4 @container md:col-span-1">
@@ -118,7 +129,15 @@ export const ReferralPage = () => {
                     </li>
                 </ul>
 
-                <ClipboardCopy textToCopy="https//referal.link/nameadminname" />
+                <ClipboardCopy
+                    textToCopy={
+                        links?.find(
+                            link =>
+                                link.type_display === "Ссылка на регистрацию" &&
+                                link.referral_type === "Доля дохода"
+                        )?.link
+                    }
+                />
             </section>
 
             <footer className="col-span-2">

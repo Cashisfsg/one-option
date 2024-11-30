@@ -51,8 +51,8 @@ export const referenceApi = rootApi
                 ) => {
                     return response.map(data => ({
                         code: data.code,
-                        link: `${import.meta.env.VITE_BASE_API_URL}/${data.code}`,
-                        type_display: data.type_display,
+                        link: `${import.meta.env.VITE_BASE_URL}/${data.code}`,
+                        type_display: data.type_display.trim(),
                         referral_type: data.referral_type
                     }));
                 }

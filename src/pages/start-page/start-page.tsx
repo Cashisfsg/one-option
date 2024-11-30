@@ -8,13 +8,6 @@ import { Title } from "@/shared/ui/title";
 export const StartPage = () => {
     const headerRef = useRef<HTMLElement>(null);
 
-    const onClickHandler = () => {
-        headerRef.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    };
-
     return (
         <main>
             <header

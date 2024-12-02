@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useRecoverPasswordMutation } from "@/shared/api";
 
-import { Input } from "@/shared/ui/input";
-
 import Logo from "@/assets/logo.png";
 import { EmailIcon } from "@/entities/user/assets";
 
@@ -61,14 +59,13 @@ export const ResetPasswordPage = () => {
                     <EmailIcon className="text-2xl-4xl-xs-md text-violet-primary" />
                     <span className="sr-only">Email</span>
                 </label>
-                <Input
+                <input
                     id={email}
                     type="email"
                     name="email"
                     required
                     placeholder="Почта"
-                    variant="secondary"
-                    className="flex-auto text-base-xl-xs-md"
+                    className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                 />
             </form>
 
@@ -90,8 +87,6 @@ export const ResetPasswordPage = () => {
                     </Link>
                 </p>
             </footer>
-            {/* </section> */}
-            {/* </main> */}
         </>
     );
 };

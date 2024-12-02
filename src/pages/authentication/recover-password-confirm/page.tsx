@@ -6,8 +6,6 @@ import {
     type ConfirmPasswordRequest
 } from "@/shared/api";
 
-import { Input } from "@/shared/ui/input";
-
 import { PasswordIcon } from "@/entities/user/assets";
 import Logo from "@/assets/logo.png";
 
@@ -74,14 +72,14 @@ export const ResetPasswordConfirmPage = () => {
                         <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
                         <span className="sr-only">Пароль</span>
                     </label>
-                    <Input
+                    <input
                         id={newPasswordId}
                         type="password"
                         name="new_password"
                         minLength={8}
                         maxLength={128}
                         placeholder="Пароль"
-                        className="flex-auto rounded-lg px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                     />
                 </div>
 
@@ -93,14 +91,14 @@ export const ResetPasswordConfirmPage = () => {
                         <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
                         <span className="sr-only">Повторите пароль</span>
                     </label>
-                    <Input
+                    <input
                         id={confirmPasswordId}
                         type="password"
                         name="confirm_password"
                         minLength={8}
                         maxLength={128}
                         placeholder="Подтвердите пароль"
-                        className="flex-auto rounded-lg px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
                     />
                 </div>
             </form>

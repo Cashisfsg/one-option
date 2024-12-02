@@ -136,7 +136,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     required
                     className="checkbox size-6-8-xs-md"
                 />
-                <label
+                <span
                     id={labelId}
                     className="text-sm-lg-xs-md leading-none"
                 >
@@ -145,7 +145,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     <a className="text-sm-lg-xs-md underline underline-offset-2">
                         Пользовательского соглашения
                     </a>
-                </label>
+                </span>
             </fieldset>
         </form>
     );

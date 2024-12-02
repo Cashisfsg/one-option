@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { rootApi } from "./api";
+import { userApi } from "@/entities/user/api";
 
 type AuthorizedUser = {
     token: string;
@@ -61,6 +62,7 @@ export const authSlice = createSlice({
                 }
             )
             .addMatcher(rootApi.endpoints.signOut.matchFulfilled, state => {
+                userApi.util.resetApiState();
                 state.token = null;
                 state.isAuthenticated = false;
                 localStorage.removeItem("token");

@@ -1,3 +1,4 @@
+import { cnBase } from "tailwind-variants";
 import { Wallet } from "../../api";
 
 import { WalletListItem } from "./wallet-list-item";
@@ -8,17 +9,21 @@ interface WalletListProps
 }
 
 export const WalletList: React.FC<WalletListProps> = ({
+    className,
     wallets,
     ...props
 }) => {
     return (
-        <ul {...props}>
+        <dl
+            className={cnBase("", className)}
+            {...props}
+        >
             {wallets.map(wallet => (
                 <WalletListItem
                     key={wallet.wallet_id}
                     wallet={wallet}
                 />
             ))}
-        </ul>
+        </dl>
     );
 };

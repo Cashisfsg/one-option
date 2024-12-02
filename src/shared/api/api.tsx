@@ -30,13 +30,7 @@ export const rootApi = createApi({
                 body: body
             })
         }),
-        incrementTokenCounter: builder.mutation<any, { token_ref: string }>({
-            query: body => ({
-                url: "/register/token/count/",
-                method: "POST",
-                body: body
-            })
-        }),
+
         recoverPassword: builder.mutation<
             SuccessResponse,
             RecoverPasswordRequest
@@ -85,6 +79,5 @@ export const {
     useRecoverPasswordMutation,
     useConfirmPasswordMutation,
     useChangePasswordMutation,
-    useIncrementTokenCounterMutation,
     useSignOutMutation
 } = rootApi;

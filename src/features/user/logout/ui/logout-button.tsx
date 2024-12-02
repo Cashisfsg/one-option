@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import { cn } from "@/shared/lib";
+import { cnBase } from "tailwind-variants";
 
 import { useSignOutMutation } from "@/shared/api";
 
@@ -31,7 +31,10 @@ export const SignOutButton: React.FC<SignOutButtonProps> = ({
         <Link
             to="/"
             onClick={onClickHandler}
-            className={cn("flex h-full items-center justify-center", className)}
+            className={cnBase(
+                "flex h-full items-center justify-center",
+                className
+            )}
             {...props}
         >
             {children}

@@ -206,7 +206,7 @@ export const ProfilePage = () => {
                         renderSuccess={user => (
                             <UserFTDMeter
                                 aria-valuenow={user.ftd_count}
-                                aria-valuemax={99}
+                                aria-valuemax={user.next_level}
                             />
                         )}
                         loadingFallback={
@@ -227,15 +227,15 @@ export const ProfilePage = () => {
 
                 <Button
                     form={formId}
-                    className="h-11 lg:self-end lg:justify-self-end"
+                    className="mt-4 h-11 lg:self-end lg:justify-self-end"
                 >
                     Сменить пароль
                 </Button>
             </Section>
 
-            <Section className="lg:col-span-3">
+            <Section className="space-y-6 overflow-hidden lg:col-span-3">
                 <header className="flex justify-between">
-                    <h2>Кошельки</h2>
+                    <h2 className="text-2xl">Кошельки</h2>
                     <AttachWalletDialog />
                 </header>
 

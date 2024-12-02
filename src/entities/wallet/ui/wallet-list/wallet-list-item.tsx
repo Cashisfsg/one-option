@@ -1,27 +1,14 @@
-import { cnBase } from "tailwind-variants";
-
 import { Wallet } from "../../api";
 
-interface WalletListItemProps
-    extends Omit<React.ComponentPropsWithoutRef<"li">, "children"> {
+interface WalletListItemProps {
     wallet: Wallet;
 }
 
-export const WalletListItem: React.FC<WalletListItemProps> = ({
-    className,
-    wallet,
-    ...props
-}) => {
+export const WalletListItem: React.FC<WalletListItemProps> = ({ wallet }) => {
     return (
-        <li
-            className={cnBase(
-                "flex items-center justify-between gap-x-8",
-                className
-            )}
-            {...props}
-        >
-            <span>{wallet.type_wallet}</span>
-            <span className="truncate">{wallet.wallet_id}</span>
-        </li>
+        <div className="-mx-6 grid grid-cols-[minmax(min-content,_auto)_minmax(0,_1fr)] gap-x-8 px-6 py-4 odd:bg-quaternary">
+            <dt className="bg-quaternary">{wallet.type_wallet}</dt>
+            <dd className="truncate">{wallet.wallet_id}</dd>
+        </div>
     );
 };

@@ -133,9 +133,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             <fieldset className="grid grid-cols-[auto_1fr] place-items-center gap-x-2-4-xs-md text-start text-lg ">
                 <Checkbox
                     aria-labelledby={labelId}
+                    required
                     className="checkbox size-6-8-xs-md"
                 />
-                <span
+                <label
                     id={labelId}
                     className="text-sm-lg-xs-md leading-none"
                 >
@@ -144,7 +145,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     <a className="text-sm-lg-xs-md underline underline-offset-2">
                         Пользовательского соглашения
                     </a>
-                </span>
+                </label>
             </fieldset>
         </form>
     );

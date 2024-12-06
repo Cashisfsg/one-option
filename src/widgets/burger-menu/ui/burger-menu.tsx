@@ -428,7 +428,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
     return (
         <li
-            role="none"
+            role="presentation"
             className={className}
             {...props}
         >

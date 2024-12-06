@@ -60,6 +60,13 @@ const links = [
 export const Header = () => {
     const location = useLocation();
 
+    const onClickHandler = () => {
+        const contentRoot = document.querySelector("#root")!;
+
+        contentRoot.removeAttribute("inert");
+        contentRoot.removeAttribute("aria-hidden");
+    };
+
     return (
         <>
             <nav className="container hidden justify-between md:flex">
@@ -153,7 +160,6 @@ export const Header = () => {
                             >
                                 <span className="sr-only">{link.title}</span>
                                 <svg
-                                    className="icon"
                                     height="1em"
                                     width="1em"
                                 >
@@ -168,10 +174,9 @@ export const Header = () => {
                         role="presentation"
                         className="size-[clamp(3rem,_0.375rem_+_5.45vw,_4.75rem)] bg-[#2b2930] has-[a[aria-current=page]]:bg-violet-primary"
                     >
-                        <UserSignOutButton className="text-2xl-3xl-md-xl">
+                        <UserSignOutButton className="justify-center text-2xl-3xl-md-xl">
                             <span className="sr-only">Выйти</span>
                             <svg
-                                className="icon"
                                 height="1em"
                                 width="1em"
                             >
@@ -238,24 +243,49 @@ export const Header = () => {
                                 </svg>
                             </BurgerMenu.Header>
 
-                            <BurgerMenu.Menu className="mt-4 w-max text-white-primary">
+                            <BurgerMenu.Menu className="group mt-4 grid w-max grid-cols-[auto_1fr] text-white-primary">
                                 {links.map((link, index) => (
                                     <BurgerMenu.MenuItem
                                         key={index}
                                         index={index}
+                                        className="menu col-span-2 grid grid-cols-subgrid"
                                     >
                                         <NavLink
                                             to={link.url}
-                                            className="flex cursor-pointer items-center gap-x-4 bg-[#2d2930] p-4 focus:bg-violet-primary focus:outline-none focus-visible:outline-transparent"
+                                            onClick={onClickHandler}
+                                            className="col-span-2 grid cursor-pointer grid-cols-subgrid items-center gap-x-4 bg-[#2d2930] p-4 hover:bg-violet-primary focus:outline-none focus-visible:outline-transparent [&:not(.group:hover)]:aria-[current=page]:bg-violet-primary"
                                         >
-                                            <SVGPicker
+                                            <svg
+                                                height="1.5em"
+                                                width="1.5em"
+                                            >
+                                                <use
+                                                    xlinkHref={`${NavigationSprite}#${link.name}`}
+                                                />
+                                            </svg>
+                                            <span>{link.title}</span>
+                                            {/* <SVGPicker
                                                 name={link.name}
                                                 className="text-2xl"
                                             />
-                                            <span>{link?.title}</span>
+                                            <span>{link?.title}</span> */}
                                         </NavLink>
                                     </BurgerMenu.MenuItem>
                                 ))}
+                                <UserSignOutButton
+                                    onClick={onClickHandler}
+                                    className="col-span-2 grid cursor-pointer grid-cols-subgrid items-center gap-x-4 bg-[#2d2930] p-4 hover:bg-violet-primary focus:outline-none focus-visible:outline-transparent [&:not(.group:hover)]:aria-[current=page]:bg-violet-primary"
+                                >
+                                    <svg
+                                        height="1.5em"
+                                        width="1.5em"
+                                    >
+                                        <use
+                                            xlinkHref={`${NavigationSprite}#logout`}
+                                        />
+                                    </svg>
+                                    <span>Выйти</span>
+                                </UserSignOutButton>
                             </BurgerMenu.Menu>
                             <BurgerMenu.Close className="absolute inset-[1rem_1rem_auto_auto] rounded bg-quaternary p-3 text-white-primary" />
                         </BurgerMenu.Content>

@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { composeEventHandlers } from "@/shared/lib/utils/compose-event-handlers";
 
 import { cnBase } from "tailwind-variants";
 
@@ -8,6 +9,7 @@ interface SignOutButtonProps extends React.ComponentPropsWithoutRef<"a"> {}
 
 export const SignOutButton: React.FC<SignOutButtonProps> = ({
     className,
+    onClick,
     children,
     ...props
 }) => {
@@ -30,11 +32,8 @@ export const SignOutButton: React.FC<SignOutButtonProps> = ({
     return (
         <Link
             to="/"
-            onClick={onClickHandler}
-            className={cnBase(
-                "flex h-full items-center justify-center",
-                className
-            )}
+            onClick={composeEventHandlers(onClick, onClickHandler)}
+            className={cnBase("flex h-full items-center", className)}
             {...props}
         >
             {children}

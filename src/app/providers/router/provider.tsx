@@ -12,8 +12,6 @@ import { useAuth } from "@/shared/lib/hooks/use-auth";
 
 import { GoogleAuthenticationPage } from "@/pages/authentication/google";
 
-// import { AuthenticationLayout } from "@/pages/authentication/layout";
-// import { AppLayout } from "@/pages/app-layout";
 import { SignInPage } from "@/pages/authentication/sign-in";
 import { SignUpPage } from "@/pages/authentication/sign-up";
 

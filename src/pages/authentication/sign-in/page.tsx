@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { AuthorizationHeaderWidget } from "@/widgets/authorization-header";
 import { UserAuthenticationForm } from "@/features/user/authenticate";
-// import { SignInWithGoogleButton } from "@/features/user/authectication/sign-in-with-google";
 
 export const SignInPage = () => {
     const authenticationFormId = `form-${useId()}`;

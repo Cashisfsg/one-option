@@ -1,5 +1,6 @@
 import { useId } from "react";
 
+import { UserLevelsTable } from "@/widgets/user/user-levels-table";
 import { BalanceCard } from "@/widgets/user";
 import { AttachWalletDialog } from "@/widgets/wallet/attach-wallet-dialog";
 import { WalletListWidget } from "@/widgets/wallet/table";
@@ -13,8 +14,6 @@ import { Section } from "@/shared/ui/section";
 import { Button } from "@/shared/ui/button";
 
 import { UserFTDMeter } from "@/entities/user/ui/user-ftd-meter";
-import { Table, TableRow } from "@/shared/ui/table";
-import * as Tooltip from "@/shared/ui/tooltip";
 
 // import Avatar from "@/assets/avatar.png";
 
@@ -23,151 +22,19 @@ import InstagramLogo from "@/assets/img/instagram-logo.png";
 import YouTubeLogo from "@/assets/img/youtube-logo.png";
 import { EditAccountCredentialsForm } from "@/features/user/edit-account-credentials";
 import { Fetch } from "@/shared/ui/fetch";
-import {
-    useFetchLevelsListQuery,
-    useFetchUserDataQuery
-} from "@/entities/user/api";
+import { useFetchUserDataQuery } from "@/entities/user/api";
 
 export const ProfilePage = () => {
     const formId = useId();
-    const { data: user, isSuccess } = useFetchUserDataQuery();
 
     return (
         <Article
             variant="grid"
             className="lg:grid-cols-[minmax(0,_3fr)_minmax(0,_4fr)_minmax(0,_4fr)]"
         >
-            <Section
-                className="flex flex-col items-center gap-y-2 overflow-hidden pb-0 text-center md:px-4"
-                // className="space-y-4 pb-0"
-            >
+            <Section className="flex flex-col items-center gap-y-2 overflow-hidden pb-0 text-center md:px-4">
                 <header className="self-start text-2xl">
-                    <h2>
-                        LVL <strong className="text-violet-primary">1</strong>{" "}
-                        <Tooltip.Root>
-                            <Tooltip.Trigger>
-                                <a>
-                                    <svg
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 14 14"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="mb-0.5 inline-block cursor-help"
-                                    >
-                                        <path
-                                            d="M14 7C14 10.866 10.866 14 7 14C3.13401 14 0 10.866 0 7C0 3.13401 3.13401 0 7 0C10.866 0 14 3.13401 14 7Z"
-                                            fill="#555555"
-                                        />
-                                        <path
-                                            d="M6.11111 5H6.55556L7.88889 5.84V11H6.11111V5ZM6 3.044V2.9C6 2.408 6.21111 2 6.95556 2H7.04444C7.78889 2 8 2.408 8 2.9V3.044C8 3.536 7.78889 3.944 7.04444 3.944H6.95556C6.21111 3.944 6 3.536 6 3.044Z"
-                                            fill="white"
-                                        />
-                                    </svg>
-                                </a>
-                            </Tooltip.Trigger>
-                            <Tooltip.Portal>
-                                <Tooltip.Content className="z-50 max-w-[calc(100dvw_-_2rem)] rounded-xl border-2 border-violet-primary bg-[#211F26] shadow-md">
-                                    <section className="px-4 pt-2 text-white">
-                                        <header>
-                                            <h3 className="font-primary text-xl">
-                                                Уровень партнера
-                                            </h3>
-                                            <p className="mt-2 text-base">
-                                                Увеличивай число депозитов и
-                                                получай больше прибыли !
-                                            </p>
-                                        </header>
-                                        <Fetch
-                                            useQuery={useFetchLevelsListQuery}
-                                            args={undefined}
-                                            renderSuccess={data => (
-                                                <Table
-                                                    uniqueKey="level"
-                                                    headers={[
-                                                        "Уровень",
-                                                        "Доход",
-                                                        "Оборот",
-                                                        "Депозит"
-                                                    ]}
-                                                    data={data}
-                                                    renderHeader={headers => (
-                                                        <thead>
-                                                            <TableRow>
-                                                                {headers.map(
-                                                                    (
-                                                                        header,
-                                                                        i
-                                                                    ) => (
-                                                                        <th
-                                                                            key={
-                                                                                i
-                                                                            }
-                                                                            className="bg-[#36343B] px-3 py-1.5 text-sm font-normal normal-case"
-                                                                        >
-                                                                            {
-                                                                                header
-                                                                            }
-                                                                        </th>
-                                                                    )
-                                                                )}
-                                                            </TableRow>
-                                                        </thead>
-                                                    )}
-                                                    renderData={data => (
-                                                        <tbody className="text-center">
-                                                            {data.map(
-                                                                (row, i) => (
-                                                                    <tr
-                                                                        key={i}
-                                                                        className={
-                                                                            isSuccess &&
-                                                                            user.level ===
-                                                                                row.level
-                                                                                ? "bg-violet-primary"
-                                                                                : "bg-[#4a484f]"
-                                                                        }
-                                                                    >
-                                                                        {Object.values(
-                                                                            row
-                                                                        ).map(
-                                                                            (
-                                                                                cell,
-                                                                                j
-                                                                            ) => (
-                                                                                <td
-                                                                                    key={
-                                                                                        j
-                                                                                    }
-                                                                                    className="px-3 py-1.5"
-                                                                                >
-                                                                                    {
-                                                                                        cell
-                                                                                    }
-                                                                                </td>
-                                                                            )
-                                                                        )}
-                                                                    </tr>
-                                                                )
-                                                            )}
-                                                        </tbody>
-                                                    )}
-                                                    className="mt-2 border-separate border-spacing-x-0 border-spacing-y-0.5 rounded-lg shadow-lg"
-                                                />
-                                            )}
-                                        />
-
-                                        <footer className="-mx-4 mt-2 rounded-b-xl bg-violet-primary py-2.5 text-center">
-                                            <p className="font-primary text-xl/none">
-                                                FTD 26 / 99
-                                            </p>
-                                            <p>до следующего уровня</p>
-                                        </footer>
-                                    </section>
-                                </Tooltip.Content>
-                            </Tooltip.Portal>
-                        </Tooltip.Root>
-                    </h2>
+                    <UserLevelsTable />
                 </header>
 
                 <UpdateUserPhotoForm />
@@ -233,7 +100,7 @@ export const ProfilePage = () => {
                 </Button>
             </Section>
 
-            <Section className="space-y-6 overflow-hidden lg:col-span-3">
+            <Section className="space-y-6 overflow-x-clip lg:col-span-3">
                 <header className="flex justify-between">
                     <h2 className="text-2xl">Кошельки</h2>
                     <AttachWalletDialog />

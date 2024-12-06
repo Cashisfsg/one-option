@@ -2,7 +2,7 @@
     background: linear-gradient(
         to right,
         #793aff var(--progress),
-        #36343b var(--progress)
+        var(--start-color, #36343b) var(--progress)
     );
     will-change: background;
 }

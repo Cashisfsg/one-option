@@ -21,7 +21,7 @@
     display: block;
 }
 
-.root:has(.input:user-invalid) {
+.root:has(.input:not(:placeholder-shown):user-invalid) {
     color: #cb3d40;
     border: 2px solid #cb3d40;
 }

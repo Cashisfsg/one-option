@@ -30,7 +30,6 @@ export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
     return (
         <form
             onSubmit={composeEventHandlers(onSubmit, copyToClipboard)}
-            onCopy={() => console.log("Text copied to clipboard")}
             className="grid grid-cols-[minmax(0,_1fr)_auto] gap-x-2 @container"
             {...props}
         >

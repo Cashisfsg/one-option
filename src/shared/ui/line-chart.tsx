@@ -65,11 +65,6 @@ const Chart = ({
     const xExtent = extent(xAxis.data.map(value => new Date(value)));
     const yExtent = extent(yAxis.flatMap(d => d.data));
 
-    console.log("xAxis", xAxis);
-    console.log("yAxis", yAxis);
-    console.log("xExtent", xExtent);
-    console.log("yExtent", yExtent);
-
     const xScale = scaleUtc()
         .domain(xExtent)
         .range([margin.left, width - margin.right]);
@@ -84,15 +79,8 @@ const Chart = ({
     // const d = lineChart(data);
 
     const dArray = yAxis.map(yValue => {
-        console.log("yValue");
-        console.log(yValue);
-
         return lineChart(yValue.data);
     });
-
-    console.log("dArray");
-
-    console.log(dArray);
 
     useEffect(() => {
         const chart = select(chartRef.current);

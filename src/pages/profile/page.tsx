@@ -1,5 +1,3 @@
-import { useId } from "react";
-
 import { UserLevelsTable } from "@/widgets/user/user-levels-table";
 import { BalanceCard } from "@/widgets/user";
 import { AttachWalletDialog } from "@/widgets/wallet/attach-wallet-dialog";
@@ -11,7 +9,6 @@ import { ChangePasswordForm } from "@/entities/user/ui/forms/change-password-for
 
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
-import { Button } from "@/shared/ui/button";
 
 import { UserFTDMeter } from "@/entities/user/ui/user-ftd-meter";
 
@@ -25,8 +22,6 @@ import { Fetch } from "@/shared/ui/fetch";
 import { useFetchUserDataQuery } from "@/entities/user/api";
 
 export const ProfilePage = () => {
-    const formId = useId();
-
     return (
         <Article
             variant="grid"
@@ -90,14 +85,7 @@ export const ProfilePage = () => {
             <Section className="grid grid-rows-[auto_auto_1fr] gap-y-4 md:px-4">
                 <h2 className="text-2xl">Безопасность</h2>
 
-                <ChangePasswordForm id={formId} />
-
-                <Button
-                    form={formId}
-                    className="mt-4 h-11 lg:self-end lg:justify-self-end"
-                >
-                    Сменить пароль
-                </Button>
+                <ChangePasswordForm />
             </Section>
 
             <Section className="space-y-6 overflow-x-clip lg:col-span-3">

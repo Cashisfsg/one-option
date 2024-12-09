@@ -29,8 +29,6 @@ export const AttachWalletDialog = () => {
 
                     <footer className="flex flex-wrap-reverse justify-end gap-5">
                         <Dialog.Close
-                            // type="reset"
-                            // form={formId}
                             className={buttonVariants({
                                 variant: "outlined",
                                 className: "w-fit flex-auto sm:max-w-60"

@@ -1,6 +1,4 @@
-.input {
-    &:user-invalid {
-        color: #cb3d40;
-        border: 2px solid #cb3d40;
-    }
+.input:not(:placeholder-shown):user-invalid {
+    color: #cb3d40;
+    border: 2px solid #cb3d40;
 }

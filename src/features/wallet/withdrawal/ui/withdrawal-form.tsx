@@ -48,7 +48,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
 
             event.currentTarget.reset();
         } catch (error) {
-            console.error(error);
+            toast.error(error?.data?.error);
 
             Object.values(error?.data)?.forEach(value =>
                 value?.forEach(v => toast.error(v))

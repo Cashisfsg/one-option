@@ -4,7 +4,6 @@ import * as BurgerMenu from "../burger-menu/ui/burger-menu";
 
 import { UserSignOutButton } from "@/features/user/logout";
 
-import { SVGPicker } from "./model/svg-picker";
 import { Title } from "@/shared/ui/title";
 
 import NavigationSprite from "@/assets/img/svg/navigation-sprite.svg";
@@ -41,7 +40,7 @@ const links = [
         title: "Профиль"
     },
     {
-        url: "/support",
+        url: "https://t.me/Diram_supportbot",
         name: "support",
         title: "Поддержка"
     },
@@ -56,7 +55,7 @@ const links = [
         title: "Уведомления"
     },
     {
-        url: "/telegram",
+        url: "https://t.me/OptimaX_VIP",
         name: "telegram",
         title: "Telegram"
     }
@@ -159,8 +158,8 @@ export const Header = () => {
                             role="presentation"
                             className="size-[clamp(3rem,_0.375rem_+_5.45vw,_4.75rem)] bg-[#2b2930] has-[a[aria-current=page]]:bg-violet-primary"
                         >
-                            <NavLink
-                                to={link.url}
+                            <a
+                                href={link.url}
                                 className="flex h-full items-center justify-center text-2xl-3xl-md-xl"
                             >
                                 <span className="sr-only">{link.title}</span>
@@ -172,7 +171,7 @@ export const Header = () => {
                                         xlinkHref={`${NavigationSprite}#${link.name}`}
                                     />
                                 </svg>
-                            </NavLink>
+                            </a>
                         </li>
                     ))}
                     <li
@@ -259,21 +258,23 @@ export const Header = () => {
                                             index={index}
                                             className="menu col-span-2 grid grid-cols-subgrid"
                                         >
-                                            <NavLink
-                                                to={link.url}
-                                                onClick={onClickHandler}
-                                                className="col-span-2 grid cursor-pointer grid-cols-subgrid items-center gap-x-4 bg-[#2d2930] p-4 focus:bg-violet-primary focus:outline-none focus-visible:outline-transparent group-[:not(:has(:focus-within))]:aria-[current=page]:bg-violet-primary"
-                                            >
-                                                <svg
-                                                    height="1.5em"
-                                                    width="1.5em"
+                                            {
+                                                <NavLink
+                                                    to={link.url}
+                                                    onClick={onClickHandler}
+                                                    className="col-span-2 grid cursor-pointer grid-cols-subgrid items-center gap-x-4 bg-[#2d2930] p-4 focus:bg-violet-primary focus:outline-none focus-visible:outline-transparent group-[:not(:has(:focus-within))]:aria-[current=page]:bg-violet-primary"
                                                 >
-                                                    <use
-                                                        xlinkHref={`${NavigationSprite}#${link.name}`}
-                                                    />
-                                                </svg>
-                                                <span>{link.title}</span>
-                                            </NavLink>
+                                                    <svg
+                                                        height="1.5em"
+                                                        width="1.5em"
+                                                    >
+                                                        <use
+                                                            xlinkHref={`${NavigationSprite}#${link.name}`}
+                                                        />
+                                                    </svg>
+                                                    <span>{link.title}</span>
+                                                </NavLink>
+                                            }
                                         </BurgerMenu.MenuItem>
                                     ))}
                                 <UserSignOutButton

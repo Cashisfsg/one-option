@@ -4,7 +4,7 @@ export const BurgerMenuContext = createContext<{
     burgerMenuTriggerId: string;
     burgerMenuId: string;
     triggerRef: React.RefObject<HTMLButtonElement>;
-    currentFocusableElementIndex: React.RefObject<number>;
+    currentFocusableElementIndex: React.MutableRefObject<number>;
     dialogRef: React.RefObject<HTMLDialogElement>;
 } | null>(null);
 

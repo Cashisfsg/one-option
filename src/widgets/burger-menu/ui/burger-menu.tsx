@@ -386,10 +386,10 @@ const Menu: React.FC<MenuProps> = props => {
 
     return (
         <ul
-            {...props}
             id={burgerMenuId}
             role="menu"
             aria-labelledby={burgerMenuTriggerId}
+            {...props}
         />
     );
 };
@@ -433,7 +433,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             {...props}
         >
             {React.cloneElement(anchorElement, {
-                tabindex: -1,
+                tabIndex: -1,
                 role: "menuitem",
                 onClick: composeEventHandlers(onClick, onClickHandler),
                 onMouseOver: composeEventHandlers(

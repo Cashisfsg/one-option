@@ -24,7 +24,7 @@ export const SubReferralPage = () => {
                 <ClipboardCopy
                     textToCopy={
                         isSuccess
-                            ? `${import.meta.env.VITE_BASE_API_URL}?referral_id=${user?.sub_ref}`
+                            ? `${import.meta.env.VITE_BASE_REFERRAL_URL}?referral_id=${user?.sub_ref}`
                             : ""
                     }
                 />

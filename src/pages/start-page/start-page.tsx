@@ -400,8 +400,8 @@ export const StartPage = () => {
                 </div>
             </section>
 
-            <footer className="hidden bg-black sm:block">
-                <nav className="container grid grid-cols-4 gap-x-4 py-6 lg:grid-cols-5 lg:gap-x-8 xl:gap-x-16">
+            <footer className="bg-black">
+                <nav className="container grid grid-cols-3 gap-x-4 py-6 @container lg:grid-cols-[auto,_repeat(3,_minmax(0,_1fr))] lg:gap-x-8 xl:gap-x-16">
                     <svg
                         width="335"
                         height="188"
@@ -633,7 +633,47 @@ export const StartPage = () => {
                             </linearGradient>
                         </defs>
                     </svg>
-                    <div>
+
+                    <dl className="col-span-3 grid auto-rows-auto grid-cols-1 grid-rows-[min-content] gap-x-4 gap-y-6 text-sm-base-xs-lg @md:grid-cols-subgrid @md:gap-y-2">
+                        <div className="row-span-2 grid gap-y-2 @md:grid-rows-subgrid">
+                            <dt className="text-base-lg-xs-lg">
+                                Партнерская программа
+                            </dt>
+                            <dd>
+                                <ul className="font-secondary">
+                                    <li>Регистрация</li>
+                                </ul>
+                            </dd>
+                        </div>
+
+                        <div className="row-span-2 grid gap-y-2 @md:grid-rows-subgrid">
+                            <dt className="text-base-lg-xs-lg">
+                                Частые вопросы
+                            </dt>
+                            <dd>
+                                <ul className="font-secondary">
+                                    <li>FAQ</li>
+                                </ul>
+                            </dd>
+                        </div>
+
+                        <div className="row-span-2 grid gap-y-2 @md:grid-rows-subgrid">
+                            <dt className="text-base-lg-xs-lg">
+                                Правовые документы
+                            </dt>
+                            <dd>
+                                <ul className="font-secondary">
+                                    <li>Политика приватности</li>
+                                    <li>Правила в отношении платежей</li>
+                                    <li>Пользовательское соглашение</li>
+                                    <li>Соглашение о рисках</li>
+                                    <li>Регламент торговых операций</li>
+                                    <li>Регламент неторговых операций</li>
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                    {/* <div>
                         <h3>Частые вопросы</h3>
                         <ul className="mt-2 space-y-1 font-secondary text-sm">
                             <li>Основные вопросы</li>
@@ -666,12 +706,12 @@ export const StartPage = () => {
                         <ul className="mt-2 space-y-1 font-secondary text-sm">
                             <li>Регистрация</li>
                         </ul>
-                    </div>
+                    </div> */}
                 </nav>
 
                 <hr className="border border-[#3c3c3c]" />
 
-                <div className="container -mx-6 space-y-2 py-6 font-secondary text-sm text-[#79747e]">
+                <div className="container -mx-6 space-y-2 text-pretty py-6 font-secondary text-sm text-[#79747e]">
                     <p>One Option — Это Ведущая Платформа</p>
                     <p>
                         Для Торговли Бинарными Опционами, Предлагающая

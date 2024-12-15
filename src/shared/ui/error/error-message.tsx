@@ -1,7 +1,12 @@
+import { cnBase } from "tailwind-variants";
+
 interface ErrorMessageProps
-    extends Omit<React.ComponentPropsWithoutRef<"output">, "role"> {}
+    extends Omit<React.ComponentPropsWithoutRef<"output">, "role"> {
+    children?: string;
+}
 
 export const ErrorMessage: React.FC<ErrorMessageProps> = ({
+    className,
     children,
     ...props
 }) => {
@@ -9,6 +14,10 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
         <output
             {...props}
             role="alert"
+            className={cnBase(
+                "text-red-primary hidden items-center gap-x-1 font-secondary text-xs peer-aria-[invalid=true]:flex",
+                className
+            )}
         >
             <svg
                 stroke="currentColor"

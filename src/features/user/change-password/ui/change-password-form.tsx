@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useChangePasswordMutation } from "@/shared/api";
 import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
+import { ErrorMessage } from "@/shared/ui/error";
 
 import {
     passwordPairSchema as formSchema,
@@ -75,14 +76,12 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
                     {...register("oldPassword")}
                 />
 
-                <output
+                <ErrorMessage
                     id={oldPasswordErrorId}
-                    role="alert"
                     htmlFor={oldPasswordId}
-                    className="text-red-primary hidden font-secondary text-xs peer-aria-[invalid=true]:block"
                 >
                     {errors.oldPassword?.message}
-                </output>
+                </ErrorMessage>
             </div>
 
             <div className="grid gap-y-2">
@@ -98,14 +97,12 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
                     {...register("newPassword")}
                 />
 
-                <output
+                <ErrorMessage
                     id={newPasswordErrorId}
-                    role="alert"
                     htmlFor={newPasswordId}
-                    className="text-red-primary hidden font-secondary text-xs peer-aria-[invalid=true]:block"
                 >
                     {errors.newPassword?.message}
-                </output>
+                </ErrorMessage>
             </div>
 
             <div className="grid gap-y-2">
@@ -121,14 +118,12 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
                     {...register("confirmNewPassword")}
                 />
 
-                <output
+                <ErrorMessage
                     id={confirmNewPasswordErrorId}
-                    role="alert"
                     htmlFor={confirmNewPasswordId}
-                    className="text-red-primary hidden font-secondary text-xs peer-aria-[invalid=true]:block"
                 >
                     {errors.confirmNewPassword?.message}
-                </output>
+                </ErrorMessage>
             </div>
 
             <Button

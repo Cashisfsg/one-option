@@ -10,7 +10,9 @@ export const registrationCredentialsSchema = z
             .string({
                 required_error: "Поле обязательно для заполнения"
             })
-            .email({ message: "Укажите корректный адрес электронной почты" })
+            .email({
+                message: "Укажите корректный адрес электронной почты"
+            })
             .min(5, {
                 message:
                     "Адрес электронной почты должен содержать не менее 5 символов"
@@ -62,7 +64,7 @@ export const registrationCredentialsSchema = z
     })
     .refine(data => data.password === data.confirmPassword, {
         message: "Пароли должны совпадать",
-        path: ["confirmNewPassword"]
+        path: ["confirmPassword"]
     });
 
 export type RegistrationCredentialsSchema = z.infer<

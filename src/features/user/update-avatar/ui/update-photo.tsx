@@ -45,8 +45,8 @@ export const UpdateUserPhotoForm: React.FC<UpdateUserPhotoFormProps> = ({
                 >
                     <img
                         src={`${import.meta.env.VITE_BASE_API_URL}${photo}`}
-                        alt="User photo"
-                        className="size-48 rounded-full border-4 border-violet-primary object-cover"
+                        // alt="User photo"
+                        className="size-48 rounded-full border-4 border-violet-primary bg-secondary object-cover"
                     />
                     <span className="sr-only">Update user avatar</span>
                     <input

@@ -5,14 +5,12 @@ import { WalletListWidget } from "@/widgets/wallet/table";
 
 import { UpdateUserPhotoForm } from "@/features/user/update-avatar";
 
-import { ChangePasswordForm } from "@/entities/user/ui/forms/change-password-form";
+import { ChangePasswordForm } from "@/features/user/change-password";
 
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
 
 import { UserFTDMeter } from "@/entities/user/ui/user-ftd-meter";
-
-// import Avatar from "@/assets/avatar.png";
 
 import TelegramLogo from "@/assets/img/telegram-logo.png";
 import InstagramLogo from "@/assets/img/instagram-logo.png";

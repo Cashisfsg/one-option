@@ -1,32 +1,57 @@
-import { Input } from "@/shared/ui/input";
+import { useId } from "react";
+import { toast } from "sonner";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useChangePasswordMutation } from "@/shared/api";
+import { Input } from "@/shared/ui/input";
+import { Button } from "@/shared/ui/button";
+
+import {
+    passwordPairSchema as formSchema,
+    type PasswordPairSchema as FormSchema
+} from "../model/password-pair-schema";
 
 interface ChangePasswordFormProps extends React.ComponentProps<"form"> {}
 
-interface FormFields {
-    old_password: HTMLInputElement;
-    new_password: HTMLInputElement;
-    confirm_password: HTMLInputElement;
-}
-
 export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
-    const [changePassword] = useChangePasswordMutation();
+    const [changePassword, { isLoading }] = useChangePasswordMutation();
+    const oldPasswordId = `password-${useId()}`;
+    const newPasswordId = `password-${useId()}`;
+    const confirmNewPasswordId = `password-${useId()}`;
+    const oldPasswordErrorId = `error-message-${useId()}`;
+    const newPasswordErrorId = `error-message-${useId()}`;
+    const confirmNewPasswordErrorId = `error-message-${useId()}`;
 
-    const onSubmitHandler: React.FormEventHandler<
-        HTMLFormElement & FormFields
-    > = async event => {
-        event.preventDefault();
-        const { old_password, new_password, confirm_password } =
-            event.currentTarget;
+    const {
+        register,
+        handleSubmit,
+        reset,
 
+        formState: { errors }
+    } = useForm<FormSchema>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            oldPassword: "",
+            newPassword: "",
+            confirmNewPassword: ""
+        }
+    });
+
+    const onSubmitHandler: SubmitHandler<FormSchema> = async ({
+        oldPassword,
+        newPassword,
+        confirmNewPassword
+    }) => {
         try {
             await changePassword({
-                old_password: old_password.value,
-                new_password: new_password.value,
-                new_password_confirm: confirm_password.value
+                old_password: oldPassword,
+                new_password: newPassword,
+                new_password_confirm: confirmNewPassword
             }).unwrap();
-            event.currentTarget.reset();
+            reset();
+            toast.success("Пароль был успешно изменён");
         } catch (error) {
             console.error(error);
         }
@@ -34,44 +59,84 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
 
     return (
         <form
-            onSubmit={onSubmitHandler}
+            onSubmit={handleSubmit(onSubmitHandler)}
             {...props}
         >
-            <label>
-                <span>Текущий пароль</span>
+            <div className="grid gap-y-2">
+                <label htmlFor={oldPasswordId}>Текущий пароль</label>
+
                 <Input
+                    id={oldPasswordId}
                     type="password"
-                    required
-                    minLength={8}
-                    maxLength={128}
-                    name="old_password"
                     placeholder="Текущий пароль"
+                    aria-invalid={!!errors?.oldPassword}
+                    aria-errormessage={oldPasswordErrorId}
+                    className="aria-[invalid=true]:border-red-primary peer border-2 border-transparent"
+                    {...register("oldPassword")}
                 />
-            </label>
 
-            <label>
-                <span>Новый пароль</span>
+                <output
+                    id={oldPasswordErrorId}
+                    role="alert"
+                    htmlFor={oldPasswordId}
+                    className="text-red-primary hidden font-secondary text-xs peer-aria-[invalid=true]:block"
+                >
+                    {errors.oldPassword?.message}
+                </output>
+            </div>
+
+            <div className="grid gap-y-2">
+                <label htmlFor={newPasswordId}>Новый пароль</label>
+
                 <Input
+                    id={newPasswordId}
                     type="password"
-                    required
-                    minLength={8}
-                    maxLength={128}
-                    name="new_password"
                     placeholder="Новый пароль"
+                    aria-invalid={!!errors?.newPassword}
+                    aria-errormessage={newPasswordErrorId}
+                    className="aria-[invalid=true]:border-red-primary peer border-2 border-transparent"
+                    {...register("newPassword")}
                 />
-            </label>
 
-            <label>
-                <span>Подтвердите пароль</span>
+                <output
+                    id={newPasswordErrorId}
+                    role="alert"
+                    htmlFor={newPasswordId}
+                    className="text-red-primary hidden font-secondary text-xs peer-aria-[invalid=true]:block"
+                >
+                    {errors.newPassword?.message}
+                </output>
+            </div>
+
+            <div className="grid gap-y-2">
+                <label htmlFor={confirmNewPasswordId}>Подтвердите пароль</label>
+
                 <Input
+                    id={confirmNewPasswordId}
                     type="password"
-                    required
-                    minLength={8}
-                    maxLength={128}
-                    name="confirm_password"
                     placeholder="Подтвердите пароль"
+                    aria-invalid={!!errors?.confirmNewPassword}
+                    aria-errormessage={confirmNewPasswordErrorId}
+                    className="aria-[invalid=true]:border-red-primary peer border-2 border-transparent"
+                    {...register("confirmNewPassword")}
                 />
-            </label>
+
+                <output
+                    id={confirmNewPasswordErrorId}
+                    role="alert"
+                    htmlFor={confirmNewPasswordId}
+                    className="text-red-primary hidden font-secondary text-xs peer-aria-[invalid=true]:block"
+                >
+                    {errors.confirmNewPassword?.message}
+                </output>
+            </div>
+
+            <Button
+                disabled={isLoading}
+                className="mt-4 h-11 disabled:pointer-events-none disabled:opacity-50 lg:self-end lg:justify-self-end"
+            >
+                Сменить пароль
+            </Button>
         </form>
     );
 };

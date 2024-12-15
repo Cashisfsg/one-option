@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useRef, useId } from "react";
 import { cnBase } from "tailwind-variants";
 import { toast } from "sonner";
 
@@ -28,6 +28,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
 }) => {
     const amountId = `input-${useId()}`;
     const walletId = `select-${useId()}`;
+    const unvalidatedValue = useRef("");
 
     const [withdrawal] = useWithdrawalMutation();
 
@@ -53,6 +54,22 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
             Object.values(error?.data)?.forEach(value =>
                 value?.forEach(v => toast.error(v))
             );
+        }
+    };
+
+    const onBeforeInputHandler: React.FormEventHandler<
+        HTMLInputElement
+    > = event => {
+        unvalidatedValue.current = event.currentTarget.value;
+    };
+
+    const onChangeHandler: React.ChangeEventHandler<
+        HTMLInputElement
+    > = event => {
+        const input = event.currentTarget;
+
+        if (input.validity.patternMismatch) {
+            input.value = unvalidatedValue.current;
         }
     };
 
@@ -83,6 +100,8 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
                     maxLength={10}
                     pattern="\d{0,7}([.,]\d{0,2})?"
                     placeholder="Введите сумму в долларах США"
+                    onBeforeInput={onBeforeInputHandler}
+                    onChange={onChangeHandler}
                     onBlur={onBlurHandler}
                 />
             </label>

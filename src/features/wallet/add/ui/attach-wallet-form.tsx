@@ -1,5 +1,6 @@
 import { Input } from "@/shared/ui/input";
 import { Fetch } from "@/shared/ui/fetch";
+import { useDialogContext } from "@/shared/ui/dialog";
 
 import {
     useFetchWalletQuery,
@@ -16,12 +17,15 @@ interface FormFields {
 }
 
 export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
+    const { dialogRef } = useDialogContext();
     const [attachWallet] = useAttachWalletMutation();
 
     const onSubmitHandler: React.FormEventHandler<
         HTMLFormElement & FormFields
     > = async event => {
         event.preventDefault();
+
+        const form = event.currentTarget;
 
         try {
             const { wallet_type, wallet_id } = event.currentTarget;
@@ -31,7 +35,8 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                 wallet_id: wallet_id.value
             }).unwrap();
 
-            wallet_id.value = "";
+            form.reset();
+            dialogRef.current?.close();
         } catch (error) {
             console.error(error);
         }

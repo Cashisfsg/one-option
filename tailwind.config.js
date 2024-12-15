@@ -20,6 +20,9 @@ export default withTV({
                 white: {
                     DEFAULT: "#ffffff",
                     primary: "#fef7ff"
+                },
+                red: {
+                    primary: "#cb3d40"
                 }
             },
             fontFamily: {

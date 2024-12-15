@@ -48,8 +48,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             password: "",
             confirmPassword: ""
         },
-        shouldUseNativeValidation: true
-        // mode: "onSubmit",
+        shouldUseNativeValidation: true,
+        // shouldFocusError: false,
+        mode: "onBlur"
         // reValidateMode: "onSubmit"
     });
 

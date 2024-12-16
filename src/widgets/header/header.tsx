@@ -30,7 +30,7 @@ const links = [
         title: "Статистика"
     },
     {
-        url: "withdrawal",
+        url: "/withdrawal",
         name: "withdrawal",
         title: "Вывод средств"
     },

@@ -259,7 +259,14 @@ export const Footer = () => {
                         <dt className="text-base-lg-xs-lg">Частые вопросы</dt>
                         <dd>
                             <ul className="font-secondary">
-                                <li>FAQ</li>
+                                <li>
+                                    <Link
+                                        to="/faq"
+                                        className="font-normal"
+                                    >
+                                        FAQ
+                                    </Link>
+                                </li>
                             </ul>
                         </dd>
                     </div>

@@ -28,6 +28,7 @@ const ResetPasswordConfirmPage = lazy(async () =>
 );
 
 import { StartPage } from "@/pages/start-page";
+import { FAQPage } from "@/pages/FAQ/page";
 
 const DashboardPage = lazy(async () =>
     import("@/pages/dashboard").then(module => ({
@@ -124,6 +125,10 @@ const publicRouter = createBrowserRouter([
     {
         path: "google/complete/",
         element: <GoogleAuthenticationPage />
+    },
+    {
+        path: "faq",
+        element: <FAQPage />
     },
     {
         path: "*",

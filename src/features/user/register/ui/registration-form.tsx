@@ -49,12 +49,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
             confirmPassword: ""
         },
         shouldUseNativeValidation: true,
-        // shouldFocusError: false,
-        mode: "onBlur"
-        // reValidateMode: "onSubmit"
+        shouldFocusError: false,
+        mode: "onSubmit",
+        reValidateMode: "onChange"
     });
-
-    console.log("Form validation ", errors);
 
     // const onBlurHandler: React.FocusEventHandler<HTMLInputElement> = event => {
     //     console.log(

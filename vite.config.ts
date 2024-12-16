@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import legacy from "@vitejs/plugin-legacy";
 // import { ViteAliases } from "vite-aliases";
 import path from "path";
+import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,7 +29,8 @@ export default defineConfig({
             ],
             renderLegacyChunks: false
         }),
-        react()
+        react(),
+        svgr()
         // ViteAliases()
     ],
     resolve: {

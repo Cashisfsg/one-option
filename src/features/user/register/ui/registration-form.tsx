@@ -4,8 +4,6 @@ import { cnBase } from "tailwind-variants";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
-// import { toast } from "sonner";
-// import { ZodError } from "zod";
 
 import { useSignUpMutation } from "@/shared/api";
 
@@ -16,12 +14,6 @@ import {
     registrationCredentialsSchema as formSchema,
     type RegistrationCredentialsSchema as FormSchema
 } from "../model/registration-credentials-schema";
-
-// interface FormFields {
-//     email: HTMLInputElement;
-//     password: HTMLInputElement;
-//     confirmPassword: HTMLInputElement;
-// }
 
 interface RegistrationFormProps extends React.ComponentProps<"form"> {}
 
@@ -54,77 +46,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
         reValidateMode: "onChange"
     });
 
-    // const onBlurHandler: React.FocusEventHandler<HTMLInputElement> = event => {
-    //     console.log(
-    //         "Aria-invalid",
-    //         event.currentTarget.getAttribute("aria-invalid")
-    //     );
-    //     console.log("Errors", errors);
-
-    //     // if (event.currentTarget.getAttribute("aria-invalid") !== "true") return;
-
-    //     const name = event.currentTarget.getAttribute(
-    //         "name"
-    //     ) as keyof typeof errors;
-
-    //     const errorMessage = errors[name]?.message;
-
-    //     console.log("Error message: " + errorMessage);
-
-    //     if (!errorMessage) return;
-
-    //     toast.error(errorMessage);
-    // };
-
-    // const onChangeHandler: React.ChangeEventHandler<
-    //     HTMLInputElement
-    // > = event => {
-    //     const input = event.currentTarget;
-    //     if (input.getAttribute("aria-invalid") === "false") return;
-    //     input.setAttribute("aria-invalid", "false");
-    // };
-
-    // const onFocusHandler: React.FocusEventHandler<HTMLInputElement> = event => {
-    //     console.log("Focus");
-
-    //     event.currentTarget.setAttribute("aria-invalid", "false");
-    // };
-
     const onSubmitHandler: SubmitHandler<FormSchema> = async data => {
-        // event.preventDefault();
-        // const form = event.currentTarget;
-        // try {
-        //     const parseObject = formSchema.parse(getValues());
-        //     console.log("Parse object: ", parseObject);
-        // } catch (error) {
-        //     if (!(error instanceof ZodError)) {
-        //         console.error(error);
-        //         return;
-        //     }
-        //     const uniqueErrors: Record<string, string> = error.errors.reduce(
-        //         (acc, error) => {
-        //             const key = error.path[0];
-        //             if (!(key in acc)) {
-        //                 acc[key] = error.message;
-        //             }
-        //             return acc;
-        //         },
-        //         {}
-        //     );
-        //     console.log("Unique errors: ", uniqueErrors);
-        //     console.log("Errors: ", error.errors);
-        //     Object.values(uniqueErrors).forEach(error => toast.error(error));
-        //     Object.keys(uniqueErrors).forEach(key => {
-        //         console.log(key, form[key]);
-        //         (form[key] as HTMLInputElement)?.setAttribute(
-        //             "aria-invalid",
-        //             "true"
-        //         );
-        //     });
-        //     // toast.error(error.errors[0]?.message);
-        //     return;
-        // }
-
         try {
             let request = {
                 email: data.email,
@@ -167,11 +89,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     <input
                         id={emailId}
                         type="email"
-                        // required
                         autoComplete="off"
                         placeholder="Почта"
                         aria-invalid={!!errors?.email}
-                        // onFocus={onFocusHandler}
                         {...register("email")}
                         className="flex-auto rounded-lg border-2 border-transparent bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black aria-[invalid=true]:border-red-primary aria-[invalid=true]:text-red-primary"
                     />
@@ -188,11 +108,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     <input
                         id={passwordId}
                         type="password"
-                        // required
                         autoComplete="off"
                         placeholder="Пароль"
                         aria-invalid={!!errors?.password}
-                        // onFocus={onFocusHandler}
                         {...register("password")}
                         className="flex-auto rounded-lg border-2 border-transparent bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black aria-[invalid=true]:border-red-primary aria-[invalid=true]:text-red-primary"
                     />
@@ -209,11 +127,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                     <input
                         id={confirmPasswordId}
                         type="password"
-                        // required
                         autoComplete="off"
                         placeholder="Подтвердите пароль"
                         aria-invalid={!!errors?.confirmPassword}
-                        // onFocus={onFocusHandler}
                         {...register("confirmPassword")}
                         className="flex-auto rounded-lg border-2 border-transparent bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black aria-[invalid=true]:border-red-primary aria-[invalid=true]:text-red-primary"
                     />

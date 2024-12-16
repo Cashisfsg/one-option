@@ -68,7 +68,13 @@ export const rootApi = createApi({
             query: () => ({
                 url: "/logout/",
                 method: "POST"
-            })
+            }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(rootApi.util.resetApiState());
+                } catch {}
+            }
         })
     })
 });

@@ -2,7 +2,7 @@ import * as z from "zod";
 
 const alphanumericRegex = /^[A-Za-z0-9]+$/;
 
-export const registrationCredentialsSchema = z.object({
+export const authenticationCredentialsSchema = z.object({
     email: z
         .string()
         .min(1, {
@@ -35,6 +35,6 @@ export const registrationCredentialsSchema = z.object({
         })
 });
 
-export type RegistrationCredentialsSchema = z.infer<
-    typeof registrationCredentialsSchema
+export type AuthenticationCredentialsSchema = z.infer<
+    typeof authenticationCredentialsSchema
 >;

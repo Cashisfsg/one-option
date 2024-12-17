@@ -12,8 +12,8 @@ import { EmailIcon, PasswordIcon } from "@/entities/user/assets";
 import { Checkbox } from "@/shared/ui/checkbox";
 
 import {
-    registrationCredentialsSchema as formSchema,
-    type RegistrationCredentialsSchema as FormSchema
+    authenticationCredentialsSchema as formSchema,
+    type AuthenticationCredentialsSchema as FormSchema
 } from "../model/authentication-credentials-schema";
 
 interface AuthenticationFormProps extends React.ComponentProps<"form"> {}
@@ -26,7 +26,7 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
     const passwordId = useId();
 
     const navigate = useNavigate();
-    const [authenticate] = useSignInMutation();
+    const [authenticate, { isLoading }] = useSignInMutation();
 
     const {
         register,
@@ -121,6 +121,22 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                 >
                     Забыли пароль?
                 </Link>
+            </fieldset>
+
+            <fieldset className="flex flex-col justify-center gap-2-4-xs-md text-base-xl-xs-md sm:flex-row">
+                <button
+                    disabled={isLoading}
+                    className="rounded-lg border-2 border-white-primary bg-white-primary py-3 text-black transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50 sm:px-16 mh:hover:bg-transparent mh:hover:text-white-primary"
+                >
+                    Войти
+                </button>
+                <a
+                    href={`${import.meta.env.VITE_BASE_API_URL}/google/`}
+                    aria-disabled={isLoading}
+                    className="rounded-lg border-2 border-white-primary py-3 transition-colors duration-300 aria-disabled:pointer-events-none aria-disabled:opacity-50 sm:px-16 mh:hover:bg-white-primary mh:hover:text-black"
+                >
+                    Войти через Google
+                </a>
             </fieldset>
         </form>
     );

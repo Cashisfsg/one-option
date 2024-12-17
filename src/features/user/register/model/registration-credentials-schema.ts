@@ -4,7 +4,7 @@ const alphanumericRegex = /^[A-Za-z0-9]+$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).*$/;
 const digitRegex = /^(?=.*[0-9]).*$/;
 
-export const authenticationCredentialsSchema = z
+export const registrationCredentialsSchema = z
     .object({
         email: z
             .string()
@@ -70,6 +70,6 @@ export const authenticationCredentialsSchema = z
         path: ["confirmPassword"]
     });
 
-export type AuthenticationCredentialsSchema = z.infer<
-    typeof authenticationCredentialsSchema
+export type RegistrationCredentialsSchema = z.infer<
+    typeof registrationCredentialsSchema
 >;

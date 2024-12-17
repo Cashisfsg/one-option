@@ -42,6 +42,7 @@ export default withTV({
             },
             spacing: {
                 "2-3-xs-md": "clamp(0.5rem, 0.3rem + 1cqi, 0.75rem)",
+                "4-6-xs-md": "clamp(1rem, 0.55rem + 1.95cqi, 1.5rem)",
                 "6-8-xs-md": "clamp(1.5rem, 1.05rem + 1.95cqi, 2rem)"
             },
             size: {

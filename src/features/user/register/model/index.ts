@@ -1,4 +1,4 @@
 export {
-    authenticationCredentialsSchema as registrationCredentialsSchema,
-    type AuthenticationCredentialsSchema as RegistrationCredentialsSchema
+    registrationCredentialsSchema as registrationCredentialsSchema,
+    type RegistrationCredentialsSchema as RegistrationCredentialsSchema
 } from "./registration-credentials-schema";

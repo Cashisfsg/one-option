@@ -1,11 +1,8 @@
-import { useId } from "react";
 import { Link } from "react-router-dom";
 
 import { UserAuthenticationForm } from "@/features/user/authenticate";
 
 export const SignInPage = () => {
-    const authenticationFormId = `form-${useId()}`;
-
     return (
         <>
             <header className="space-y-2-3-xs-md">
@@ -15,7 +12,7 @@ export const SignInPage = () => {
                 </hgroup>
             </header>
 
-            <UserAuthenticationForm id={authenticationFormId} />
+            <UserAuthenticationForm />
 
             <footer className="text-sm-lg-xs-md">
                 <p>

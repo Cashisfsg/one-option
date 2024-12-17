@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { cnBase } from "tailwind-variants";
 import { toast } from "sonner";
@@ -6,6 +6,8 @@ import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 
+import { useAppDispatch } from "@/app/providers/redux/hooks";
+import { login } from "@/shared/api/authSlice";
 import { useSignInMutation } from "@/shared/api";
 
 import { EmailIcon, PasswordIcon } from "@/entities/user/assets";
@@ -24,8 +26,10 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
 }) => {
     const emailId = useId();
     const passwordId = useId();
+    const checkboxRef = useRef<HTMLInputElement>(null);
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const [authenticate, { isLoading }] = useSignInMutation();
 
     const {
@@ -47,8 +51,16 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
     const onSubmitHandler: SubmitHandler<FormSchema> = async data => {
         try {
             const request = { email: data.email, password: data.password };
-            await authenticate(request).unwrap();
+            const { token } = await authenticate(request).unwrap();
 
+            dispatch(
+                login({
+                    token: token,
+                    storage: checkboxRef.current?.checked
+                        ? localStorage
+                        : sessionStorage
+                })
+            );
             navigate("/");
         } catch (error) {
             console.error(error);
@@ -111,6 +123,7 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                     <Checkbox
                         name="memoize"
                         className="checkbox size-6-8-xs-md"
+                        ref={checkboxRef}
                     />
                     <span className="leading-none">Запомнить меня</span>
                 </label>

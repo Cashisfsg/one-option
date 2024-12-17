@@ -10,8 +10,10 @@ export const GoogleAuthenticationPage = () => {
     useLayoutEffect(() => {
         if (!searchParams.has("token")) return;
 
-        dispatch(login({ token: searchParams.get("token")! }));
-    }, []);
+        dispatch(
+            login({ token: searchParams.get("token")!, storage: localStorage })
+        );
+    }, [searchParams]);
 
     return <Navigate to="/" />;
 };

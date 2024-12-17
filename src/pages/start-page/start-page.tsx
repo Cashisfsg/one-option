@@ -3,6 +3,7 @@ import { Link, Navigate, useSearchParams } from "react-router-dom";
 import "./index.css";
 import { Title } from "@/shared/ui/title";
 import { Footer } from "@/widgets/footer/ui/footer";
+import { Logo } from "@/shared/ui/logo";
 
 export const StartPage = () => {
     const [searchParams] = useSearchParams();
@@ -29,7 +30,7 @@ export const StartPage = () => {
                 {/* <div className="row-start-1 flex items-center justify-center"> */}
                 <div className="mx-auto grid h-full max-w-screen-2xl grid-rows-[minmax(0,_1fr)_auto] md:grid-cols-2">
                     <figure className="flex justify-center pl-12 pr-12 md:order-2 md:pr-0">
-                        <svg
+                        {/* <svg
                             viewBox="0 0 747 467"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +121,12 @@ export const StartPage = () => {
                                     />
                                 </filter>
                             </defs>
-                        </svg>
+                        </svg> */}
+                        <Logo
+                            // width="210"
+                            // height="140"
+                            className="w-full min-w-52 max-w-xs md:max-w-xl"
+                        />
                     </figure>
 
                     <div className="flex items-center justify-center bg-white/10 px-4-6-xs-lg py-10 text-center text-xl text-white-primary">

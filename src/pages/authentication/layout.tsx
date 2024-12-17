@@ -14,13 +14,17 @@ export const AuthenticationLayout: React.FC<AuthenticationLayoutProps> = ({
     return (
         <main
             className={cnBase(
-                "space-y-4-6-xs-md min-h-dvh bg-[url('@/assets/bg.webp')] px-4 py-8",
+                "min-h-dvh space-y-4-6-xs-md bg-[url('@/assets/bg.webp')] px-4 py-8",
                 className
             )}
             {...props}
         >
             <header>
-                <Logo className="mx-auto block w-36" />
+                <Logo
+                    width="210"
+                    height="140"
+                    className="mx-auto block"
+                />
             </header>
 
             <section className="mx-auto max-w-3xl space-y-6-8-xs-md text-center">

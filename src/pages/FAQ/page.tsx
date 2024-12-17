@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Article } from "@/shared/ui/article";
 import { Title } from "@/shared/ui/title";
 
-import Logo from "@/assets/img/svg/logo.svg";
+import { Logo } from "@/shared/ui/logo";
 
 export const FAQPage = () => {
     return (
@@ -12,12 +12,10 @@ export const FAQPage = () => {
                     to="/"
                     className="inline-block"
                 >
-                    <svg
+                    <Logo
                         width="110"
                         height="50"
-                    >
-                        <use href={`${Logo}#logo`} />
-                    </svg>
+                    />
 
                     <span className="sr-only">Main page</span>
                 </Link>

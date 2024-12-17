@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { useNavigate } from "react-router-dom";
 import { cnBase } from "tailwind-variants";
+import { toast } from "sonner";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -45,34 +46,33 @@ export const ResetPasswordForm: React.FC<ResetPasswordFormProps> = ({
             await recoverPassword({ email: data.email }).unwrap();
             navigate("/auth/password/reset/confirm");
         } catch (error) {
-            console.error(error);
+            toast.error(error?.data?.error);
         }
     };
 
     return (
         <form
             onSubmit={handleSubmit(onSubmitHandler)}
-            className={cnBase(
-                "grid grid-cols-[minmax(min-content,_auto)_1fr] gap-x-2-4-xs-md gap-y-6-8-xs-md",
-                className
-            )}
+            className={cnBase("block gap-y-0 space-y-6-8-xs-md", className)}
             {...props}
         >
-            <label
-                htmlFor={email}
-                className="aspect-square h-full place-content-center rounded-lg bg-white"
-            >
-                <EmailIcon className="text-2xl-4xl-xs-md text-violet-primary" />
-                <span className="sr-only">Email</span>
-            </label>
-            <input
-                id={email}
-                type="email"
-                placeholder="Почта"
-                aria-invalid={!!errors?.email}
-                {...register("email")}
-                className="flex-auto rounded-lg border-2 border-transparent bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black aria-[invalid=true]:border-red-primary aria-[invalid=true]:text-red-primary"
-            />
+            <fieldset className="grid grid-cols-[minmax(min-content,_auto)_minmax(0,_1fr)] gap-x-2-4-xs-md">
+                <label
+                    htmlFor={email}
+                    className="aspect-square h-full place-content-center rounded-lg bg-white"
+                >
+                    <EmailIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                    <span className="sr-only">Email</span>
+                </label>
+                <input
+                    id={email}
+                    type="email"
+                    placeholder="Почта"
+                    aria-invalid={!!errors?.email}
+                    {...register("email")}
+                    className="flex-auto rounded-lg border-2 border-transparent bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black aria-[invalid=true]:border-red-primary aria-[invalid=true]:text-red-primary"
+                />
+            </fieldset>
 
             <button
                 disabled={isLoading}

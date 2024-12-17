@@ -11,8 +11,8 @@ import { EmailIcon, PasswordIcon } from "@/entities/user/assets";
 import { Checkbox } from "@/shared/ui/checkbox";
 
 import {
-    registrationCredentialsSchema as formSchema,
-    type RegistrationCredentialsSchema as FormSchema
+    authenticationCredentialsSchema as formSchema,
+    type AuthenticationCredentialsSchema as FormSchema
 } from "../model/registration-credentials-schema";
 
 interface RegistrationFormProps extends React.ComponentProps<"form"> {}

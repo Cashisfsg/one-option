@@ -4,26 +4,28 @@ const alphanumericRegex = /^[A-Za-z0-9]+$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).*$/;
 const digitRegex = /^(?=.*[0-9]).*$/;
 
-export const registrationCredentialsSchema = z
+export const authenticationCredentialsSchema = z
     .object({
         email: z
-            .string({
-                required_error: "Поле обязательно для заполнения"
-            })
-            .email({
-                message: "Укажите корректный адрес электронной почты"
+            .string()
+            .min(1, {
+                message: "Поле обязательно для заполнения"
             })
             .min(5, {
                 message:
                     "Адрес электронной почты должен содержать не менее 5 символов"
+            })
+            .email({
+                message: "Укажите корректный адрес электронной почты"
             })
             .max(256, {
                 message:
                     "Адрес электронной почты должен содержать не более 256 символов"
             }),
         password: z
-            .string({
-                required_error: "Поле обязательно для заполнения"
+            .string()
+            .min(1, {
+                message: "Поле обязательно для заполнения"
             })
             .min(8, {
                 message: "Пароль должен содержать не менее 8 символов"
@@ -42,8 +44,9 @@ export const registrationCredentialsSchema = z
                 message: "Пароль должен содержать не более 128 символов"
             }),
         confirmPassword: z
-            .string({
-                required_error: "Поле обязательно для заполнения"
+            .string()
+            .min(1, {
+                message: "Поле обязательно для заполнения"
             })
             .min(8, {
                 message: "Пароль должен содержать не менее 8 символов"
@@ -67,6 +70,6 @@ export const registrationCredentialsSchema = z
         path: ["confirmPassword"]
     });
 
-export type RegistrationCredentialsSchema = z.infer<
-    typeof registrationCredentialsSchema
+export type AuthenticationCredentialsSchema = z.infer<
+    typeof authenticationCredentialsSchema
 >;

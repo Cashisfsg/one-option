@@ -3,18 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { cnBase } from "tailwind-variants";
 import { toast } from "sonner";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, SubmitHandler } from "react-hook-form";
+
 import { useSignInMutation } from "@/shared/api";
 
 import { EmailIcon, PasswordIcon } from "@/entities/user/assets";
 import { Checkbox } from "@/shared/ui/checkbox";
 
-interface AuthenticationFormProps extends React.ComponentProps<"form"> {}
+import {
+    registrationCredentialsSchema as formSchema,
+    type RegistrationCredentialsSchema as FormSchema
+} from "../model/authentication-credentials-schema";
 
-interface FormFields {
-    email: HTMLInputElement;
-    password: HTMLInputElement;
-    memoize: HTMLInputElement;
-}
+interface AuthenticationFormProps extends React.ComponentProps<"form"> {}
 
 export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
     className,
@@ -26,17 +28,25 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
     const navigate = useNavigate();
     const [authenticate] = useSignInMutation();
 
-    const onSubmitHandler: React.FormEventHandler<
-        HTMLFormElement & FormFields
-    > = async event => {
-        event.preventDefault();
-        const { email, password, memoize } = event.currentTarget;
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<FormSchema>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            email: "",
+            password: ""
+        },
+        shouldUseNativeValidation: true,
+        shouldFocusError: false,
+        mode: "onSubmit",
+        reValidateMode: "onChange"
+    });
 
+    const onSubmitHandler: SubmitHandler<FormSchema> = async data => {
         try {
-            if (memoize.checked) {
-                console.log("Remember me, ", memoize.checked);
-            }
-            const request = { email: email.value, password: password.value };
+            const request = { email: data.email, password: data.password };
             await authenticate(request).unwrap();
 
             navigate("/");
@@ -53,7 +63,7 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
 
     return (
         <form
-            onSubmit={onSubmitHandler}
+            onSubmit={handleSubmit(onSubmitHandler)}
             className={cnBase("gap-y-6-8-xs-md", className)}
             {...props}
         >
@@ -69,11 +79,11 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                     <input
                         id={emailId}
                         type="email"
-                        name="email"
-                        required
                         autoComplete="off"
                         placeholder="Почта"
-                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        aria-invalid={!!errors?.email}
+                        {...register("email")}
+                        className="flex-auto rounded-lg border-2 border-transparent bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black aria-[invalid=true]:border-red-primary aria-[invalid=true]:text-red-primary"
                     />
                 </div>
 
@@ -88,10 +98,10 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                     <input
                         id={passwordId}
                         type="password"
-                        name="password"
-                        required
                         placeholder="Пароль"
-                        className="flex-auto rounded-lg bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black"
+                        aria-invalid={!!errors?.password}
+                        {...register("password")}
+                        className="flex-auto rounded-lg border-2 border-transparent bg-white px-4-6-xs-md py-3-4-xs-md text-base-xl-xs-md text-black aria-[invalid=true]:border-red-primary aria-[invalid=true]:text-red-primary"
                     />
                 </div>
             </fieldset>

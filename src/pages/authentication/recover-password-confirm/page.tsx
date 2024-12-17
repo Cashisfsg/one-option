@@ -7,7 +7,6 @@ import {
 } from "@/shared/api";
 
 import { PasswordIcon } from "@/entities/user/assets";
-import Logo from "@/assets/logo.png";
 
 type FormField = {
     [K in keyof ConfirmPasswordRequest]: HTMLInputElement;
@@ -47,15 +46,8 @@ export const ResetPasswordConfirmPage = () => {
     return (
         <>
             <header className="space-y-2-3-xs-md">
-                <img
-                    src={Logo}
-                    alt="Logo"
-                    height="125"
-                    width="220"
-                    className="mx-auto block"
-                />
                 <h1 className="text-balance text-center text-4xl-7xl-xs-md">
-                    Восстановить пароль trololo
+                    Восстановить пароль
                 </h1>
             </header>
 
@@ -105,7 +97,7 @@ export const ResetPasswordConfirmPage = () => {
 
             <button
                 form={formId}
-                className="mx-auto block rounded-lg border-2 border-white-primary bg-white-primary py-3 text-black transition-colors duration-300 sm:px-16 mh:hover:bg-transparent mh:hover:text-white-primary"
+                className="mx-auto block rounded-lg border-2 border-white-primary bg-white-primary px-16 py-3 text-black transition-colors duration-300 mh:hover:bg-transparent mh:hover:text-white-primary"
             >
                 Сбросить
             </button>

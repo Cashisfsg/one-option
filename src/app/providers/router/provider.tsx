@@ -74,7 +74,6 @@ const publicRouter = createBrowserRouter([
 
     {
         path: "auth",
-        // element: <AuthenticationLayout />,
         lazy: async () =>
             await import("@/pages/authentication/layout").then(module => ({
                 Component: module.AuthenticationLayout
@@ -105,22 +104,6 @@ const publicRouter = createBrowserRouter([
                 )
             }
         ]
-    },
-    {
-        path: "password/reset",
-        element: (
-            <Suspense fallback={<>Loading...</>}>
-                <ResetPasswordPage />
-            </Suspense>
-        )
-    },
-    {
-        path: "password/reset/confirm",
-        element: (
-            <Suspense fallback={<>Loading...</>}>
-                <ResetPasswordConfirmPage />
-            </Suspense>
-        )
     },
     {
         path: "google/complete/",

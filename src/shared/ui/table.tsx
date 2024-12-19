@@ -18,16 +18,18 @@ type UniqueKey<D extends DataType> = keyof D;
 // type UniqueKey<D extends DataType = DataType, T extends keyof D = keyof D> = T;
 
 interface TableComponents {
-    TableCaption?: () => React.ReactElement<
+    Caption?: () => React.ReactElement<
         React.ComponentPropsWithoutRef<"caption">,
         "caption"
     >;
-    TableRow?: (
+    Row?: (
         props: React.ComponentPropsWithoutRef<"tr">
     ) => React.ReactElement<React.ComponentPropsWithoutRef<"tr">, "tr">;
     // TableRow?: JSX.IntrinsicElements["tr"];
     // TableRow?: React.ReactElement<HTMLTableCellElement>;
-    TableCell?: () => React.ReactElement;
+    Cell?: (
+        props: React.ComponentPropsWithoutRef<"td">
+    ) => React.ReactElement<React.ComponentPropsWithoutRef<"td">, "td">;
 }
 
 const TableContext = React.createContext<{
@@ -55,7 +57,7 @@ type TableProps<H, D extends DataType> = {
         props: React.ComponentPropsWithoutRef<"caption">
     ) => React.ComponentPropsWithoutRef<"caption">;
     renderColumns?: React.ReactNode;
-    renderHeaders?: (headers: Header) => React.ReactElement;
+    renderHeader?: (headers: Header) => React.ReactElement;
     renderData?: (
         data: D[],
         rowElement?: React.FC<TableRowProps>
@@ -69,7 +71,7 @@ export const Table = <H extends Header, D extends DataType>({
     data,
     components,
     renderColumns: columns,
-    renderHeaders,
+    renderHeader: renderHeaders,
     renderData,
     className,
     ...props
@@ -108,11 +110,11 @@ interface TableCaptionProps extends React.ComponentProps<"caption"> {}
 export const Caption: React.FC<TableCaptionProps> = () => {
     const { components } = useTableContext();
 
-    if (components === undefined || components.TableCaption === undefined) {
+    if (components === undefined || components.Caption === undefined) {
         return null;
     }
 
-    const caption = components?.TableCaption();
+    const caption = components?.Caption();
     const props = caption.props;
     const children = props?.children;
 
@@ -176,14 +178,10 @@ const TableBody = <D extends DataType>({
             {...props}
         >
             {data.map(row => {
-                // if (rowHeaderKey === undefined) {
-                // }
-
-                const { ...restData } = row;
                 return (
-                    <TableRow key={uniqueKey}>
-                        {Object.keys(restData)?.map(key => (
-                            <TableCell key={key}>{row[key]}</TableCell>
+                    <TableRow key={row[uniqueKey]}>
+                        {Object.values(row)?.map((value, index) => (
+                            <TableCell key={index}>{value}</TableCell>
                         ))}
                     </TableRow>
                 );
@@ -220,7 +218,7 @@ export const TableRow: React.FC<TableRowProps> = ({
 }) => {
     const { components } = useTableContext();
 
-    if (components === undefined || components.TableRow === undefined)
+    if (components === undefined || components.Row === undefined)
         return (
             <tr
                 className={className}
@@ -230,16 +228,16 @@ export const TableRow: React.FC<TableRowProps> = ({
             </tr>
         );
 
-    const { TableRow } = components;
-    const TableRowElement = TableRow(props);
+    const { Row } = components;
+    const RowElement = Row(props);
 
-    const { className: rowClassName, ...tableRowProps } = TableRowElement.props;
+    const { className: rowClassName, ...RowProps } = RowElement.props;
 
-    return React.cloneElement(TableRowElement, {
+    return React.cloneElement(RowElement, {
         className: cnBase(className, rowClassName),
         children,
         // ...props,
-        ...tableRowProps
+        ...RowProps
     });
 };
 
@@ -272,15 +270,46 @@ export const TableCell: React.FC<TableCellProps> = ({
     children,
     ...props
 }) => {
-    return (
-        <td
-            className={cnBase(
-                "px-3 py-2 text-center font-secondary text-sm-base-xs-lg",
-                className
-            )}
-            {...props}
-        >
-            {children}
-        </td>
-    );
+    const { components } = useTableContext();
+
+    if (components === undefined || components.Cell === undefined)
+        return (
+            <td
+                className={cnBase(
+                    "whitespace-nowrap px-3 py-2 text-center font-secondary text-sm-base-xs-lg",
+                    className
+                )}
+                {...props}
+            >
+                {children}
+            </td>
+        );
+
+    const { Cell } = components;
+    const CellElement = Cell(props);
+
+    const { className: cellClassName, ...CellProps } = CellElement.props;
+
+    return React.cloneElement(CellElement, {
+        className: cnBase(
+            "px-3 py-2 text-center font-secondary text-sm-base-xs-lg",
+            className,
+            cellClassName
+        ),
+        children,
+        // ...props,
+        ...CellProps
+    });
+
+    // return (
+    //     <td
+    //         className={cnBase(
+    //             "px-3 py-2 text-center font-secondary text-sm-base-xs-lg",
+    //             className
+    //         )}
+    //         {...props}
+    //     >
+    //         {children}
+    //     </td>
+    // );
 };

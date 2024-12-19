@@ -62,6 +62,7 @@ export default withTV({
                 "base-xl-xs-md": "clamp(1rem, 0.8rem + 1cqi, 1.25rem)",
                 "lg-xl-xs-sm": "clamp(1.125rem, 0.95rem + 0.715cqi, 1.25rem)",
                 "lg-xl-xs-lg": "clamp(1.125rem, 1.05rem + 0.3cqi, 1.25rem)",
+                "lg-2xl-xs-lg": "clamp(1.125rem, 0.90rem + 0.905cqi, 1.5rem)",
                 "xl-2xl-xs-sm": "clamp(1.25rem, 0.9rem + 1.5cqi, 1.5rem)",
                 "xl-2xl-xs-md": "clamp(1.25rem, 1rem + 1cqi, 1.5rem)",
                 "xl-2xl-xs-lg": "clamp(1.25rem, 1.1rem + 0.6cqi, 1.5rem)",

@@ -33,6 +33,11 @@ export const DashboardPage = () => {
                                 uniqueKey={"code"}
                                 headers={["id", "ссылка", "тип", "программа"]}
                                 data={data}
+                                components={{
+                                    ColumnHead: () => (
+                                        <td className="uppercase" />
+                                    )
+                                }}
                             />
                         )}
                     />

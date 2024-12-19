@@ -25,6 +25,9 @@ interface TableComponents {
     Row?: (
         props: React.ComponentPropsWithoutRef<"tr">
     ) => React.ReactElement<React.ComponentPropsWithoutRef<"tr">, "tr">;
+    ColumnHead?: (
+        props: React.ComponentPropsWithoutRef<"th">
+    ) => React.ReactElement<React.ComponentPropsWithoutRef<"th">, "th">;
     // TableRow?: JSX.IntrinsicElements["tr"];
     // TableRow?: React.ReactElement<HTMLTableCellElement>;
     Cell?: (
@@ -249,18 +252,38 @@ export const TableHeaderCell: React.FC<TableHeaderCellProps> = ({
     children,
     ...props
 }) => {
-    return (
-        <th
-            scope={scope}
-            className={cnBase(
-                "px-4 py-2 text-lg-xl-xs-lg uppercase",
-                className
-            )}
-            {...props}
-        >
-            {children}
-        </th>
-    );
+    const { components } = useTableContext();
+
+    if (components === undefined || components.ColumnHead === undefined)
+        return (
+            <th
+                scope={scope}
+                className={cnBase(
+                    "px-4 py-2 text-center text-lg-xl-xs-lg",
+                    className
+                )}
+                {...props}
+            >
+                {children}
+            </th>
+        );
+
+    const { ColumnHead } = components;
+    const ColumnHeadElement = ColumnHead(props);
+
+    const { className: columnHeadClassName, ...columnHeadProps } =
+        ColumnHeadElement.props;
+
+    return React.cloneElement(ColumnHeadElement, {
+        className: cnBase(
+            "px-4 py-2 text-lg-xl-xs-lg text-center",
+            className,
+            columnHeadClassName
+        ),
+        children,
+        // ...props,
+        ...columnHeadProps
+    });
 };
 
 interface TableCellProps extends React.ComponentProps<"td"> {}

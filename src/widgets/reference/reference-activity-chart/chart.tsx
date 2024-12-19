@@ -18,25 +18,26 @@ export const ReferenceActivityChart = () => {
 
     return (
         <Section>
-            <header className="flex flex-wrap items-center justify-between gap-3 font-secondary">
+            <header className="grid grid-cols-1 items-center justify-between gap-x-6 gap-y-3 lg:grid-cols-[auto_minmax(min-content,_1fr)]">
                 <div className="flex items-center gap-x-6">
                     <Title
                         as="h2"
-                        className="text-lg-xl-xs-lg"
+                        // className="w-full text-center text-lg-xl-xs-lg"
+                        className="inline w-full text-center lg:text-start"
                     >
                         График активностей ссылки
                     </Title>
 
-                    <ul className="hidden items-center gap-x-6 lg:flex">
-                        <li className="flex items-center gap-x-3">
+                    <ul className="hidden items-center gap-x-4 font-secondary font-normal xl:flex">
+                        <li className="flex items-center gap-x-2">
                             <span className="size-7 rounded-md bg-[#FF8551]"></span>
                             <span>Клики</span>
                         </li>
-                        <li className="flex items-center gap-x-3">
+                        <li className="flex items-center gap-x-2">
                             <span className="size-7 rounded-md bg-[#009A0F]"></span>
                             <span>Регистрации</span>
                         </li>
-                        <li className="flex items-center gap-x-3">
+                        <li className="flex items-center gap-x-2">
                             <span className="size-7 rounded-md bg-[#652CDE]"></span>
                             <span>FTD</span>
                         </li>
@@ -46,7 +47,7 @@ export const ReferenceActivityChart = () => {
                 <div
                     role="radiogroup"
                     aria-label="Периодичность активности ссылки"
-                    className="flex items-center gap-x-3 justify-self-center"
+                    className="flex items-center gap-x-3 justify-self-center font-secondary lg:justify-self-end"
                 >
                     <button
                         type="button"

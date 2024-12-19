@@ -10,7 +10,7 @@ import { Fetch } from "@/shared/ui/fetch";
 
 const statisticList = [
     { id: 1, label: "Всего кликов", key: "all_click", icon: "pie_chart" },
-    { id: 2, label: "Регситраций", key: "register_count", icon: "bar_chart" },
+    { id: 2, label: "Регистраций", key: "register_count", icon: "bar_chart" },
     { id: 3, label: "Депозиты", key: "deposit", icon: "fluent_money_model_2" },
     { id: 4, label: "FTD's", key: "ftd_count", icon: "money_deposit" },
     { id: 5, label: "Вывод", key: "ftd_sum", icon: "fluent_money_model_1" },

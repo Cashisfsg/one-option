@@ -166,7 +166,9 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
                 )}
             />
 
-            <Button className="ml-auto mt-4 block">Вывести</Button>
+            <Button className="ml-auto mt-4 block w-full 3xs:w-auto">
+                Вывести
+            </Button>
         </form>
     );
 };

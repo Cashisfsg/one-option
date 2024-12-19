@@ -17,12 +17,17 @@ export const ReferenceActivityStatisticChart = () => {
 
     return (
         <Section>
-            <header className="flex flex-wrap items-center justify-between gap-3">
-                <Title as="h2">График активности ссылки</Title>
+            <header className="grid grid-cols-1 items-center justify-between gap-y-3 md:grid-cols-[auto_minmax(min-content,_1fr)]">
+                <Title
+                    as="h2"
+                    className="text-center"
+                >
+                    График активности ссылки
+                </Title>
 
                 <div
                     role="radiogroup"
-                    className="inline-flex gap-x-3 justify-self-end font-secondary"
+                    className="inline-flex gap-x-3 justify-self-center font-secondary md:justify-self-end"
                 >
                     <button
                         type="button"

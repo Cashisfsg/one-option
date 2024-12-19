@@ -9,6 +9,8 @@ import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
 import { ErrorMessage } from "@/shared/ui/error";
 
+import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
+
 import {
     passwordPairSchema as formSchema,
     type PasswordPairSchema as FormSchema
@@ -54,7 +56,9 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
             reset();
             toast.success("Пароль был успешно изменён");
         } catch (error) {
-            console.error(error);
+            handleErrorResponse(error, message => {
+                toast.error(message);
+            });
         }
     };
 
@@ -72,7 +76,7 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
                     placeholder="Текущий пароль"
                     aria-invalid={!!errors?.oldPassword}
                     aria-errormessage={oldPasswordErrorId}
-                    className="aria-[invalid=true]:border-red-primary peer border-2 border-transparent"
+                    className="peer border-2 border-transparent aria-[invalid=true]:border-red-primary"
                     {...register("oldPassword")}
                 />
 
@@ -93,7 +97,7 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
                     placeholder="Новый пароль"
                     aria-invalid={!!errors?.newPassword}
                     aria-errormessage={newPasswordErrorId}
-                    className="aria-[invalid=true]:border-red-primary peer border-2 border-transparent"
+                    className="peer border-2 border-transparent aria-[invalid=true]:border-red-primary"
                     {...register("newPassword")}
                 />
 
@@ -114,7 +118,7 @@ export const ChangePasswordForm: React.FC<ChangePasswordFormProps> = props => {
                     placeholder="Подтвердите пароль"
                     aria-invalid={!!errors?.confirmNewPassword}
                     aria-errormessage={confirmNewPasswordErrorId}
-                    className="aria-[invalid=true]:border-red-primary peer border-2 border-transparent"
+                    className="peer border-2 border-transparent aria-[invalid=true]:border-red-primary"
                     {...register("confirmNewPassword")}
                 />
 

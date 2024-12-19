@@ -18,6 +18,8 @@ import {
     type AuthenticationCredentialsSchema as FormSchema
 } from "../model/authentication-credentials-schema";
 
+import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
+
 interface AuthenticationFormProps extends React.ComponentProps<"form"> {}
 
 export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
@@ -63,13 +65,14 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
             );
             navigate("/");
         } catch (error) {
-            console.error(error);
+            handleErrorResponse(error, message => toast.error(message));
+            // console.error(error);
 
-            toast.error(error?.data?.detail, {
-                className: "flex items-center",
-                description: "Error authenticating",
-                descriptionClassName: "font-secondary"
-            });
+            // toast.error(error?.data?.detail, {
+            //     className: "flex items-center",
+            //     description: "Error authenticating",
+            //     descriptionClassName: "font-secondary"
+            // });
         }
     };
 

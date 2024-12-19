@@ -68,7 +68,7 @@ export const Footer = () => {
             <hr className="border border-[#3c3c3c]" />
 
             <div className="container -mx-6 space-y-2 text-pretty py-6 font-secondary text-sm text-[#79747e]">
-                <p>One Option — Это Ведущая Платформа</p>
+                <p>OptimaX — Это Ведущая Платформа</p>
                 <p>
                     Для Торговли Бинарными Опционами, Предлагающая Инновационные
                     Решения Для Трейдеров Всех Уровней. Наша Миссия —

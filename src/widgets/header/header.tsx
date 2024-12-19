@@ -213,7 +213,7 @@ export const Header = () => {
                     </BurgerMenu.Portal>
                 </BurgerMenu.Root>
 
-                <Title className="px-2-4-xs-lg text-center">
+                <Title className="px-2-4-xs-lg text-center text-lg-xl-xs-lg">
                     {links.find(link => link.url === location.pathname)?.title}
                 </Title>
 

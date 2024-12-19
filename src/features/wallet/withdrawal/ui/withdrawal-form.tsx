@@ -13,6 +13,7 @@ import { Button } from "@/shared/ui/button";
 import { Select } from "@/shared/ui/select";
 
 import { composeEventHandlers } from "@/shared/lib/utils/compose-event-handlers";
+import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
 
 interface WithdrawalFormProps extends React.ComponentProps<"form"> {}
 
@@ -49,11 +50,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
 
             event.currentTarget.reset();
         } catch (error) {
-            toast.error(error?.data?.error);
-
-            Object.values(error?.data)?.forEach(value =>
-                value?.forEach(v => toast.error(v))
-            );
+            handleErrorResponse(error, message => toast.error(message));
         }
     };
 

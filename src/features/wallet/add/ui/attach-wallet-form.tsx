@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 import { Input } from "@/shared/ui/input";
 import { Fetch } from "@/shared/ui/fetch";
 import { useDialogContext } from "@/shared/ui/dialog";
@@ -6,7 +8,10 @@ import {
     useFetchWalletQuery,
     useAttachWalletMutation
 } from "@/entities/wallet/api";
+
 import { Select } from "@/shared/ui/select";
+
+import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
 
 interface AttachWalletFormProps
     extends React.ComponentPropsWithoutRef<"form"> {}
@@ -38,7 +43,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
             form.reset();
             dialogRef.current?.close();
         } catch (error) {
-            console.error(error);
+            handleErrorResponse(error, message => toast.error(message));
         }
     };
 

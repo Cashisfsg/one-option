@@ -15,55 +15,65 @@ import { GoogleAuthenticationPage } from "@/pages/authentication/google";
 import { SignInPage } from "@/pages/authentication/sign-in";
 import { SignUpPage } from "@/pages/authentication/sign-up";
 
-const ResetPasswordPage = lazy(async () =>
-    import("@/pages/authentication/password-reset").then(module => ({
-        default: module.ResetPasswordPage
-    }))
+const ResetPasswordPage = lazy(
+    async () =>
+        await import("@/pages/authentication/password-reset").then(module => ({
+            default: module.ResetPasswordPage
+        }))
 );
 
-const ResetPasswordConfirmPage = lazy(async () =>
-    import("@/pages/authentication/recover-password-confirm").then(module => ({
-        default: module.ResetPasswordConfirmPage
-    }))
+const ResetPasswordConfirmPage = lazy(
+    async () =>
+        await import("@/pages/authentication/recover-password-confirm").then(
+            module => ({
+                default: module.ResetPasswordConfirmPage
+            })
+        )
 );
 
 import { StartPage } from "@/pages/start-page";
 import { FAQPage } from "@/pages/FAQ/page";
 
-const DashboardPage = lazy(async () =>
-    import("@/pages/dashboard").then(module => ({
-        default: module.DashboardPage
-    }))
+const DashboardPage = lazy(
+    async () =>
+        await import("@/pages/dashboard").then(module => ({
+            default: module.DashboardPage
+        }))
 );
 
-const ReferralPage = lazy(async () =>
-    import("@/pages/referral-page").then(module => ({
-        default: module.ReferralPage
-    }))
+const ReferralPage = lazy(
+    async () =>
+        await import("@/pages/referral-page").then(module => ({
+            default: module.ReferralPage
+        }))
 );
 
-const SubReferralPage = lazy(async () =>
-    import("@/pages/sub-referral-page").then(module => ({
-        default: module.SubReferralPage
-    }))
+const SubReferralPage = lazy(
+    async () =>
+        await import("@/pages/sub-referral-page").then(module => ({
+            default: module.SubReferralPage
+        }))
 );
 
-const StatisticPage = lazy(async () =>
-    import("@/pages/statistic").then(module => ({
-        default: module.StatisticPage
-    }))
+const StatisticPage = lazy(
+    async () =>
+        await import("@/pages/statistic").then(module => ({
+            default: module.StatisticPage
+        }))
 );
 
-const WithdrawalPage = lazy(async () =>
-    import("@/pages/withdrawal").then(module => ({
-        default: module.WithdrawalPage
-    }))
+const WithdrawalPage = lazy(
+    async () =>
+        await import("@/pages/withdrawal").then(module => ({
+            default: module.WithdrawalPage
+        }))
 );
 
-const ProfilePage = lazy(async () =>
-    import("@/pages/profile/page").then(module => ({
-        default: module.ProfilePage
-    }))
+const ProfilePage = lazy(
+    async () =>
+        await import("@/pages/profile/page").then(module => ({
+            default: module.ProfilePage
+        }))
 );
 
 const publicRouter = createBrowserRouter([
@@ -71,7 +81,6 @@ const publicRouter = createBrowserRouter([
         path: publicRoutes.root,
         element: <StartPage />
     },
-
     {
         path: "auth",
         lazy: async () =>

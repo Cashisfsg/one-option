@@ -141,16 +141,17 @@ export const StartPage = () => {
                                 С нами вы сможете пассивно зарабатывать до 80%
                                 дохода ваших рефералов
                             </p>
-                            <div className="flex flex-wrap justify-center gap-y-6 @container">
+                            {/* <div className="flex flex-wrap justify-center gap-y-6 @container"> */}
+                            <div className="grid grid-cols-1 gap-y-6 text-base-lg-xs-lg/none @md:grid-cols-[minmax(0,_4fr)_minmax(0,_6fr)]">
                                 <Link
                                     to="/auth/sign/in"
-                                    className="sign-in basis-full py-[18px] text-base-lg-xs-lg/none @md:basis-5/12"
+                                    className="sign-in py-[18px]"
                                 >
                                     Вход
                                 </Link>
                                 <Link
                                     to="/auth/sign/up"
-                                    className="sign-up basis-full py-[18px] text-base-lg-xs-lg/none @md:-ml-6 @md:basis-7/12"
+                                    className="sign-up py-[18px] @md:-ml-6"
                                     // className="sign-up"
                                 >
                                     Регистрация

@@ -13,6 +13,8 @@ import { Select } from "@/shared/ui/select";
 
 import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
 
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
+
 interface AttachWalletFormProps
     extends React.ComponentPropsWithoutRef<"form"> {}
 
@@ -67,18 +69,17 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                             />
                             <Select.Trigger>
                                 <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 16 16"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="1em"
+                                    width="1em"
                                     className="transition-transform duration-300 group-aria-expanded:rotate-180"
                                 >
-                                    <path
-                                        d="M7.24677 11.1399L2.45054 5.6585C1.88478 5.01192 2.34396 4 3.20312 4H12.7956C13.6547 4 14.1139 5.01192 13.5482 5.6585L8.75193 11.1399C8.35352 11.5952 7.64518 11.5952 7.24677 11.1399Z"
-                                        fill="white"
+                                    <use
+                                        xlinkHref={`${IconsSprite}#caret-down`}
                                     />
                                 </svg>
+                                <span className="sr-only">
+                                    Раскрыть выпадающий список
+                                </span>
                             </Select.Trigger>
                             <Select.Menu>
                                 {wallets.map(wallet => (

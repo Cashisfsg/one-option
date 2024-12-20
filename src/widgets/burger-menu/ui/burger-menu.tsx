@@ -10,6 +10,9 @@ import {
     useBurgerMenuContext
 } from "./use-burger-menu-context";
 
+import NavigationSprite from "@/assets/img/svg/navigation-sprite.svg";
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
+
 import "./burger-menu.css";
 
 interface BurgerMenuRoot
@@ -101,22 +104,14 @@ const Trigger: React.FC<TriggerProps> = ({ children, onClick, ...props }) => {
             ) : (
                 <>
                     <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                        height="2em"
+                        width="2em"
                         aria-hidden="true"
                         focusable="false"
                     >
-                        <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M4 10.6667V8H28V10.6667H4ZM4 17.3333H28V14.6667H4V17.3333ZM4 24H28V21.3333H4V24Z"
-                            fill="currentColor"
-                        />
+                        <use xlinkHref={`${NavigationSprite}#burger-menu`} />
                     </svg>
-                    <span className="sr-only">Бургер меню</span>
+                    <span className="sr-only">Открыть бургер меню</span>
                 </>
             )}
         </button>
@@ -141,18 +136,14 @@ const Close: React.FC<CloseProps> = ({ onClick, ...props }) => {
             {...props}
         >
             <svg
-                width="1em"
                 height="1em"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                aria-hidden="true"
+                focusable="false"
             >
-                <path
-                    d="M8.80002 11.0001L0.000237369 19.8L2.20022 22L11 13.2001L19.7998 22L21.9998 19.8L13.2 11.0001L22 2.19999L19.8001 0L11 8.80012L2.19998 2.37371e-05L0 2.20002L8.80002 11.0001Z"
-                    fill="currentColor"
-                />
+                <use xlinkHref={`${IconsSprite}#close`} />
             </svg>
-            <span className="sr-only">Закрыть меню</span>
+            <span className="sr-only">Закрыть бургер меню</span>
         </button>
     );
 };

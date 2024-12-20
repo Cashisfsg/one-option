@@ -7,6 +7,8 @@ import { Fetch } from "@/shared/ui/fetch";
 import { Table, TableRow } from "@/shared/ui/table";
 import { Tooltip } from "@/shared/ui/tooltip";
 
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
+
 export const UserLevelsTable = () => {
     return (
         <h2>
@@ -26,22 +28,15 @@ export const UserLevelsTable = () => {
                 <Tooltip.Trigger>
                     <a>
                         <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 14 14"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="mb-0.5 inline-block cursor-help"
+                            height="1em"
+                            width="1em"
+                            className="mb-0.5 inline-block cursor-help text-sm"
                         >
-                            <path
-                                d="M14 7C14 10.866 10.866 14 7 14C3.13401 14 0 10.866 0 7C0 3.13401 3.13401 0 7 0C10.866 0 14 3.13401 14 7Z"
-                                fill="#555555"
-                            />
-                            <path
-                                d="M6.11111 5H6.55556L7.88889 5.84V11H6.11111V5ZM6 3.044V2.9C6 2.408 6.21111 2 6.95556 2H7.04444C7.78889 2 8 2.408 8 2.9V3.044C8 3.536 7.78889 3.944 7.04444 3.944H6.95556C6.21111 3.944 6 3.536 6 3.044Z"
-                                fill="white"
-                            />
+                            <use xlinkHref={`${IconsSprite}#info`} />
                         </svg>
+                        <span className="sr-only">
+                            Показать вслывающую подсказку
+                        </span>
                     </a>
                 </Tooltip.Trigger>
                 <Tooltip.Portal>

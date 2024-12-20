@@ -4,7 +4,7 @@
 
 main > .header {
     /* min-height: 100dvh; */
-    background: url("@/assets/bg.webp") center/cover no-repeat;
+    background: url("@/assets/bg.png") center/cover no-repeat;
     /* min-height: 100svh; */
     /* height: 100svh; */
     /* height: min(100%, 100svh); */

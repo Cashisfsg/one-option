@@ -21,6 +21,19 @@ export const StartPage = () => {
 
     return (
         <main>
+            {/* {Array(20)
+                .fill(0)
+                .map(_ => (
+                    <LazyImage
+                        src="https://interier-foto.ru/wp-content/uploads/2018/02/panoramnaya-fotografiya-66143.jpg"
+                        blurHash="|XFGE]--I8bDj?t6j[j[ay?cV[WBofjYoeRjWCaz?dR-M{WCadoeWVWVj[RiNGx]t7ofa#M|WVWVt6WBt7jbjZa#RkazazIVj=%1axtRoyWAa}WBWXj[ofRkjuf8WVjuayaxofjbM|a~j]a}kBaxoMs.ofWCayWBWXagj]"
+                        placeholder={Placeholder}
+                        height={480}
+                        width={640}
+                        // style={{ height: "unset" }}
+                        className="aspect-video h-full object-cover"
+                    />
+                ))} */}
             <header
                 className="header md:px-12"
                 // className="grid grid-cols-1 place-items-center gap-16 lg:grid-cols-2 lg:grid-rows-1"

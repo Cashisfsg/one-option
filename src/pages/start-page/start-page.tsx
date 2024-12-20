@@ -28,7 +28,7 @@ export const StartPage = () => {
                 // className="grid grid-rows-[minmax(0,_1fr)_auto]"
             >
                 {/* <div className="row-start-1 flex items-center justify-center"> */}
-                <div className="mx-auto grid h-full max-w-screen-2xl grid-rows-[minmax(0,_1fr)_auto] md:grid-cols-2">
+                <div className="mx-auto grid h-full min-h-svh max-w-screen-2xl grid-rows-[minmax(0,_1fr)_auto] md:grid-cols-2">
                     <figure className="flex justify-center pl-12 pr-12 md:order-2 md:pr-0">
                         {/* <svg
                             viewBox="0 0 747 467"
@@ -180,6 +180,70 @@ export const StartPage = () => {
                                 className="sign-in py-[18px]"
                             >
                                 Вход
+                                {/* <svg
+                                    width="100%"
+                                    height="100%"
+                                    viewBox="30 30 270 80"
+                                    fill="none"
+                                    preserveAspectRatio="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g filter="url(#filter0_d_245_3807)">
+                                        <path
+                                            d="M292.423 78.9108C301.458 91.4806 292.475 109 276.995 109L50.5 109C40.0066 109 31.5 100.493 31.5 90L31.5 50C31.5 39.5066 40.0066 31 50.5 31L248.245 30.9999C254.361 30.9999 260.104 33.9443 263.673 38.9108L292.423 78.9108Z"
+                                            stroke="white"
+                                            stroke-width="2"
+                                            shape-rendering="crispEdges"
+                                        />
+                                    </g>
+                                    <path
+                                        d="M125.54 61.26C128.048 60.974 130.93 60.82 133.592 60.82H134.208C139.136 60.82 140.5 62.8 140.5 65.22V65.66C140.5 66.958 139.862 68.08 137.882 68.608C140.192 69.136 140.94 70.302 140.94 71.6V72.04C140.94 74.46 139.488 76.44 134.208 76.44H133.592C130.93 76.44 128.048 76.286 125.54 76V61.26ZM133.68 64.34C132.602 64.34 130.952 64.406 129.5 64.538V66.98H133.416C136.98 66.98 136.98 66.408 136.98 65.66C136.98 64.934 136.87 64.34 133.68 64.34ZM133.416 70.5H129.5V72.722C130.952 72.854 132.58 72.92 133.746 72.92C137.266 72.92 137.42 72.326 137.42 71.6C137.42 70.984 137.42 70.5 133.416 70.5ZM142.922 75.12L146.838 70.5L142.922 65.88V65H146.266L148.884 68.102L151.524 65H154.846V65.88L150.93 70.5L154.846 75.12V76H151.524L148.884 72.898L146.266 76H142.922V75.12ZM156.494 70.94V70.06C156.494 67.024 157.858 64.56 162.786 64.56H163.402C168.33 64.56 169.694 67.024 169.694 70.06V70.94C169.694 73.976 168.33 76.44 163.402 76.44H162.786C157.858 76.44 156.494 73.976 156.494 70.94ZM160.014 70.5C160.014 71.93 160.014 73.25 163.094 73.25C166.174 73.25 166.174 71.93 166.174 70.5C166.174 69.07 166.174 67.75 163.094 67.75C160.014 67.75 160.014 69.07 160.014 70.5ZM171.228 72.92H172.592C173.12 72.546 173.252 71.71 173.362 70.544L173.758 65H184.89V72.92H186.628V78.64L184.428 79.96H183.548V76H174.308V78.64L172.108 79.96H171.228V72.92ZM181.37 68.168H176.948L176.794 70.368C176.728 71.38 176.596 72.238 176.354 72.92H181.37V68.168Z"
+                                        fill="#FEF7FF"
+                                    />
+                                    <defs>
+                                        <filter
+                                            id="filter0_d_245_3807"
+                                            x="0.5"
+                                            y="-9.15527e-05"
+                                            width="326.531"
+                                            height="140"
+                                            filterUnits="userSpaceOnUse"
+                                            color-interpolation-filters="sRGB"
+                                        >
+                                            <feFlood
+                                                flood-opacity="0"
+                                                result="BackgroundImageFix"
+                                            />
+                                            <feColorMatrix
+                                                in="SourceAlpha"
+                                                type="matrix"
+                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                result="hardAlpha"
+                                            />
+                                            <feOffset />
+                                            <feGaussianBlur stdDeviation="15" />
+                                            <feComposite
+                                                in2="hardAlpha"
+                                                operator="out"
+                                            />
+                                            <feColorMatrix
+                                                type="matrix"
+                                                values="0 0 0 0 0.382333 0 0 0 0 0.0916667 0 0 0 0 1 0 0 0 1 0"
+                                            />
+                                            <feBlend
+                                                mode="normal"
+                                                in2="BackgroundImageFix"
+                                                result="effect1_dropShadow_245_3807"
+                                            />
+                                            <feBlend
+                                                mode="normal"
+                                                in="SourceGraphic"
+                                                in2="effect1_dropShadow_245_3807"
+                                                result="shape"
+                                            />
+                                        </filter>
+                                    </defs>
+                                </svg> */}
                             </Link>
                             <Link
                                 to="/auth/sign/up"

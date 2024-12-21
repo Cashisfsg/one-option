@@ -7,13 +7,14 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useSignUpMutation } from "@/shared/api";
 
-import { EmailIcon, PasswordIcon } from "@/entities/user/assets";
 import { Checkbox } from "@/shared/ui/checkbox";
 
 import {
     registrationCredentialsSchema as formSchema,
     type RegistrationCredentialsSchema as FormSchema
 } from "../model/registration-credentials-schema";
+
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
 
 interface RegistrationFormProps extends React.ComponentProps<"form"> {}
 
@@ -82,7 +83,15 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         htmlFor={emailId}
                         className="aspect-square h-full place-content-center rounded-lg bg-white"
                     >
-                        <EmailIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                        <svg
+                            height="1em"
+                            width="1em"
+                            aria-hidden="true"
+                            focusable="false"
+                            className="text-2xl-4xl-xs-md text-violet-primary"
+                        >
+                            <use xlinkHref={`${IconsSprite}#email`} />
+                        </svg>
                         <span className="sr-only">Email</span>
                     </label>
 
@@ -102,7 +111,15 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         htmlFor={passwordId}
                         className="aspect-square h-full place-content-center rounded-lg bg-white"
                     >
-                        <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                        <svg
+                            height="1em"
+                            width="1em"
+                            aria-hidden="true"
+                            focusable="false"
+                            className="text-2xl-4xl-xs-md text-violet-primary"
+                        >
+                            <use xlinkHref={`${IconsSprite}#lock`} />
+                        </svg>
                         <span className="sr-only">Пароль</span>
                     </label>
                     <input
@@ -121,7 +138,15 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                         htmlFor={confirmPasswordId}
                         className="aspect-square h-full place-content-center rounded-lg bg-white"
                     >
-                        <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                        <svg
+                            height="1em"
+                            width="1em"
+                            aria-hidden="true"
+                            focusable="false"
+                            className="text-2xl-4xl-xs-md text-violet-primary"
+                        >
+                            <use xlinkHref={`${IconsSprite}#lock`} />
+                        </svg>
                         <span className="sr-only">Повторите пароль</span>
                     </label>
                     <input

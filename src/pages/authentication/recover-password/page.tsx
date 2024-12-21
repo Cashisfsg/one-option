@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRecoverPasswordMutation } from "@/shared/api";
 
 import Logo from "@/assets/logo.png";
-import { EmailIcon } from "@/entities/user/assets";
+
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
 
 interface FormField {
     email: HTMLInputElement;
@@ -56,7 +57,15 @@ export const ResetPasswordPage = () => {
                     htmlFor={email}
                     className="aspect-square h-full place-content-center rounded-lg bg-white"
                 >
-                    <EmailIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                    <svg
+                        height="1em"
+                        width="1em"
+                        aria-hidden="true"
+                        focusable="false"
+                        className="text-2xl-4xl-xs-md text-violet-primary"
+                    >
+                        <use xlinkHref={`${IconsSprite}#email`} />
+                    </svg>{" "}
                     <span className="sr-only">Email</span>
                 </label>
                 <input

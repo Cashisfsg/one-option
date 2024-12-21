@@ -7,12 +7,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { useRecoverPasswordMutation } from "@/shared/api";
-import { EmailIcon } from "@/entities/user/assets";
+
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
 
 import {
     resetPasswordCredentialsSchema as formSchema,
     type ResetPasswordCredentialsSchema as FormSchema
 } from "../model/reset-password-credentials-schema";
+import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
 
 interface ResetPasswordFormProps
     extends React.ComponentPropsWithoutRef<"form"> {}
@@ -46,7 +48,7 @@ export const ResetPasswordForm: React.FC<ResetPasswordFormProps> = ({
             await recoverPassword({ email: data.email }).unwrap();
             navigate("/auth/password/reset/confirm");
         } catch (error) {
-            toast.error(error?.data?.error);
+            handleErrorResponse(error, message => toast.error(message));
         }
     };
 
@@ -61,7 +63,15 @@ export const ResetPasswordForm: React.FC<ResetPasswordFormProps> = ({
                     htmlFor={email}
                     className="aspect-square h-full place-content-center rounded-lg bg-white"
                 >
-                    <EmailIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                    <svg
+                        height="1em"
+                        width="1em"
+                        aria-hidden="true"
+                        focusable="false"
+                        className="text-2xl-4xl-xs-md text-violet-primary"
+                    >
+                        <use xlinkHref={`${IconsSprite}#email`} />
+                    </svg>
                     <span className="sr-only">Email</span>
                 </label>
                 <input

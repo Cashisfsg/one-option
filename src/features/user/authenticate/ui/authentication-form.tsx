@@ -10,8 +10,9 @@ import { useAppDispatch } from "@/app/providers/redux/hooks";
 import { login } from "@/shared/api/authSlice";
 import { useSignInMutation } from "@/shared/api";
 
-import { EmailIcon, PasswordIcon } from "@/entities/user/assets";
 import { Checkbox } from "@/shared/ui/checkbox";
+
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
 
 import {
     authenticationCredentialsSchema as formSchema,
@@ -88,7 +89,15 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                         htmlFor={emailId}
                         className="aspect-square h-full place-content-center rounded-lg bg-white"
                     >
-                        <EmailIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                        <svg
+                            height="1em"
+                            width="1em"
+                            aria-hidden="true"
+                            focusable="false"
+                            className="text-2xl-4xl-xs-md text-violet-primary"
+                        >
+                            <use xlinkHref={`${IconsSprite}#email`} />
+                        </svg>
                         <span className="sr-only">Email</span>
                     </label>
                     <input
@@ -107,7 +116,15 @@ export const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
                         htmlFor={passwordId}
                         className="aspect-square h-full place-content-center rounded-lg bg-white"
                     >
-                        <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                        <svg
+                            height="1em"
+                            width="1em"
+                            aria-hidden="true"
+                            focusable="false"
+                            className="text-2xl-4xl-xs-md text-violet-primary"
+                        >
+                            <use xlinkHref={`${IconsSprite}#lock`} />
+                        </svg>
                         <span className="sr-only">Пароль</span>
                     </label>
                     <input

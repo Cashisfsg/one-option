@@ -6,7 +6,7 @@ import {
     type ConfirmPasswordRequest
 } from "@/shared/api";
 
-import { PasswordIcon } from "@/entities/user/assets";
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
 
 type FormField = {
     [K in keyof ConfirmPasswordRequest]: HTMLInputElement;
@@ -61,7 +61,15 @@ export const ResetPasswordConfirmPage = () => {
                         htmlFor={newPasswordId}
                         className="aspect-square h-full place-content-center rounded-lg bg-white"
                     >
-                        <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                        <svg
+                            height="1em"
+                            width="1em"
+                            aria-hidden="true"
+                            focusable="false"
+                            className="text-2xl-4xl-xs-md text-violet-primary"
+                        >
+                            <use xlinkHref={`${IconsSprite}#lock`} />
+                        </svg>
                         <span className="sr-only">Пароль</span>
                     </label>
                     <input
@@ -80,7 +88,15 @@ export const ResetPasswordConfirmPage = () => {
                         htmlFor={confirmPasswordId}
                         className="aspect-square h-full place-content-center rounded-lg bg-white"
                     >
-                        <PasswordIcon className="text-2xl-4xl-xs-md text-violet-primary" />
+                        <svg
+                            height="1em"
+                            width="1em"
+                            aria-hidden="true"
+                            focusable="false"
+                            className="text-2xl-4xl-xs-md text-violet-primary"
+                        >
+                            <use xlinkHref={`${IconsSprite}#lock`} />
+                        </svg>
                         <span className="sr-only">Повторите пароль</span>
                     </label>
                     <input

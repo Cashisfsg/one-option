@@ -15,7 +15,10 @@ export const WalletList: React.FC<WalletListProps> = ({
 }) => {
     return (
         <dl
-            className={cnBase("", className)}
+            className={cnBase(
+                "grid grid-cols-[minmax(min-content,_auto)_minmax(0,_1fr)] gap-x-8",
+                className
+            )}
             {...props}
         >
             {wallets.map(wallet => (

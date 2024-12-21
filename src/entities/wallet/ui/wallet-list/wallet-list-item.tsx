@@ -1,4 +1,8 @@
+import { ClipboardCopyButton } from "@/shared/ui/clipboard-copy-button";
+
 import { Wallet } from "../../api";
+
+import IconsSprite from "@/assets/img/svg/icons-spite.svg";
 
 interface WalletListItemProps {
     wallet: Wallet;
@@ -6,9 +10,24 @@ interface WalletListItemProps {
 
 export const WalletListItem: React.FC<WalletListItemProps> = ({ wallet }) => {
     return (
-        <div className="-mx-6 grid grid-cols-[minmax(min-content,_auto)_minmax(0,_1fr)] gap-x-8 px-6 py-4 odd:bg-quaternary">
-            <dt className="bg-quaternary">{wallet.type_wallet}</dt>
-            <dd className="truncate text-right">{wallet.wallet_id}</dd>
+        <div className="col-span-2 -mx-6 grid grid-cols-subgrid px-6 py-4 odd:bg-quaternary">
+            <dt>{wallet.type_wallet}</dt>
+            <dd>
+                <ClipboardCopyButton
+                    textToCopy={wallet.wallet_id}
+                    style={{ outline: "none" }}
+                    className="group grid w-full grid-cols-[minmax(0,_1fr)_max-content] items-center gap-x-2 truncate text-right"
+                >
+                    <span className="truncate">{wallet.wallet_id}</span>
+                    <svg
+                        height="1rem"
+                        width="1rem"
+                        className="opacity-0 transition-opacity duration-300 mh:group-hover:opacity-100"
+                    >
+                        <use xlinkHref={`${IconsSprite}#copy`} />
+                    </svg>
+                </ClipboardCopyButton>
+            </dd>
         </div>
     );
 };

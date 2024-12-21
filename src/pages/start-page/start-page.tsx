@@ -187,10 +187,10 @@ export const StartPage = () => {
                             дохода ваших рефералов
                         </p>
                         {/* <div className="flex flex-wrap justify-center gap-y-6 @container"> */}
-                        <div className="grid grid-cols-1 gap-y-6 text-base-lg-xs-lg/none @md:grid-cols-[minmax(0,_45fr)_minmax(0,_55fr)]">
+                        <div className="grid grid-cols-1 gap-6 text-base-lg-xs-lg/none @md:grid-cols-[minmax(0,_45fr)_minmax(0,_55fr)]">
                             <Link
                                 to="/auth/sign/in"
-                                className="sign-in py-[18px]"
+                                className="rounded-xl border-2 px-6 py-4 transition-colors duration-300 mh:hover:border-violet-primary mh:hover:bg-violet-primary"
                             >
                                 Вход
                                 {/* <svg
@@ -260,7 +260,7 @@ export const StartPage = () => {
                             </Link>
                             <Link
                                 to="/auth/sign/up"
-                                className="sign-up py-[18px] @md:-ml-6"
+                                className="rounded-xl border-2 border-transparent bg-violet-primary px-6 py-4 transition-colors duration-300 mh:hover:border-white mh:hover:bg-transparent"
                                 // className="sign-up"
                             >
                                 Регистрация

@@ -1,6 +1,7 @@
 @font-face {
     font-family: "GetVoIP Grotesque";
     src: url("@/assets/fonts/GetVoIP Grotesque.otf") format("opentype");
+    font-display: swap;
 }
 
 img,

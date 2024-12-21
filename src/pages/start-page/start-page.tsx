@@ -5,6 +5,8 @@ import { Title } from "@/shared/ui/title";
 import { Footer } from "@/widgets/footer/ui/footer";
 import { Logo } from "@/shared/ui/logo";
 
+import StartPageSprite from "@/assets/img/svg/start-page-sprite.svg";
+
 export const StartPage = () => {
     const [searchParams] = useSearchParams();
 
@@ -21,20 +23,6 @@ export const StartPage = () => {
 
     return (
         <main>
-            {/* {Array(20)
-                .fill(0)
-                .map(_ => (
-                    <LazyImage
-                        src="https://interier-foto.ru/wp-content/uploads/2018/02/panoramnaya-fotografiya-66143.jpg"
-                        blurHash="|XFGE]--I8bDj?t6j[j[ay?cV[WBofjYoeRjWCaz?dR-M{WCadoeWVWVj[RiNGx]t7ofa#M|WVWVt6WBt7jbjZa#RkazazIVj=%1axtRoyWAa}WBWXj[ofRkjuf8WVjuayaxofjbM|a~j]a}kBaxoMs.ofWCayWBWXagj]"
-                        placeholder={Placeholder}
-                        height={480}
-                        width={640}
-                        // style={{ height: "unset" }}
-                        className="aspect-video h-full object-cover"
-                    />
-                ))} */}
-
             <header className="header md:px-12">
                 <div className="mx-auto grid h-full min-h-svh max-w-screen-2xl grid-rows-[minmax(0,_1fr)_auto] md:grid-cols-2">
                     <figure className="flex justify-center pl-12 pr-12 md:order-2 md:pr-0">
@@ -78,7 +66,7 @@ export const StartPage = () => {
             <section className="section border-t-[6px] border-t-violet-quaternary">
                 <div className="container">
                     <figure>
-                        <svg
+                        {/* <svg
                             width="462"
                             height="246"
                             viewBox="0 0 462 246"
@@ -117,6 +105,9 @@ export const StartPage = () => {
                                 d="M451.796 220.674L417.433 209.528V245.527L402.609 240.719V204.719L368.081 193.52V177.984L402.609 189.184V153.012L417.433 157.82V193.992L451.796 205.139V220.674Z"
                                 fill="#BC9CFF"
                             />
+                        </svg> */}
+                        <svg>
+                            <use xlinkHref={`${StartPageSprite}#amount`} />
                         </svg>
                     </figure>
 
@@ -143,20 +134,8 @@ export const StartPage = () => {
             <section className="section border-t-[6px] border-t-violet-quaternary">
                 <div className="container">
                     <figure>
-                        <svg
-                            viewBox="0 0 215 476"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            // className="-rotate-1"
-                        >
-                            <path
-                                d="M101.061 270.871L205.969 475.628L214.51 461.091L188.642 177.416L105.224 220.243L8.85713 0.948187L0.316176 15.4853L17.6432 313.698L101.061 270.871Z"
-                                fill="#793AFF"
-                            />
-                            <path
-                                d="M109.602 256.334L214.51 461.091L197.183 162.879L113.765 205.705L8.85713 0.948187L26.1842 299.16L109.602 256.334Z"
-                                fill="#BC9CFF"
-                            />
+                        <svg>
+                            <use xlinkHref={`${StartPageSprite}#lighting`} />
                         </svg>
                     </figure>
 
@@ -168,22 +147,6 @@ export const StartPage = () => {
                                 Присоединяйтесь к нам сегодня и наслаждайтесь
                                 быстрыми выплатами без лишних ожиданий
                             </p>
-                            {/* <p>
-                                Мы гордимся тем, что предоставляем своим
-                                партнерам моментальные выплаты, чтобы вы могли
-                                получать свои заработанные средства быстро и без
-                                задержек.
-                            </p>
-                            <p>
-                                Надежность и оперативность - это наши основные
-                                принципы, и мы гарантируем, что ваши выплаты
-                                будут обработаны быстро и эффективно.
-                            </p>
-                            <p>
-                                Присоединяйтесь к нам сегодня и начните
-                                наслаждаться преимуществами быстрых выплат
-                                вместе с нами!
-                            </p> */}
                         </div>
                     </header>
                 </div>
@@ -297,45 +260,8 @@ export const StartPage = () => {
                     </div>
 
                     <figure>
-                        <svg
-                            width="338"
-                            height="284"
-                            viewBox="0 0 338 284"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M180.418 239.027C180.418 239.027 214.446 232.722 214.446 212.182C214.446 191.643 180.418 136.328 100.296 154.809C20.173 173.291 0.142425 239.531 0.142425 260.071C0.142425 280.611 29.2661 285.608 37.0075 283.106C98.1162 263.358 180.418 239.027 180.418 239.027Z"
-                                fill="#793AFF"
-                            />
-                            <path
-                                d="M100.296 142.818C67.7912 142.818 40.2037 120.543 40.2037 86.5116C40.2037 52.4802 67.1077 18.6863 100.296 11.0309C133.483 3.37545 173.33 24.1833 173.33 58.2148C173.33 92.2462 133.483 135.163 100.296 142.818Z"
-                                fill="#793AFF"
-                            />
-                            <path
-                                d="M216.145 230.785C218.966 224.3 220.479 217.033 220.479 209.246C220.479 181.405 205.594 159.354 180.418 145.226C191.432 139.073 205.554 130.529 220.479 127.087C300.602 108.605 335.524 165.119 335.524 185.659C335.524 206.198 300.602 211.304 300.602 211.304L232.98 237.902L216.145 230.785Z"
-                                fill="#793AFF"
-                            />
-                            <path
-                                d="M235.489 112.64C216.145 117.102 180.418 92.7979 180.418 64.4384C180.418 36.0788 202.838 7.91725 230.495 1.53774C258.151 -4.84177 297.215 15.623 297.215 43.9825C297.215 72.3421 263.145 106.261 235.489 112.64Z"
-                                fill="#793AFF"
-                            />
-                            <path
-                                d="M197.252 246.143C197.252 246.143 217.283 241.522 217.283 220.983C217.283 200.443 197.252 143.444 117.13 161.926C37.0075 180.407 16.9769 246.647 16.9769 267.187C16.9769 287.727 37.0075 283.106 37.0075 283.106L197.252 246.143Z"
-                                fill="#BC9CFF"
-                            />
-                            <path
-                                d="M117.13 141.386C83.9422 149.041 57.0382 127.659 57.0382 93.6278C57.0382 59.5963 83.9422 25.8024 117.13 18.147C150.318 10.4916 177.222 31.8736 177.222 65.9051C177.222 99.9365 150.318 133.73 117.13 141.386Z"
-                                fill="#BC9CFF"
-                            />
-                            <path
-                                d="M232.98 237.902C235.8 231.416 237.314 224.15 237.314 216.362C237.314 188.521 223.712 163.027 198.536 148.898C209.549 142.745 222.389 137.646 237.314 134.203C317.436 115.721 337.467 172.72 337.467 193.26C337.467 213.8 317.436 218.42 317.436 218.42L232.98 237.902Z"
-                                fill="#BC9CFF"
-                            />
-                            <path
-                                d="M247.329 111.353C219.673 117.732 197.252 99.9141 197.252 71.5545C197.252 43.195 219.673 15.0334 247.329 8.65389C274.986 2.27438 297.406 20.0927 297.406 48.4523C297.406 76.8118 274.986 104.973 247.329 111.353Z"
-                                fill="#BC9CFF"
-                            />
+                        <svg>
+                            <use xlinkHref={`${StartPageSprite}#partners`} />
                         </svg>
                     </figure>
                 </div>

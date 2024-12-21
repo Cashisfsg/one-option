@@ -39,6 +39,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
         HTMLFormElement & FormFields
     > = async event => {
         event.preventDefault();
+        const form = event.currentTarget;
 
         try {
             const { amount, wallet } = event.currentTarget;
@@ -50,7 +51,7 @@ export const WithdrawalForm: React.FC<WithdrawalFormProps> = ({
 
             toast(response?.detail);
 
-            event.currentTarget.reset();
+            form.reset();
         } catch (error) {
             handleErrorResponse(error, message => toast.error(message));
         }

@@ -14,7 +14,7 @@ export const AuthenticationLayout: React.FC<AuthenticationLayoutProps> = ({
     return (
         <main
             className={cnBase(
-                "min-h-dvh space-y-4-6-xs-md bg-[url('@/assets/bg.webp')] px-4 py-8",
+                "min-h-dvh space-y-4-6-xs-md bg-[url('@/assets/bg.png')] px-4 py-8",
                 className
             )}
             {...props}

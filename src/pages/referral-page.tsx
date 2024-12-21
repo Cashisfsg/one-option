@@ -1,7 +1,7 @@
 import { useFetchReferenceLinksQuery } from "@/entities/reference";
 import { Article } from "@/shared/ui/article";
 import { Title } from "@/shared/ui/title";
-import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
+import { ClipboardCopy } from "@/shared/ui/clipboard-copy-combobox";
 
 export const ReferralPage = () => {
     const { data: links } = useFetchReferenceLinksQuery();

@@ -2,7 +2,7 @@ import { useFetchUserDataQuery } from "@/entities/user/api";
 
 import { Article } from "@/shared/ui/article";
 import { Section } from "@/shared/ui/section";
-import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
+import { ClipboardCopy } from "@/shared/ui/clipboard-copy-combobox";
 import { Title } from "@/shared/ui/title";
 
 export const SubReferralPage = () => {
@@ -42,7 +42,7 @@ export const SubReferralPage = () => {
                     as="h2"
                     className="text-xl-2xl-xs-sm"
                 >
-                    Комиссионные{" "}
+                    Комиссионные
                 </Title>
             </Section>
         </Article>

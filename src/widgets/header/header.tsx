@@ -57,7 +57,7 @@ const links = [
         title: "Уведомления"
     },
     {
-        url: "https://t.me/OptimaX_VIP",
+        url: "https://t.me/OptimaxVip",
         name: "telegram",
         title: "Telegram"
     }
@@ -213,7 +213,7 @@ export const Header = () => {
                     </BurgerMenu.Portal>
                 </BurgerMenu.Root>
 
-                <Title className="text-lg-2xl-xs-lg px-2-4-xs-lg text-center">
+                <Title className="px-2-4-xs-lg text-center text-lg-2xl-xs-lg">
                     {links.find(link => link.url === location.pathname)?.title}
                 </Title>
 

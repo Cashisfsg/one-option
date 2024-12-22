@@ -32,7 +32,7 @@ main > .header {
     /* height: 100lvh; */
     min-height: 100lvh;
     place-items: center;
-    background: #121213;
+    background: black;
     /* max-height: 100lvh; */
 
     /* padding-inline: 1.25rem; */

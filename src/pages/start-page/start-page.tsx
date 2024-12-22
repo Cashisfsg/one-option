@@ -6,7 +6,7 @@ import { Footer } from "@/widgets/footer/ui/footer";
 import { Logo } from "@/shared/ui/logo";
 
 import StartPageSprite from "@/assets/img/svg/start-page-sprite.svg";
-import Video from "@/assets/video/video.webm";
+import Video from "@/assets/video/video.mp4";
 
 export const StartPage = () => {
     const [searchParams] = useSearchParams();
@@ -128,9 +128,11 @@ export const StartPage = () => {
                         height="200"
                         src={Video}
                         controls={false}
+                        preload="auto"
+                        muted
                         playsInline={true}
                         onClick={event => event.currentTarget.play()}
-                        className="max-w-full"
+                        className="max-w-full !bg-transparent"
                     />
                     {/* <figure>
                         <svg

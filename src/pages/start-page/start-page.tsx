@@ -67,7 +67,11 @@ export const StartPage = () => {
             <section className="section border-t-[6px] border-t-violet-quaternary">
                 <div className="container">
                     <figure>
-                        <svg>
+                        <svg
+                            width="462"
+                            height="246"
+                            focusable="false"
+                        >
                             <use xlinkHref={`${StartPageSprite}#amount`} />
                         </svg>
                     </figure>
@@ -95,7 +99,11 @@ export const StartPage = () => {
             <section className="section border-t-[6px] border-t-violet-quaternary">
                 <div className="container">
                     <figure>
-                        <svg>
+                        <svg
+                            width="215"
+                            height="476"
+                            focusable="false"
+                        >
                             <use xlinkHref={`${StartPageSprite}#lighting`} />
                         </svg>
                     </figure>
@@ -116,8 +124,11 @@ export const StartPage = () => {
             <section className="section border-t-[6px] border-t-violet-quaternary">
                 <div className="container">
                     <video
+                        width="640"
+                        height="200"
                         src={Video}
                         onClick={event => event.currentTarget.play()}
+                        className="max-w-full"
                     />
                     {/* <figure>
                         <svg
@@ -225,7 +236,11 @@ export const StartPage = () => {
                     </div>
 
                     <figure>
-                        <svg>
+                        <svg
+                            width="328"
+                            height="284"
+                            focusable="false"
+                        >
                             <use xlinkHref={`${StartPageSprite}#partners`} />
                         </svg>
                     </figure>

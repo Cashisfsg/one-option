@@ -127,6 +127,8 @@ export const StartPage = () => {
                         width="640"
                         height="200"
                         src={Video}
+                        controls={false}
+                        playsInline={true}
                         onClick={event => event.currentTarget.play()}
                         className="max-w-full"
                     />

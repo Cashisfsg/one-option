@@ -7,6 +7,7 @@ import { Logo } from "@/shared/ui/logo";
 
 import StartPageSprite from "@/assets/img/svg/start-page-sprite.svg";
 import Video from "@/assets/video/video.mp4";
+import Poster from "@/assets/img/png/poster.png";
 
 export const StartPage = () => {
     const [searchParams] = useSearchParams();
@@ -129,6 +130,7 @@ export const StartPage = () => {
                         src={Video}
                         controls={false}
                         preload="auto"
+                        poster={Poster}
                         muted
                         playsInline={true}
                         onClick={event => event.currentTarget.play()}

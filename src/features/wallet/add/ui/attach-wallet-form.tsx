@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 
 import { Input } from "@/shared/ui/input";
 import { Fetch } from "@/shared/ui/fetch";
@@ -29,6 +29,9 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
         undefined
     );
     const { dialogRef } = useDialogContext();
+    const inputWalletId = `wallet-id-${useId()}`;
+    const errorWalletId = `wallet-error-${useId()}`;
+
     const [attachWallet] = useAttachWalletMutation();
 
     const onSubmitHandler: React.FormEventHandler<
@@ -124,6 +127,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
             <label>
                 <span>Кошелек:</span>
                 <Input
+                    id={inputWalletId}
                     placeholder="Введите ID кошелька"
                     required
                     alert={true}
@@ -131,9 +135,15 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                     minLength={1}
                     maxLength={100}
                     aria-invalid={!!errorMessage}
+                    aria-errormessage={errorWalletId}
                     className="peer border-2 border-transparent aria-[invalid=true]:border-red-primary"
                 />
-                <ErrorMessage>{errorMessage}</ErrorMessage>
+                <ErrorMessage
+                    id={errorWalletId}
+                    htmlFor={inputWalletId}
+                >
+                    {errorMessage}
+                </ErrorMessage>
             </label>
         </form>
     );

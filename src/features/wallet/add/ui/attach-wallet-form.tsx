@@ -1,4 +1,4 @@
-import { useState, useId } from "react";
+import { useId } from "react";
 
 import { Input } from "@/shared/ui/input";
 import { Fetch } from "@/shared/ui/fetch";
@@ -12,8 +12,6 @@ import {
 import { Select } from "@/shared/ui/select";
 import { ErrorMessage } from "@/shared/ui/error";
 
-import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
-
 import IconsSprite from "@/assets/img/svg/icons-spite.svg";
 
 interface AttachWalletFormProps
@@ -25,21 +23,17 @@ interface FormFields {
 }
 
 export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
-    const [errorMessage, setErrorMessage] = useState<string | undefined>(
-        undefined
-    );
     const { dialogRef } = useDialogContext();
     const inputWalletId = `wallet-id-${useId()}`;
     const errorWalletId = `wallet-error-${useId()}`;
 
-    const [attachWallet] = useAttachWalletMutation();
+    const [attachWallet, { isError, error }] = useAttachWalletMutation();
 
     const onSubmitHandler: React.FormEventHandler<
         HTMLFormElement & FormFields
     > = async event => {
         event.preventDefault();
 
-        setErrorMessage(undefined);
         const form = event.currentTarget;
 
         try {
@@ -52,9 +46,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
 
             form.reset();
             dialogRef.current?.close();
-        } catch (error) {
-            handleErrorResponse(error, message => setErrorMessage(message));
-        }
+        } catch {}
     };
 
     return (
@@ -134,7 +126,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                     name="wallet_id"
                     minLength={1}
                     maxLength={100}
-                    aria-invalid={!!errorMessage}
+                    aria-invalid={isError}
                     aria-errormessage={errorWalletId}
                     className="peer border-2 border-transparent aria-[invalid=true]:border-red-primary"
                 />
@@ -142,7 +134,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                     id={errorWalletId}
                     htmlFor={inputWalletId}
                 >
-                    {errorMessage}
+                    {error?.data?.message}
                 </ErrorMessage>
             </label>
         </form>

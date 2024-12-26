@@ -1,4 +1,4 @@
-import { toast } from "sonner";
+import { useState } from "react";
 
 import { Input } from "@/shared/ui/input";
 import { Fetch } from "@/shared/ui/fetch";
@@ -10,6 +10,7 @@ import {
 } from "@/entities/wallet/api";
 
 import { Select } from "@/shared/ui/select";
+import { ErrorMessage } from "@/shared/ui/error";
 
 import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
 
@@ -24,6 +25,9 @@ interface FormFields {
 }
 
 export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
+    const [errorMessage, setErrorMessage] = useState<string | undefined>(
+        undefined
+    );
     const { dialogRef } = useDialogContext();
     const [attachWallet] = useAttachWalletMutation();
 
@@ -32,6 +36,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
     > = async event => {
         event.preventDefault();
 
+        setErrorMessage(undefined);
         const form = event.currentTarget;
 
         try {
@@ -45,7 +50,7 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
             form.reset();
             dialogRef.current?.close();
         } catch (error) {
-            handleErrorResponse(error, message => toast.error(message));
+            handleErrorResponse(error, message => setErrorMessage(message));
         }
     };
 
@@ -125,7 +130,10 @@ export const AttachWalletForm: React.FC<AttachWalletFormProps> = props => {
                     name="wallet_id"
                     minLength={1}
                     maxLength={100}
+                    aria-invalid={!!errorMessage}
+                    className="peer border-2 border-transparent aria-[invalid=true]:border-red-primary"
                 />
+                <ErrorMessage>{errorMessage}</ErrorMessage>
             </label>
         </form>
     );

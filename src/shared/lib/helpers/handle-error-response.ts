@@ -16,7 +16,7 @@ const isErrorWithMessage = (error: unknown): error is { message: string } => {
     return (
         typeof error === "object" &&
         error != null &&
-        "error" in error &&
+        "message" in error &&
         typeof (error as any).message === "string"
     );
 };
@@ -29,7 +29,7 @@ export const handleErrorResponse = (
         const errorMessage =
             "error" in error
                 ? error.error
-                : (error.data as { error: string }).error;
+                : (error.data as { message: string }).message;
         callback(errorMessage);
     } else if (isErrorWithMessage(error)) {
         callback(error.message);

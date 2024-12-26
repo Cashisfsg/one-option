@@ -15,7 +15,7 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
             {...props}
             role="alert"
             className={cnBase(
-                "text-red-primary hidden items-center gap-x-1 font-secondary text-xs peer-aria-[invalid=true]:flex",
+                "hidden items-center gap-x-1 font-secondary text-xs text-red-primary peer-aria-[invalid=true]:flex",
                 className
             )}
         >

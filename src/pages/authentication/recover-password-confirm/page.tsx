@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 import {
     useConfirmPasswordMutation,
@@ -20,7 +21,7 @@ export const ResetPasswordConfirmPage = () => {
     const navigate = useNavigate();
     const params = useParams();
 
-    const [confirmPassword] = useConfirmPasswordMutation();
+    const [confirmPassword, { isLoading }] = useConfirmPasswordMutation();
 
     const onSubmitHandler: React.FormEventHandler<
         HTMLFormElement & FormField
@@ -32,11 +33,12 @@ export const ResetPasswordConfirmPage = () => {
         const { new_password, confirm_password } = event.currentTarget;
 
         try {
-            await confirmPassword({
+            const { message } = await confirmPassword({
                 token: params.token,
                 new_password: new_password.value,
                 confirm_password: confirm_password.value
             }).unwrap();
+            toast(message);
             navigate("/auth/sign/in");
         } catch (error) {
             console.error(error);
@@ -113,6 +115,7 @@ export const ResetPasswordConfirmPage = () => {
 
             <button
                 form={formId}
+                disabled={isLoading}
                 className="mx-auto block rounded-lg border-2 border-white-primary bg-white-primary px-16 py-3 text-black transition-colors duration-300 mh:hover:bg-transparent mh:hover:text-white-primary"
             >
                 Сбросить

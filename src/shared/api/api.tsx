@@ -32,7 +32,7 @@ export const rootApi = createApi({
         }),
 
         recoverPassword: builder.mutation<
-            SuccessResponse,
+            { message: string },
             RecoverPasswordRequest
         >({
             query: body => ({
@@ -42,7 +42,7 @@ export const rootApi = createApi({
             })
         }),
         confirmPassword: builder.mutation<
-            SuccessResponse,
+            { message: string },
             ConfirmPasswordRequest
         >({
             query: ({ token, new_password, confirm_password }) => ({

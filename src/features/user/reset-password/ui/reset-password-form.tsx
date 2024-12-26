@@ -1,5 +1,4 @@
 import { useId } from "react";
-import { useNavigate } from "react-router-dom";
 import { cnBase } from "tailwind-variants";
 import { toast } from "sonner";
 
@@ -25,7 +24,6 @@ export const ResetPasswordForm: React.FC<ResetPasswordFormProps> = ({
 }) => {
     const email = `email-${useId()}`;
 
-    const navigate = useNavigate();
     const [recoverPassword, { isLoading }] = useRecoverPasswordMutation();
 
     const {
@@ -45,8 +43,10 @@ export const ResetPasswordForm: React.FC<ResetPasswordFormProps> = ({
 
     const onSubmitHandler: SubmitHandler<FormSchema> = async data => {
         try {
-            await recoverPassword({ email: data.email }).unwrap();
-            navigate("/auth/password/reset/confirm");
+            const { message } = await recoverPassword({
+                email: data.email
+            }).unwrap();
+            toast(message);
         } catch (error) {
             handleErrorResponse(error, message => toast.error(message));
         }
